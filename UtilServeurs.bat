@@ -1,0 +1,20 @@
+@ECHO OFF
+SETLOCAL
+CHCP 1252 >NUL
+CD /D "%~dp0"
+
+SET FULLPATH_ROOT=C:\dev19
+SET NAME_DIR_JDK=jdk-10
+SET NAME_DIR_JDK8=jdk-8
+SET NAME_DIR_JAVAFX=javafx-sdk-12
+
+SET JAVA_HOME=%FULLPATH_ROOT%\java\jdk\%NAME_DIR_JDK%
+
+SET CLASSPATH=
+rem SET CLASSPATH=%CLASSPATH%;%FULLPATH_ROOT%\java\libraries\%NAME_DIR_JAVAFX%\lib\*
+SET CLASSPATH=%CLASSPATH%;..\~UtilServeurs\UtilServeurs.jar
+
+START "" "%JAVA_HOME%\bin\javaw.exe" utilserveurs.Main  
+
+ENDLOCAL
+

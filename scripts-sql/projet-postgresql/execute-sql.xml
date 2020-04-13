@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     février 2020                                                       
+
+     sql-projet-postgresql 
+                   
+     ====================================================================== -->
+<project name="sql-projet-postgresql" >
+
+	
+    <!-- ================================= 
+          Paramètres généraux              
+         ================================= -->
+	
+	<property file="jdbc.properties" />
+	
+	<path id="path.jdbc.drivers">
+		<fileset dir="C:/dev19/java/libraries/JDBC-Drivers"></fileset>
+	</path>
+	
+
+    <!-- ================================= 
+          target: 0-user              
+         ================================= -->
+    <target name="0-user" description="Crée l'utilisateur">
+    	<execute-sql sqlfile="0-user.sql" 
+    		user="${admin.user}" password="${admin.password}"
+    		delimiter="/"
+    />
+    </target>
+	
+
+    <!-- ================================= 
+          target: 1-tables              
+         ================================= -->
+    <target name="1-tables" description="Crée talbes, séquences et vues">
+    	<execute-sql sqlfile="1-tables.sql"/>
+    </target>
+	
+
+    <!-- ================================= 
+          target: 2-data              
+         ================================= -->
+    <target name="2-data" description="Insère données initiales">
+    	<execute-sql sqlfile="2-data.sql"/>
+    </target>
+	
+
+    <!-- ================================= 
+          target: 3-procedures              
+         ================================= -->
+    <target name="3-procedures" description="Crée triggers et procédures stockées">
+    	<execute-sql sqlfile="3-procedures.sql" delimiter="/" />
+    </target>
+	
+
+    <!-- ================================= 
+          target: 9-tout              
+         ================================= -->
+    <target name="9-tout" description="description">
+    	
+    	<antcall target="1-tables" />
+		<antcall target="2-data" />
+		<antcall target="3-procedures" />
+        
+    </target>
+	
+	
+	<!-- = = = = = = = = = = = = = = = = =
+          macrodef: execute-sql          
+         = = = = = = = = = = = = = = = = = -->
+    <macrodef name="execute-sql">
+        <attribute  name="sqlfile"  />
+        <attribute  name="delimiter" default=";"  />
+        <attribute  name="user" default="${appli.user}"  />
+        <attribute  name="password" default="${appli.password}"  />
+        <sequential>
+        	
+        	<local name="delimitertype" />
+        	<local name="strictDelimiterMatching" />
+        	<condition property="delimitertype" value="normal" else="row" >
+				<equals arg1="@{delimiter}" arg2=";"/>
+        	</condition>
+        	<condition property="strictDelimiterMatching" value="true" else="false" >
+				<equals arg1="@{delimiter}" arg2=";"/>
+        	</condition>
+        	
+        	<sql 
+        		src="@{sqlfile}"
+        		userid="@{user}" 
+        		url="${jdbc.url}" 
+        		password="@{password}" 
+        		driver="${jdbc.driver}" 
+        		delimiter="@{delimiter}"
+        		delimitertype="${delimitertype}"
+        		strictDelimiterMatching="${strictDelimiterMatching}"
+        		autocommit="true"
+        		encoding="UTF-8"
+        		onerror="continue"
+    			classpathref="path.jdbc.drivers"
+        	/>
+            
+        </sequential>
+    </macrodef>
+
+
+</project>
