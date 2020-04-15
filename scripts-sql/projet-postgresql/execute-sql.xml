@@ -29,12 +29,20 @@
     />
     </target>
 	
+	
+	 <!-- ================================= 
+	          target: 1-tables              
+	         ================================= -->
+	    <target name="1-tables" description="Crée talbes, séquences et vues">
+	    	<execute-sql sqlfile="1-tables.sql"/>
+	    </target>
+	
 
     <!-- ================================= 
           target: 1-tables              
          ================================= -->
-    <target name="1-tables" description="Crée talbes, séquences et vues">
-    	<execute-sql sqlfile="1-tables.sql"/>
+    <target name="1-tables-projet" description="Crée talbes, séquences et vues">
+    	<execute-sql sqlfile="1-tables-dev.sql"/>
     </target>
 	
 
