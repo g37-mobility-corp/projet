@@ -9,7 +9,7 @@ public class Test_VL {
 	
 	
 	private String[] adresses = {
-			"14 Rue Mozart, Paris",
+			"14 Rue Mozart, Lyon",
 			"77 Rue Picasso, Toulouse", 
 			"53 Rue des fleurs, Limoges",
 	};
