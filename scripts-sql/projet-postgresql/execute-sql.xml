@@ -67,6 +67,10 @@
     <target name="3-procedures" description="Crée triggers et procédures stockées">
     	<execute-sql sqlfile="3-procedures.sql" delimiter="/" />
     </target>
+
+	<target name="3-procedures-projet" description="Crée triggers et procédures stockées">
+    	<execute-sql sqlfile="3-procedures-dev.sql" delimiter="/" />
+    </target>
 	
 
     <!-- ================================= 
@@ -77,6 +81,14 @@
     	<antcall target="1-tables" />
 		<antcall target="2-data" />
 		<antcall target="3-procedures" />
+        
+    </target>
+
+	<target name="9-tout-projet" description="description">
+    	
+    	<antcall target="1-tables-projet" />
+		<antcall target="2-data-projet" />
+		<antcall target="3-procedures-projet" />
         
     </target>
 	
