@@ -178,7 +178,7 @@ public class DaoCompte {
 	}
 
 
-	public Compte validerAuthentification( String pseudo, String motDePasse )  {
+	public Compte validerAuthentification( String email, String motDePasse )  {
 		
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
@@ -188,9 +188,9 @@ public class DaoCompte {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "SELECT * FROM compte WHERE pseudo = ? AND motdepasse = ?";
+			sql = "SELECT * FROM compte WHERE email = ? AND motdepasse = ?";
 			stmt = cn.prepareStatement( sql );
-			stmt.setObject( 1, pseudo );
+			stmt.setObject( 1, email );
 			stmt.setObject( 2, motDePasse );
 			rs = stmt.executeQuery();
 

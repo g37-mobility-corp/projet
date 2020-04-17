@@ -175,7 +175,7 @@ public class DaoCompte2 {
 	}
 
 
-	public Compte validerAuthentification( String pseudo, String motDePasse )  {
+	public Compte validerAuthentification( String email, String motDePasse )  {
 		
 		Connection			cn		= null;
 		CallableStatement	stmt	= null;
@@ -187,7 +187,7 @@ public class DaoCompte2 {
 
 			sql = "{ CALL compte_valider_authentification( ?, ? ) } ";
 			stmt = cn.prepareCall( sql );
-			stmt.setObject( 1, pseudo );
+			stmt.setObject( 1, email );
 			stmt.setObject( 2, motDePasse );
 			rs = stmt.executeQuery();
 
@@ -237,7 +237,6 @@ public class DaoCompte2 {
 	private Compte construireCompte( ResultSet rs ) throws SQLException {
 		Compte compte = new Compte();
 		compte.setId( rs.getObject( "idcompte", Integer.class ) );
-		compte.setPseudo( rs.getObject( "pseudo", String.class ) );
 		compte.setMotDePasse( rs.getObject( "motdepasse", String.class ) );
 		compte.setEmail( rs.getObject( "email", String.class ) );
 		try {
