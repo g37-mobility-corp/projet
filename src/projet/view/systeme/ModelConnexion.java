@@ -52,8 +52,8 @@ public class ModelConnexion {
 	
 	@PostConstruct
 	public void init() {
-		courant.setPseudo( "geek" );
-		courant.setMotDePasse( "geek" );
+		courant.setEmail( "admin@3il.fr" );
+		courant.setMotDePasse( "admin" );
 	}
 	
 	
@@ -63,10 +63,10 @@ public class ModelConnexion {
 	public void ouvrirSessionUtilisateur() {
 
 		Compte compte = daoCompte.validerAuthentification(
-					courant.pseudoProperty().getValue(), courant.motDePasseProperty().getValue() );
+					courant.emailProperty().getValue(), courant.motDePasseProperty().getValue() );
 		
 		if( compte == null ) {
-			throw new ExceptionValidation( "Pseudo ou mot de passe invalide." );
+			throw new ExceptionValidation( "Email ou mot de passe invalide." );
 		} else {
 			Platform.runLater( () -> compteActif.setValue( compte ) );
 		}

@@ -39,8 +39,8 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Pseudo :" />
-                  <TextField fx:id="fieldPseudo" prefHeight="25.0" prefWidth="117.0" GridPane.columnIndex="1" />
+                  <Label text="Email :" />
+                  <TextField fx:id="fieldEmail" prefHeight="25.0" prefWidth="117.0" GridPane.columnIndex="1" />
                   <Label text="Mot de passe :" GridPane.rowIndex="1" />
                   <PasswordField fx:id="fieldMotDePasse" prefHeight="25.0" prefWidth="117.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>

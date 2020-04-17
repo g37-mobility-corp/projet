@@ -17,7 +17,7 @@ public class ControllerConnexion {
 	// Composants de la vue
 	
 	@FXML
-	private TextField		fieldPseudo;
+	private TextField		fieldEmail;
 	@FXML
 	private PasswordField	fieldMotDePasse;
 
@@ -39,7 +39,7 @@ public class ControllerConnexion {
 		
 		// Data binding
 		Compte courant = modelConnexion.getCourant();
-		fieldPseudo.textProperty().bindBidirectional( courant.pseudoProperty() );
+		fieldEmail.textProperty().bindBidirectional( courant.emailProperty() );
 		fieldMotDePasse.textProperty().bindBidirectional( courant.motDePasseProperty() );
 
 	}

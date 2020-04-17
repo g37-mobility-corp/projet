@@ -53,6 +53,13 @@
     	<execute-sql sqlfile="2-data.sql"/>
     </target>
 	
+	<!-- ================================= 
+	          target: 2-data              
+	         ================================= -->
+	    <target name="2-data-projet" description="Insère données initiales">
+	    	<execute-sql sqlfile="2-data-dev.sql"/>
+	    </target>
+	
 
     <!-- ================================= 
           target: 3-procedures              
