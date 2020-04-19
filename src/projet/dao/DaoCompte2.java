@@ -38,21 +38,20 @@ public class DaoCompte2 {
 			cn = dataSource.getConnection();
 
 			// Insère le compte
-			sql = "{ CALL compte_inserer( ?, ?, ?, ?, ? ) } ";
-			stmt = cn.prepareCall( sql ); 
-			stmt.setObject( 1, compte.getPseudo() );
-			stmt.setObject( 2, compte.getMotDePasse() );
-			stmt.setObject( 3, compte.getEmail() );
-			stmt.registerOutParameter( 4, Types.INTEGER );
+			sql = "{ CALL compte_inserer( ?, ?, ?, ? ) } ";
+			stmt = cn.prepareCall( sql );
+			stmt.setObject( 1, compte.getMotDePasse() );
+			stmt.setObject( 2, compte.getEmail() );
+			stmt.registerOutParameter( 3, Types.INTEGER );
 			try {
-				stmt.setObject( 5, cn.createArrayOf( "VARCHAR", compte.getRoles().toArray() ) );
+				stmt.setObject( 4, cn.createArrayOf( "VARCHAR", compte.getRoles().toArray() ) );
 			} catch ( SQLFeatureNotSupportedException e) {
-				stmt.setObject( 5, compte.getRoles().stream().collect( Collectors.joining( "," ) ) );
+				stmt.setObject( 4, compte.getRoles().stream().collect( Collectors.joining( "," ) ) );
 			}
 			stmt.executeUpdate();
 
 			// Récupère l'identifiant généré par le SGBD
-			compte.setId( stmt.getInt( 4 ) );
+			compte.setId( stmt.getInt( 3 ) );
 			
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -75,16 +74,15 @@ public class DaoCompte2 {
 			cn = dataSource.getConnection();
 
 			// Modifie le compte
-			sql = "{ CALL compte_modifier( ?, ?, ?, ?, ? ) } ";
+			sql = "{ CALL compte_modifier( ?, ?, ?, ? ) } ";
 			stmt = cn.prepareCall( sql );
-			stmt.setObject( 1, compte.getPseudo() );
-			stmt.setObject( 2, compte.getMotDePasse() );
-			stmt.setObject( 3, compte.getEmail() );
-			stmt.setObject( 4, compte.getId() );
+			stmt.setObject( 1, compte.getMotDePasse() );
+			stmt.setObject( 2, compte.getEmail() );
+			stmt.setObject( 3, compte.getId() );
 			try {
-				stmt.setObject( 5, cn.createArrayOf( "VARCHAR", compte.getRoles().toArray() ) );
+				stmt.setObject( 4, cn.createArrayOf( "VARCHAR", compte.getRoles().toArray() ) );
 			} catch ( SQLFeatureNotSupportedException e) {
-				stmt.setObject( 5, compte.getRoles().stream().collect( Collectors.joining( "," ) ) );
+				stmt.setObject( 4, compte.getRoles().stream().collect( Collectors.joining( "," ) ) );
 			}
 			stmt.executeUpdate();
 			

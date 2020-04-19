@@ -90,6 +90,11 @@ public class MenuBarAppli extends MenuBar {
 		item.setOnAction(  (e) -> managerGui.showView( EnumView.CompteListe )  );
 		menu.getItems().add( item );
 		itemComptes = item;
+		
+		item = new MenuItem( "Equipes" );
+		item.setOnAction(  (e) -> managerGui.showView( EnumView.EquipeListe )  );
+		menu.getItems().add( item );
+		itemComptes = item;
 
 		
 		// Manu Etats
@@ -143,6 +148,9 @@ public class MenuBarAppli extends MenuBar {
 		item.setOnAction(  (e) -> managerGui.showView( EnumView.TestDaoService )  );
 		menu.getItems().add( item );
 
+		item = new MenuItem( "DaoEquipe" );
+		item.setOnAction(  (e) -> managerGui.showView( EnumView.TestDaoEquipe )  );
+		menu.getItems().add( item );
 
 		// Configuration initiale du menu
 		configurerMenu( modelConnexion.getCompteActif() );

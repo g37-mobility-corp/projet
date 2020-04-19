@@ -6,6 +6,7 @@ import org.mapstruct.MappingTarget;
 
 import projet.data.Categorie;
 import projet.data.Compte;
+import projet.data.Equipe;
 import projet.data.Memo;
 import projet.data.Personne;
 import projet.data.Service;
@@ -25,5 +26,7 @@ public interface IMapper {
 	Memo update( @MappingTarget Memo target, Memo source );
 
 	Service update( @MappingTarget Service target, Service source );
+	
+	Equipe update( @MappingTarget Equipe target, Equipe source );
 	
 }

@@ -16,7 +16,6 @@ public class Compte  {
 	// Données observables
 	
 	private final Property<Integer>	id			= new SimpleObjectProperty<>();
-	private final StringProperty	pseudo		= new SimpleStringProperty();
 	private final StringProperty	motDePasse	= new SimpleStringProperty();
 	private final StringProperty	email 		= new SimpleStringProperty();
 	private final ObservableList<String> roles = FXCollections.observableArrayList();
@@ -27,9 +26,8 @@ public class Compte  {
 	public Compte() {
 	}
 
-	public Compte( int id, String pseudo, String motDePasse, String email ) {
+	public Compte( int id, String motDePasse, String email ) {
 		setId(id);
-		setPseudo(pseudo);
 		setMotDePasse(motDePasse);
 		setEmail(email);
 	}
@@ -49,17 +47,7 @@ public class Compte  {
 		this.idProperty().setValue(id);
 	}
 
-	public final StringProperty pseudoProperty() {
-		return this.pseudo;
-	}
-
-	public final String getPseudo() {
-		return this.pseudoProperty().getValue();
-	}
-
-	public final void setPseudo(final String pseudo) {
-		this.pseudoProperty().setValue(pseudo);
-	}
+	
 
 	public final StringProperty motDePasseProperty() {
 		return this.motDePasse;
@@ -107,7 +95,7 @@ public class Compte  {
 	
 	@Override
 	public String toString() {
-		return getPseudo();
+		return getEmail();
 	}
 	
 	
