@@ -11,6 +11,7 @@ import jfox.javafx.util.ListenerFocusValidation;
 import jfox.javafx.view.IManagerGui;
 import projet.data.Service;
 import projet.view.EnumView;
+import projet.view.service.ModelService;
 
 
 public class ControllerEquipeForm {
