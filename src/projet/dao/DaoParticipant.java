@@ -38,7 +38,7 @@ public class DaoParticipant {
 			cn = dataSource.getConnection();
 
 			// Insère le participant
-			sql = "INSERT INTO participant (idequipe, nom, prenom, telephone, birthdate) VALUES ( ?, ?, ?, ?, ? )";
+			sql = "INSERT INTO participant(idequipe, nom, prenom, telephone, birthdate) VALUES ( ?, ?, ?, ?, ? )";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS ); 
 			stmt.setObject( 1, participant.getIdequipe() ); 
 			stmt.setObject( 2, participant.getNom() );
@@ -73,7 +73,7 @@ public class DaoParticipant {
 			cn = dataSource.getConnection();
 
 			// Modifie le participant
-			sql = "UPDATE participant SET idequipe = ?, nom = ?, prenom = ?, telephone = ?, birthdate WHERE idparticipant =  ?";
+			sql = "UPDATE participant SET idequipe = ?, nom = ?, prenom = ?, telephone = ?, birthdate = ? WHERE idparticipant =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject( 1, participant.getIdequipe() ); 
 			stmt.setObject( 2, participant.getNom() );
@@ -115,7 +115,7 @@ public class DaoParticipant {
 	}
 	
 
-	public Participant retrouver( int idParticipant )  {
+	public Participant retrouver( int idparticipant )  {
 
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
@@ -127,7 +127,7 @@ public class DaoParticipant {
 
 			sql = "SELECT * FROM participant WHERE idparticipant = ?";
             stmt = cn.prepareStatement( sql );
-            stmt.setObject( 1, idParticipant );
+            stmt.setObject( 1, idparticipant );
             rs = stmt.executeQuery();
 
             if ( rs.next() ) {
@@ -153,7 +153,7 @@ public class DaoParticipant {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "SELECT * FROM participant ORDER BY pseudo";
+			sql = "SELECT * FROM participant ORDER BY nom";
 			stmt = cn.prepareStatement( sql );
 			rs = stmt.executeQuery();
 
@@ -199,35 +199,6 @@ public class DaoParticipant {
 		}
 	}
 
-
-	public boolean verifierUnicitePseudo( String pseudo, Integer idParticipant )   {
-
-		Connection			cn		= null;
-		PreparedStatement	stmt	= null;
-		ResultSet 			rs 		= null;
-		String				sql;
-
-		if ( idParticipant == null ) idParticipant = 0;
-		
-		try {
-			cn = dataSource.getConnection();
-
-			sql = "SELECT COUNT(*) = 0 AS unicite"
-					+ " FROM participant WHERE pseudo = ? AND idparticipant <> ?";
-			stmt = cn.prepareStatement( sql );
-			stmt.setObject(	1, pseudo );
-			stmt.setObject(	2, idParticipant );
-			rs = stmt.executeQuery();
-			
-			rs.next();
-			return rs.getBoolean( "unicite" );
-	
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		} finally {
-			UtilJdbc.close( rs, stmt, cn );
-		}
-	}
 	
 	
 	// Méthodes auxiliaires
