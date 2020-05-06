@@ -3,18 +3,20 @@ package projet.data;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import javafx.beans.Observable;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Participant {
 
 
 	// Données observables
-
+	
 	private final Property<Integer>		id			= new SimpleObjectProperty<>();
-	private final Property<Integer>		idequipe	= new SimpleObjectProperty<>();
 	private final StringProperty		nom	 		= new SimpleStringProperty();
 	private final StringProperty		prenom		= new SimpleStringProperty();
 	private final StringProperty		telephone	= new SimpleStringProperty();
@@ -26,9 +28,8 @@ public class Participant {
 	public Participant() {
 	}
 	
-	public Participant( int id, int idequipe, String nom, String prenom,String telephone ,LocalDate birthdate) {
+	public Participant( int id, String nom, String prenom,String telephone ,LocalDate birthdate) {
 		setId(id);
-		setId(idequipe);
 		setNom(nom);
 		setPrenom(prenom);
 		setTelephone(telephone);
@@ -129,21 +130,6 @@ public class Participant {
 	public String toString() {
 		return this.getNom()+' '+this.getPrenom();
 	}
-
-	public final Property<Integer> idequipeProperty() {
-		return this.idequipe;
-	}
-	
-
-	public final Integer getIdequipe() {
-		return this.idequipeProperty().getValue();
-	}
-	
-
-	public final void setIdequipe(final Integer idequipe) {
-		this.idequipeProperty().setValue(idequipe);
-	}
-	
 	
 	
 	

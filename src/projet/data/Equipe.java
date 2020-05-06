@@ -1,21 +1,24 @@
 package projet.data;
 
+import java.util.Objects;
+
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 
 public class Equipe  {
 
 	
 	// Données observables
-
+	
 	private final Property<Integer>	id			= new SimpleObjectProperty<>();
-	private final Property<Integer>	idcompte	= new SimpleObjectProperty<>();
-	private final Property<Integer>	idparcours	= new SimpleObjectProperty<>();
 	private final StringProperty	nom	= new SimpleStringProperty();
 	private final StringProperty	categorie 		= new SimpleStringProperty();
+	private final ObservableList<Participant> participant = FXCollections.observableArrayList();
 	
 	
 	// Constructeurs
@@ -23,10 +26,8 @@ public class Equipe  {
 	public Equipe() {
 	}
 
-	public Equipe( int id, int idcompte, int idparcours, String nom, String categorie ) {
+	public Equipe( int id, String nom, String categorie ) {
 		setId(id);
-		setId(idcompte);
-		setId(idparcours);
 		setNom(nom);
 		setCategorie(categorie);
 	}
@@ -78,36 +79,6 @@ public class Equipe  {
 	public String toString() {
 		return this.getNom();
 	}
-
-	public final Property<Integer> idcompteProperty() {
-		return this.idcompte;
-	}
-	
-
-	public final Integer getIdcompte() {
-		return this.idcompteProperty().getValue();
-	}
-	
-
-	public final void setIdcompte(final Integer idcompte) {
-		this.idcompteProperty().setValue(idcompte);
-	}
-	
-
-	public final Property<Integer> idparcoursProperty() {
-		return this.idparcours;
-	}
-	
-
-	public final Integer getIdparcours() {
-		return this.idparcoursProperty().getValue();
-	}
-	
-
-	public final void setIdparcours(final Integer idparcours) {
-		this.idparcoursProperty().setValue(idparcours);
-	}
-	
 	
 	
 	

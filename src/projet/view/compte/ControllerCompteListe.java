@@ -57,7 +57,7 @@ public class ControllerCompteListe  {
 		            if (item == null) {
 		                setText(null);
 		            } else {
-		                setText(item.emailProperty().getValue() );
+		                setText(item.pseudoProperty().getValue() );
 		            }
 		        }
 		    };

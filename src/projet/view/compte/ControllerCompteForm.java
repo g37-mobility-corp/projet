@@ -30,6 +30,8 @@ public class ControllerCompteForm {
 	@FXML
 	private TextField			textFieldId;
 	@FXML
+	private TextField			textFieldPseudo;
+	@FXML
 	private TextField			textFieldMotDePasse;
 	@FXML
 	private TextField			textFieldEmail;
@@ -58,6 +60,7 @@ public class ControllerCompteForm {
 		// Data binding
 		courant = modelCompte.getCourant();
 		textFieldId.textProperty().bindBidirectional( courant.idProperty(), new ConverterStringInteger());
+		textFieldPseudo.textProperty().bindBidirectional( courant.pseudoProperty() );
 		textFieldMotDePasse.textProperty().bindBidirectional( courant.motDePasseProperty() );
 		textFieldEmail.textProperty().bindBidirectional( courant.emailProperty() );
 

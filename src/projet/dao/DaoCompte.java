@@ -39,10 +39,11 @@ public class DaoCompte {
 			cn = dataSource.getConnection();
 
 			// Insère le compte
-			sql = "INSERT INTO compte (motdepasse, email) VALUES ( ?, ? )";
+			sql = "INSERT INTO compte ( pseudo, motdepasse, email ) VALUES ( ?, ?, ? )";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS ); 
-			stmt.setObject( 1, compte.getMotDePasse() );
-			stmt.setObject( 2, compte.getEmail() );
+			stmt.setObject( 1, compte.getPseudo() );
+			stmt.setObject( 2, compte.getMotDePasse() );
+			stmt.setObject( 3, compte.getEmail() );
 			stmt.executeUpdate();
 
 			// Récupère l'identifiant généré par le SGBD
@@ -74,11 +75,12 @@ public class DaoCompte {
 			cn = dataSource.getConnection();
 
 			// Modifie le compte
-			sql = "UPDATE compte SET motdepasse = ?, email = ? WHERE idcompte =  ?";
+			sql = "UPDATE compte SET pseudo = ?, motdepasse = ?, email = ? WHERE idcompte =  ?";
 			stmt = cn.prepareStatement( sql );
-			stmt.setObject( 1, compte.getMotDePasse() );
-			stmt.setObject( 2, compte.getEmail() );
-			stmt.setObject( 3, compte.getId() );
+			stmt.setObject( 1, compte.getPseudo() );
+			stmt.setObject( 2, compte.getMotDePasse() );
+			stmt.setObject( 3, compte.getEmail() );
+			stmt.setObject( 4, compte.getId() );
 			stmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -240,6 +242,7 @@ public class DaoCompte {
 	private Compte construireCompte( ResultSet rs ) throws SQLException {
 		Compte compte = new Compte();
 		compte.setId( rs.getObject( "idcompte", Integer.class ) );
+		compte.setPseudo( rs.getObject( "pseudo", String.class ) );
 		compte.setMotDePasse( rs.getObject( "motdepasse", String.class ) );
 		compte.setEmail( rs.getObject( "email", String.class ) );
 		compte.getRoles().setAll( daoRole.listerPourCompte( compte ) );

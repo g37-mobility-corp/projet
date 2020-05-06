@@ -65,6 +65,16 @@ public class ModelCompte {
 		
 		StringBuilder message = new StringBuilder();
 		
+		if( courant.getPseudo() == null || courant.getPseudo().isEmpty() ) {
+			message.append( "\nLe pseudo ne doit pas être vide." );
+		} else 	if ( courant.getPseudo().length() < 3 ) {
+			message.append( "\nLe pseudo est trop court : 3 mini." );
+		} else  if ( courant.getPseudo().length()> 25 ) {
+			message.append( "\nLe pseudo est trop long : 25 maxi." );
+		} else 	if ( ! daoCompte.verifierUnicitePseudo( courant.getPseudo(), courant.getId() ) ) {
+			message.append( "\nLe pseudo " + courant.getPseudo() + " est déjà utilisé." );
+		}
+		
 		if( courant.getMotDePasse() == null || courant.getMotDePasse().isEmpty() ) {
 			message.append( "\nLe mot de passe ne doit pas être vide." );
 		} else  if ( courant.getMotDePasse().length()< 3 ) {

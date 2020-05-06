@@ -9,9 +9,9 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
-import projet.data.Participant;
+import projet.data.Memo;
 import projet.view.EnumView;
-import projet.view.participant.ModelParticipant;
+import projet.view.memo.ModelMemo;
 
 public class ControllerParticipantListe {
 	
@@ -19,7 +19,7 @@ public class ControllerParticipantListe {
 	// Composants de la vue
 
 	@FXML
-	private ListView<Participant>		listView;
+	private ListView<Memo>		listView;
 	@FXML
 	private Button				buttonModifier;
 	@FXML
@@ -31,7 +31,7 @@ public class ControllerParticipantListe {
 	@Inject
 	private IManagerGui			managerGui;
 	@Inject
-	private ModelParticipant			modelParticipant;
+	//private ModelParticipant			modelParticipant;
 	
 	
 	// Initialisation du Controller
@@ -42,7 +42,7 @@ public class ControllerParticipantListe {
 		// Data binding
 		listView.setItems( modelParticipant.getListe() );
 		
-		listView.setCellFactory(  UtilFX.cellFactory( item -> item.getNom() ));
+		listView.setCellFactory(  UtilFX.cellFactory( item -> item.getTitre() ));
 		
 		// Configuraiton des boutons
 		listView.getSelectionModel().selectedItemProperty().addListener(
@@ -70,7 +70,7 @@ public class ControllerParticipantListe {
 
 	@FXML
 	private void doModifier() {
-		Participant item = listView.getSelectionModel().getSelectedItem();
+		Memo item = listView.getSelectionModel().getSelectedItem();
 		if ( item == null ) {
 			managerGui.showDialogError( "Aucun élément n'est sélectionné dans la liste.");
 		} else {
@@ -81,7 +81,7 @@ public class ControllerParticipantListe {
 
 	@FXML
 	private void doSupprimer() {
-		Participant item = listView.getSelectionModel().getSelectedItem();
+		Memo item = listView.getSelectionModel().getSelectedItem();
 		if ( item == null ) {
 			managerGui.showDialogError( "Aucun élément n'est sélectionné dans la liste.");
 		} else {
