@@ -17,9 +17,6 @@ import jfox.javafx.util.ConverterStringInteger;
 import jfox.javafx.util.ConverterStringLocalDate;
 import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
-import projet.data.Categorie;
-import projet.data.Memo;
-import projet.data.Personne;
 
 public class ControllerParticipantInscription {
 
@@ -28,8 +25,6 @@ public class ControllerParticipantInscription {
 	// Toujours Visible
 		@FXML
 		private TextField		textFieldId;
-		@FXML
-		private ComboBox<Categorie>	comboBoxCategorie;
 		@FXML
 		private TextField		textFieldNomEquipe;
 		@FXML
@@ -94,7 +89,7 @@ public class ControllerParticipantInscription {
 
 	// Data binding
 			
-			//Memo courant = modelMemo.getCourant();
+			Memo courant = modelMemo.getCourant();
 			
 		// Toujours Visible
 			// id

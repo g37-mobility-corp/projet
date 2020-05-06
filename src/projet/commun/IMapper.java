@@ -8,6 +8,7 @@ import projet.data.Categorie;
 import projet.data.Compte;
 import projet.data.Equipe;
 import projet.data.Memo;
+import projet.data.Participant;
 import projet.data.Personne;
 import projet.data.Service;
 
@@ -28,5 +29,7 @@ public interface IMapper {
 	Service update( @MappingTarget Service target, Service source );
 	
 	Equipe update( @MappingTarget Equipe target, Equipe source );
+
+	Participant update( @MappingTarget Participant target, Participant source );
 	
 }
