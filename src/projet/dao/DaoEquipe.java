@@ -47,10 +47,10 @@ public class DaoEquipe {
 			// Récupère l'identifiant généré par le SGBD
 			rs = stmt.getGeneratedKeys();
 			rs.next();
-			equipe.setId( rs.getObject( 1, Integer.class) );
+			equipe.setIdequipe( rs.getObject( 1, Integer.class) );
 			
 			
-			return equipe.getId();
+			return equipe.getIdequipe();
 	
 		} catch ( SQLException e ) {
 			throw new RuntimeException(e);
@@ -75,10 +75,10 @@ public class DaoEquipe {
 			stmt.setObject( 3, equipe.getNom() );
 			stmt.setObject( 4, equipe.getCategorie() );
 			
-			stmt.setObject( 3, equipe.getId() );
+			stmt.setObject( 5, equipe.getIdequipe() );
 			stmt.executeUpdate();
 			
-			supprimerConcerner( equipe.getId() );
+			supprimerConcerner( equipe.getIdequipe() );
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -172,7 +172,9 @@ public class DaoEquipe {
 	
 	private Equipe construireEquipe( ResultSet rs, boolean flagComplet ) throws SQLException {
 		Equipe equipe = new Equipe();
-		equipe.setId( rs.getObject( "idequipe", Integer.class ) );
+		equipe.setIdequipe( rs.getObject( "idequipe", Integer.class ) );
+		equipe.setIdcompte( rs.getObject( "idcompte", Integer.class ) );
+		equipe.setIdparcours( rs.getObject( "idparcours", Integer.class ) );
 		equipe.setNom( rs.getObject( "nom_equipe", String.class ) );
 		equipe.setCategorie( rs.getObject( "categorie", String.class ) );
 		

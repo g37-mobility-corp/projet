@@ -11,11 +11,11 @@ public class Equipe  {
 	
 	// Données observables
 
-	private final Property<Integer>	id			= new SimpleObjectProperty<>();
+	private final Property<Integer>	idequipe	= new SimpleObjectProperty<>();
 	private final Property<Integer>	idcompte	= new SimpleObjectProperty<>();
 	private final Property<Integer>	idparcours	= new SimpleObjectProperty<>();
-	private final StringProperty	nom	= new SimpleStringProperty();
-	private final StringProperty	categorie 		= new SimpleStringProperty();
+	private final StringProperty	nom			= new SimpleStringProperty();
+	private final StringProperty	categorie 	= new SimpleStringProperty();
 	
 	
 	// Constructeurs
@@ -23,26 +23,12 @@ public class Equipe  {
 	public Equipe() {
 	}
 
-	public Equipe( int id, int idcompte, int idparcours, String nom, String categorie ) {
-		setId(id);
-		setId(idcompte);
-		setId(idparcours);
+	public Equipe( int idequipe, int idcompte, int idparcours, String nom, String categorie ) {
+		setIdequipe(idequipe);
+		setIdcompte(idcompte);
+		setIdparcours(idparcours);
 		setNom(nom);
 		setCategorie(categorie);
-	}
-
-	public final Property<Integer> idProperty() {
-		return this.id;
-	}
-	
-
-	public final Integer getId() {
-		return this.idProperty().getValue();
-	}
-	
-
-	public final void setId(final Integer id) {
-		this.idProperty().setValue(id);
 	}
 	
 
@@ -107,6 +93,21 @@ public class Equipe  {
 	public final void setIdparcours(final Integer idparcours) {
 		this.idparcoursProperty().setValue(idparcours);
 	}
+
+	public final Property<Integer> idequipeProperty() {
+		return this.idequipe;
+	}
+	
+
+	public final Integer getIdequipe() {
+		return this.idequipeProperty().getValue();
+	}
+	
+
+	public final void setIdequipe(final Integer idequipe) {
+		this.idequipeProperty().setValue(idequipe);
+	}
+	
 	
 	
 	

@@ -17,6 +17,9 @@ import jfox.javafx.util.ConverterStringInteger;
 import jfox.javafx.util.ConverterStringLocalDate;
 import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
+import projet.data.Categorie;
+import projet.data.Participant;
+import projet.view.compte.ModelCompte;
 
 public class ControllerParticipantInscription {
 
@@ -25,6 +28,8 @@ public class ControllerParticipantInscription {
 	// Toujours Visible
 		@FXML
 		private TextField		textFieldId;
+		@FXML
+		private ComboBox<Categorie>	comboBoxCategorie;
 		@FXML
 		private TextField		textFieldNomEquipe;
 		@FXML
@@ -76,42 +81,43 @@ public class ControllerParticipantInscription {
 		private TextField		textFieldRepas;
 		
 	// Autres champs
+		private Participant courant;
 		
 		@Inject
 		private IManagerGui		managerGui;
-		
+		@Inject
+		private ModelParticipant	modelParticipant;
+			
 		
 		
 	// Initialisation du Controller
 
 		@FXML
 		private void initialize() {
-
-	// Data binding
-			
-			Memo courant = modelMemo.getCourant();
-			
-		// Toujours Visible
+			// Data binding
+			courant = modelParticipant.getCourant();
+							
+			// Toujours Visible
 			// id
 			textFieldId.textProperty().bindBidirectional( courant.idProperty(), new ConverterStringInteger()  );
-			
+							
 			// Catégorie
-			comboBoxCategorie.setItems( modelMemo.getCategories() );
+			comboBoxCategorie.setItems( courant.getCategories() );
 			comboBoxCategorie.valueProperty().bindBidirectional( courant.categorieProperty() );
-			
+							
 			// Titre
-			textFieldNomEquipe.textProperty().bindBidirectional( courant.nomEquipeProperty() )
-			
+			textFieldNomEquipe.textProperty().bindBidirectional( courant.nomEquipeProperty() );
+							
 			// Document
 			textAreaDocuments.textProperty().bindBidirectional( courant.documentProperty() );
-		
-		// Capitaine
+					
+			// Capitaine
 			// Nom
 			textFieldNomCapitaine.textProperty().bindBidirectional( courant.nomCapitaineProperty() );
 			// Prénom
 			textFieldPrenomCapitaine.textProperty().bindBidirectional( courant.prenomCapitaineProperty() );
 			// Birthday
-			datePickerBirthCapitaine.getEditor().textProperty().bindBidirectional( courant.birthCapitaineProperty(), new ConverterStringLocalDate() );
+			datePickerBirthCapitaine.getEditor().textProperty().bindBidirectional( courant.birthCapitaineProperty(), new ConverterStringLocalDate());
 			datePickerBirthCapitaine.getEditor().focusedProperty().addListener(new ListenerFocusValidation( courant.birthCapitaineProperty())  );
 			UtilFX.bindBidirectional( datePickerBirthCapitaine.getEditor(), courant.birthCapitaineProperty(), new ConverterStringLocalDate() );
 			// Numero
@@ -124,8 +130,8 @@ public class ControllerParticipantInscription {
 			textFieldCodePostaleCapitaine.textProperty().bindBidirectional( courant.codePostaleCapitaineProperty(), new ConverterStringInteger()  );
 			// Ville
 			textFieldVilleCapitaine.textProperty().bindBidirectional( courant.villeCapitaineProperty() );
-			
-		// Equipier
+					
+			// Equipier
 			// Nom
 			textFieldNomEquipier.textProperty().bindBidirectional( courant.nomEquipierProperty() );
 			// Prénom
@@ -144,8 +150,8 @@ public class ControllerParticipantInscription {
 			textFieldCodePostaleEquipier.textProperty().bindBidirectional( courant.codePostaleEquipierProperty(), new ConverterStringInteger()  );
 			// Ville
 			textFieldVilleEquipier.textProperty().bindBidirectional( courant.villeEquipierProperty() );
-						
-		// Regelement
+								
+			// Regelement
 			// Reglement
 			checkBoxReglement.selectedProperty().bindBidirectional( courant.reglementProperty() );
 			// Repas
@@ -153,9 +159,7 @@ public class ControllerParticipantInscription {
 			// Formule
 			toggleGroupFormule.selectedToggleProperty().addListener( obs -> actualiserStatutDansModele() ) ; 
 			courant.statutProperty().addListener(  obs -> actualiserStatutDansVue() );
-			actualiserStatutDansVue();
-		
-	
+			actualiserStatutDansVue();			
 		}
 	
 		// Méthodes auxiliaires
@@ -164,12 +168,12 @@ public class ControllerParticipantInscription {
 			// Modifie le statut en fonction du bouton radio sélectionné 
 			Toggle bouton = toggleGroupFormule.getSelectedToggle();
 			int formule = toggleGroupFormule.getToggles().indexOf( bouton  );
-			modelMemo.getCourant().setStatut( formule );
+			modelParticipant.getCourant().setStatut( formule );
 		}
 		
 		private void actualiserFormuleDansVue() {
 			// Sélectionne le bouton radio correspondant au statut
-			int formule = modelMemo.getCourant().getStatut();
+			int formule = modelParticipant.getCourant().getStatut();
 			Toggle bouton = toggleGroupFormule.getToggles().get( formule );
 			toggleGroupFormule.selectToggle(  bouton );
 		}

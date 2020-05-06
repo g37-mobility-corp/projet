@@ -82,7 +82,7 @@ public class ModelEquipe  {
 	}
 	
 	public void preparerModifier( Equipe item ) {
-		mapper.update( courant, daoEquipe.retrouver( item.getId() ) );
+		mapper.update( courant, daoEquipe.retrouver( item.getIdequipe() ) );
 		
 	}
 	
@@ -110,9 +110,9 @@ public class ModelEquipe  {
 		
 		// Effectue la mise à jour
 		
-		if ( courant.getId() == null ) {
+		if ( courant.getIdequipe() == null ) {
 			// Insertion
-			courant.setId( daoEquipe.inserer( courant ) );
+			courant.setIdequipe( daoEquipe.inserer( courant ) );
 		} else {
 			// modficiation
 			daoEquipe.modifier( courant );
@@ -125,7 +125,7 @@ public class ModelEquipe  {
 	
 	public void supprimer( Equipe item ) {
 		
-		daoEquipe.supprimer( item.getId() );
+		daoEquipe.supprimer( item.getIdequipe() );
 		mapper.update( courant, UtilFX.findNext( liste, item ) );
 		
 	}
