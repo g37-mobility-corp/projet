@@ -40,7 +40,7 @@ CREATE TABLE equipe (
 	idparcours			INT				NOT NULL,
 	nom_equipe			VARCHAR(25)		NOT NULL,
 	categorie 			VARCHAR(25)		NOT NULL,
-	CHECK( categorie IN ('HOMME','FEMME','MIXTE') ),	
+	CHECK( categorie IN ('HOMME','FEMME','MIXTE','VAE') ),
 	PRIMARY KEY (idequipe),
 	FOREIGN KEY (idcompte) REFERENCES compte (idcompte),
 	FOREIGN KEY (idparcours) REFERENCES parcours (idparcours)
