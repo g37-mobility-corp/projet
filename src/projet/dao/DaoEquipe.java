@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,7 +13,6 @@ import javax.sql.DataSource;
 
 import jfox.dao.jdbc.UtilJdbc;
 import projet.data.Equipe;
-import projet.data.Personne;
 
 
 public class DaoEquipe {
@@ -24,10 +22,6 @@ public class DaoEquipe {
 
 	@Inject
 	private DataSource		dataSource;
-	@Inject
-	private DaoCategorie	daoEquipe;
-	@Inject
-	private DaoPersonne		daoPersonne;
 
 	
 	// Actions
@@ -41,10 +35,12 @@ public class DaoEquipe {
 		
 		try {
 			cn = dataSource.getConnection();
-			sql = "INSERT INTO equipe ( nom_equipe, categorie ) VALUES( ?, ? ) ";
+			sql = "INSERT INTO equipe ( idcompte, idparcours, nom_equipe, categorie ) VALUES( ?, ?, ?, ? ) ";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
-			stmt.setObject( 1, equipe.getNom() );
-			stmt.setObject( 2, equipe.getCategorie() );
+			stmt.setObject( 1, equipe.getIdcompte() );
+			stmt.setObject( 2, equipe.getIdparcours() );
+			stmt.setObject( 3, equipe.getNom() );
+			stmt.setObject( 4, equipe.getCategorie() );
 			
 			stmt.executeUpdate();
 
@@ -72,10 +68,12 @@ public class DaoEquipe {
 
 		try {
 			cn = dataSource.getConnection();
-			sql = "UPDATE equipe SET nom_equipe = ?, categorie = ? WHERE idequipe =  ?";
+			sql = "UPDATE equipe SET idcompte = ?, idparcours = ?, nom_equipe = ?, categorie = ? WHERE idequipe =  ?";
 			stmt = cn.prepareStatement( sql );
-			stmt.setObject( 1, equipe.getNom() );
-			stmt.setObject( 2, equipe.getCategorie() );
+			stmt.setObject( 1, equipe.getIdcompte() );
+			stmt.setObject( 2, equipe.getIdparcours() );
+			stmt.setObject( 3, equipe.getNom() );
+			stmt.setObject( 4, equipe.getCategorie() );
 			
 			stmt.setObject( 3, equipe.getId() );
 			stmt.executeUpdate();
