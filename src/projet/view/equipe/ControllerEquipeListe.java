@@ -10,7 +10,6 @@ import javafx.scene.input.MouseEvent;
 import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
 import projet.data.Equipe;
-import projet.data.Equipe;
 import projet.view.EnumView;
 
 

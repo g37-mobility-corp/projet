@@ -4,14 +4,15 @@ import javax.inject.Inject;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.util.converter.IntegerStringConverter;
 import jfox.javafx.util.ConverterStringInteger;
 import jfox.javafx.util.ListenerFocusValidation;
 import jfox.javafx.view.IManagerGui;
-import projet.data.Service;
+import projet.data.Equipe;
+import projet.data.Participant;
 import projet.view.EnumView;
-import projet.view.service.ModelService;
 
 
 public class ControllerEquipeForm {
@@ -24,9 +25,10 @@ public class ControllerEquipeForm {
 	@FXML
 	private TextField		textFieldNom;
 	@FXML
-	private TextField		textFieldAnneeCreation;
+	private ComboBox<Participant> comboBoxChef;
 	@FXML
-	private CheckBox		checkBoxSiege;
+	private ComboBox<Participant> comboBoxCoequipier;
+	
 
 	
 	// Autres champs
@@ -34,7 +36,7 @@ public class ControllerEquipeForm {
 	@Inject
 	private IManagerGui		managerGui;
 	@Inject
-	private ModelService	modelService;
+	private ModelEquipe	modelEquipe;
 
 
 	// Initialisation du Controller
@@ -44,16 +46,19 @@ public class ControllerEquipeForm {
 
 		// Data binding
 		
-		Service courant = modelService.getCourant();
+		Equipe courant = modelEquipe.getCourant();
 
-		textFieldId.textProperty().bindBidirectional( courant.idProperty(), new IntegerStringConverter()  );
+		textFieldId.textProperty().bindBidirectional( courant.idequipeProperty(), new IntegerStringConverter()  );
 
 		textFieldNom.textProperty().bindBidirectional( courant.nomProperty() );
 		
-		textFieldAnneeCreation.textProperty().bindBidirectional( courant.anneeCreationProperty(), new ConverterStringInteger( "###0" ) );
-		textFieldAnneeCreation.focusedProperty().addListener( new ListenerFocusValidation( courant.anneeCreationProperty()  ));
+		comboBoxChef.setItems( modelEquipe.getParticipants() );
+		comboBoxChef.valueProperty().bindBidirectional( courant.ChefProperty() );
 		
-		checkBoxSiege.selectedProperty().bindBidirectional( courant.flagSiegeProperty() );
+		comboBoxCoequipier.setItems( modelEquipe.getParticipants() );
+		comboBoxCoequipier.valueProperty().bindBidirectional( courant.CoequipierProperty() );
+		
+		
 		
 	}
 	
@@ -62,13 +67,23 @@ public class ControllerEquipeForm {
 	
 	@FXML
 	private void doAnnuler() {
-		managerGui.showView( EnumView.ServiceListe );
+		managerGui.showView( EnumView.EquipeListe );
 	}
 	
 	@FXML
 	private void doValider() {
-		modelService.validerMiseAJour();
-		managerGui.showView( EnumView.ServiceListe );
+		modelEquipe.validerMiseAJour();
+		managerGui.showView( EnumView.EquipeListe );
+	}
+	
+	@FXML
+	private void doSupprimerChef() {
+	comboBoxChef.setValue( null );
+	}
+	
+	@FXML
+	private void doSupprimerCoequipier() {
+	comboBoxCoequipier.setValue( null );
 	}
 	
 }

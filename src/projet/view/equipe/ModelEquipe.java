@@ -18,12 +18,10 @@ import jfox.commun.exception.ExceptionValidation;
 import jfox.javafx.util.UtilFX;
 import projet.commun.IMapper;
 import projet.dao.DaoEquipe;
-import projet.dao.DaoPersonne;
 import projet.data.Categorie;
 import projet.data.Equipe;
-import projet.data.Equipe;
-import projet.data.Personne;
-import projet.view.personne.ModelCategorie;
+import projet.data.Participant;
+import projet.view.participant.ModelParticipant;
 import projet.view.systeme.ModelConfig;
 
 
@@ -43,6 +41,8 @@ public class ModelEquipe  {
 	private IMapper			mapper;
     @Inject
 	private DaoEquipe			daoEquipe;
+    @Inject
+    private ModelParticipant modelParticipant;
 	
     
 	// Initialisations
@@ -62,6 +62,10 @@ public class ModelEquipe  {
 		return courant;
 	}
 	
+	public ObservableList<Participant> getParticipants() {
+		return modelParticipant.getListe();
+		}
+	
 	
 	
 	
@@ -78,10 +82,12 @@ public class ModelEquipe  {
 	// Actions
 	
 	public void preparerAjouter() {
+		modelParticipant.actualiserListe();
 		mapper.update( courant, new Equipe() );
 	}
 	
 	public void preparerModifier( Equipe item ) {
+		modelParticipant.actualiserListe();
 		mapper.update( courant, daoEquipe.retrouver( item.getIdequipe() ) );
 		
 	}

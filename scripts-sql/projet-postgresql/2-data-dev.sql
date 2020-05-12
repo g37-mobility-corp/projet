@@ -49,8 +49,11 @@ ALTER TABLE equipe ALTER COLUMN idequipe RESTART WITH 2;
 INSERT INTO participant (idparticipant, idequipe, nom, prenom,telephone,birthdate) VALUES 
   ( 1, 1, 'GRASSET', 'Jérôme','06XXXXXXXX', {d  '2020-02-25' } ),
   ( 2, 1, 'BOUBY', 'Claude', '06XXXXXXXX', {d  '2020-01-12' } );
+  
 
 ALTER TABLE participant ALTER COLUMN idparticipant RESTART WITH 3;
+-- Insertion des participants dans l'équipe 
+UPDATE equipe SET idchef = 1, idcoequipier = 2 WHERE idequipe =  1;
 
 -- Poste
 
