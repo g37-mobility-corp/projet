@@ -26,16 +26,16 @@ import projet.view.systeme.ModelConfig;
 
 
 public class ModelEquipe  {
-	
-	
-	// Données observables 
-	
-	private final ObservableList<Equipe> liste = FXCollections.observableArrayList(); 
-	
-	private final Equipe	courant = new Equipe();
-	
 
-	
+
+	// Données observables
+
+	private final ObservableList<Equipe> liste = FXCollections.observableArrayList();
+
+	private final Equipe	courant = new Equipe();
+
+
+
 	// Autres champs
     @Inject
 	private IMapper			mapper;
@@ -43,60 +43,60 @@ public class ModelEquipe  {
 	private DaoEquipe			daoEquipe;
     @Inject
     private ModelParticipant modelParticipant;
-	
-    
+
+
 	// Initialisations
-	
+
 	@PostConstruct
 	public void init() {
 	}
-	
-	
-	// Getters 
-	
+
+
+	// Getters
+
 	public ObservableList<Equipe> getListe() {
 		return liste;
 	}
-	
+
 	public Equipe getCourant() {
 		return courant;
 	}
-	
+
 	public ObservableList<Participant> getParticipants() {
 		return modelParticipant.getListe();
 		}
-	
-	
-	
-	
+
+
+
+
 	// Actualisations
-	
+
 	public void actualiserListe() {
 		liste.setAll( daoEquipe.listerTout() );
  	}
-	
+
 	public void actualiserListePersonnesPourDialogAjout() {
  	}
 
 
 	// Actions
-	
+
 	public void preparerAjouter() {
 		modelParticipant.actualiserListe();
 		mapper.update( courant, new Equipe() );
 	}
-	
+
 	public void preparerModifier( Equipe item ) {
 		modelParticipant.actualiserListe();
 		mapper.update( courant, daoEquipe.retrouver( item.getIdequipe() ) );
-		
+
 	}
-	
-	
+
+
 	public void validerMiseAJour() {
 
 		// Vérifie la validité des données
-		
+
 		StringBuilder message = new StringBuilder();
 
 		if( courant.getNom() == null || courant.getNom().isEmpty() ) {
@@ -105,17 +105,17 @@ public class ModelEquipe  {
 			message.append( "\nLe nom d'équipe est trop long : 50 maxi." );
 		}
 
-		
 
-		
-		
+
+
+
 		if ( message.length() > 0 ) {
 			throw new ExceptionValidation( message.toString().substring(1) );
 		}
-		
-		
+
+
 		// Effectue la mise à jour
-		
+
 		if ( courant.getIdequipe() == null ) {
 			// Insertion
 			courant.setIdequipe( daoEquipe.inserer( courant ) );
@@ -124,22 +124,22 @@ public class ModelEquipe  {
 			daoEquipe.modifier( courant );
 		}
 
-		
-		
-	}
-	
-	
-	public void supprimer( Equipe item ) {
-		
-		daoEquipe.supprimer( item.getIdequipe() );
-		mapper.update( courant, UtilFX.findNext( liste, item ) );
-		
+
+
 	}
 
-	
-	
-	
-	
-	
-	
+
+	public void supprimer( Equipe item ) {
+
+		daoEquipe.supprimer( item.getIdequipe() );
+		mapper.update( courant, UtilFX.findNext( liste, item ) );
+
+	}
+
+
+
+
+
+
+
 }
