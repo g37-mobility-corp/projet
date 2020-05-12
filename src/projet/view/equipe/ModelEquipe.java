@@ -1,38 +1,23 @@
 package projet.view.equipe;
 
-import java.io.File;
-import java.io.IOException;
-import java.time.LocalDate;
-
 import javax.annotation.PostConstruct;
-import javax.imageio.ImageIO;
 import javax.inject.Inject;
 
-import javafx.beans.property.Property;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.image.Image;
 import jfox.commun.exception.ExceptionValidation;
 import jfox.javafx.util.UtilFX;
 import projet.commun.IMapper;
 import projet.dao.DaoEquipe;
-import projet.dao.DaoPersonne;
-import projet.data.Categorie;
 import projet.data.Equipe;
-import projet.data.Equipe;
-import projet.data.Personne;
-import projet.view.personne.ModelCategorie;
-import projet.view.systeme.ModelConfig;
 
 
 public class ModelEquipe  {
 	
 	
-	// Données observables 
+	// Données observables
 	
-	private final ObservableList<Equipe> liste = FXCollections.observableArrayList(); 
+	private final ObservableList<Equipe> liste = FXCollections.observableArrayList();
 	
 	private final Equipe	courant = new Equipe();
 	
@@ -69,9 +54,6 @@ public class ModelEquipe  {
 	
 	public void actualiserListe() {
 		liste.setAll( daoEquipe.listerTout() );
- 	}
-	
-	public void actualiserListePersonnesPourDialogAjout() {
  	}
 
 

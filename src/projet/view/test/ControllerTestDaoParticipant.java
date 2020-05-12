@@ -22,7 +22,7 @@ public class ControllerTestDaoParticipant {
 	@Inject
 	private DaoParticipant			dao;
 	
-	private final int		id = 4;	
+	private final int		id = 1;	
 	
 	
 	// Actions
@@ -32,10 +32,10 @@ public class ControllerTestDaoParticipant {
 		textArea.clear();
 		for (Object item : dao.listerTout() ) {
 			textArea.appendText( UtilFX.objectToString( item ) );
-			textArea.appendText( "\n"  );
+			textArea.appendText( "\n" );
 		}
 		textArea.appendText( "\n"  );
-		textArea.appendText(  "Test n°1 OK \n");;
+		textArea.appendText(  "Test n°1 OK \n");
 	}
 	
 	@FXML
@@ -43,14 +43,14 @@ public class ControllerTestDaoParticipant {
 		textArea.clear();
 		textArea.appendText( UtilFX.objectToString( dao.retrouver( id ) ) );
 		textArea.appendText( "\n\n"  );
-		textArea.appendText(  "Test n°2 OK \n");;
+		textArea.appendText(  "Test n°2 OK \n");
 	}
 	
 	@FXML
 	private void doModifier() {
 		textArea.clear();
 		dao.modifier( dao.retrouver( id ) );
-		textArea.appendText(  "Test n°3 OK \n");;
+		textArea.appendText(  "Test n°3 OK \n");
 	}
 	
 	@FXML
@@ -60,7 +60,7 @@ public class ControllerTestDaoParticipant {
 		textArea.appendText( UtilFX.objectToString( dao.retrouver( idNouveau ) ) );
 		dao.supprimer( idNouveau );
 		textArea.appendText( "\n\n"  );
-		textArea.appendText(  "Test n°4 OK \n");;
+		textArea.appendText(  "Test n°4 OK \n");
 	}
 	
 }

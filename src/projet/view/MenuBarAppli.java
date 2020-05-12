@@ -48,7 +48,7 @@ public class MenuBarAppli extends MenuBar {
 		MenuItem item;
 		
 		
-		// Manu Système
+		// Menu Système
 		
 		menu =  new Menu( "Système" );;
 		this.getMenus().add(menu);
@@ -68,19 +68,7 @@ public class MenuBarAppli extends MenuBar {
 		menu =  new Menu( "Données" );;
 		this.getMenus().add(menu);
 		menuDonnees = menu;
-		
-		item = new MenuItem( "Mémos" );
-		item.setOnAction(  (e) -> managerGui.showView( EnumView.MemoListe )  );
-		menu.getItems().add( item );
-		
-		item = new MenuItem( "Services" );
-		item.setOnAction(  (e) -> managerGui.showView( EnumView.ServiceListe )  );
-		menu.getItems().add( item );
-		
-		item = new MenuItem( "Personnes" );
-		item.setOnAction(  (e) -> managerGui.showView( EnumView.PersonneListe )  );
-		menu.getItems().add( item );
-		
+				
 		item = new MenuItem( "Catégories" );
 		item.setOnAction(  (e) -> managerGui.showView( EnumView.CategorieListe )  );
 		menu.getItems().add( item );
@@ -95,6 +83,11 @@ public class MenuBarAppli extends MenuBar {
 		item.setOnAction(  (e) -> managerGui.showView( EnumView.EquipeListe )  );
 		menu.getItems().add( item );
 		itemComptes = item;
+		
+		item = new MenuItem( "Participant" );
+		item.setOnAction(  (e) -> managerGui.showView( EnumView.ParticipantListe )  );
+		menu.getItems().add( item );
+		itemComptes = item;
 
 		
 		// Manu Etats
@@ -102,16 +95,6 @@ public class MenuBarAppli extends MenuBar {
 		menu =  new Menu( "Etats" );;
 		this.getMenus().add(menu);
 		menuEtats = menu;
-		
-		item = new MenuItem( "Personnes par catégorie v1" );
-		item.setOnAction(  (e) ->  
-				managerGui.showDialog( EnumView.EtatPersonnesParCateogire1 ) );
-		menu.getItems().add( item );
-		
-		item = new MenuItem( "Personnes par catégorie v2" );
-		item.setOnAction(  (e) ->  
-				managerGui.showDialog( EnumView.EtatPersonnesParCateogire2 ) );
-		menu.getItems().add( item );
 		
 		item = new MenuItem( "Liste des personnes (PDF)" );
 		item.setOnAction(  (e) ->  
@@ -135,18 +118,6 @@ public class MenuBarAppli extends MenuBar {
 		menu =  new Menu( "Tests" );;
 		this.getMenus().add(menu);
 		menuTests = menu;
-		
-		item = new MenuItem( "DaoCategorie" );
-		item.setOnAction(  (e) -> managerGui.showView( EnumView.TestDaoCategorie )  );
-		menu.getItems().add( item );
-		
-		item = new MenuItem( "DaoMemo" );
-		item.setOnAction(  (e) -> managerGui.showView( EnumView.TestDaoMemo )  );
-		menu.getItems().add( item );
-		
-		item = new MenuItem( "DaoService" );
-		item.setOnAction(  (e) -> managerGui.showView( EnumView.TestDaoService )  );
-		menu.getItems().add( item );
 
 		item = new MenuItem( "DaoEquipe" );
 		item.setOnAction(  (e) -> managerGui.showView( EnumView.TestDaoEquipe )  );

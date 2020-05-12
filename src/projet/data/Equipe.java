@@ -11,13 +11,13 @@ public class Equipe  {
 	
 	// Données observables
 
-	private final Property<Integer>	idequipe	= new SimpleObjectProperty<>();
-	private final Property<Integer>	idcompte	= new SimpleObjectProperty<>();
-	private final Property<Integer>	idparcours	= new SimpleObjectProperty<>();
-	private final Property<Participant>	Chef	     = new SimpleObjectProperty<>();
-	private final Property<Participant>	Coequipier = new SimpleObjectProperty<>();
-	private final StringProperty	nom			= new SimpleStringProperty();
-	private final StringProperty	categorie 	= new SimpleStringProperty();
+	private final Property<Integer>		idequipe	= new SimpleObjectProperty<>();
+	private final Property<Integer>		idcompte	= new SimpleObjectProperty<>();
+	private final Property<Integer>		idparcours	= new SimpleObjectProperty<>();
+	private final Property<Participant>	Chef		= new SimpleObjectProperty<>();
+	private final Property<Participant>	Coequipier 	= new SimpleObjectProperty<>();
+	private final StringProperty		nom			= new SimpleStringProperty();
+	private final StringProperty		categorie 	= new SimpleStringProperty();
 	
 	
 	// Constructeurs
@@ -25,10 +25,12 @@ public class Equipe  {
 	public Equipe() {
 	}
 
-	public Equipe( int idequipe, int idcompte, int idparcours,int idchef,int idcoequipier ,String nom, String categorie ) {
+	public Equipe( int idequipe, int idcompte, int idparcours, Participant chef, Participant coequipier , String nom, String categorie ) {
 		setIdequipe(idequipe);
 		setIdcompte(idcompte);
 		setIdparcours(idparcours);
+		setChef(chef);
+		setCoequipier(coequipier);
 		setNom(nom);
 		setCategorie(categorie);
 	}
