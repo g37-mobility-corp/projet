@@ -27,7 +27,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="paneRoot" prefHeight="561.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.memo.ControllerMemoForm">
+<AnchorPane fx:id="paneRoot" prefHeight="561.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.benevole.ControllerBenevoleInscription">
    <children>
       <Label alignment="CENTER" layoutX="20.0" layoutY="7.0" styleClass="titre-vue" text="Inscription Bénévoles" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="-20.0" AnchorPane.topAnchor="7.0">
          <font>
