@@ -18,12 +18,9 @@ import jfox.commun.exception.ExceptionValidation;
 import jfox.javafx.util.UtilFX;
 import projet.commun.IMapper;
 import projet.dao.DaoEquipe;
-import projet.dao.DaoPersonne;
 import projet.data.Categorie;
 import projet.data.Equipe;
 import projet.data.Equipe;
-import projet.data.Personne;
-import projet.view.personne.ModelCategorie;
 import projet.view.systeme.ModelConfig;
 
 

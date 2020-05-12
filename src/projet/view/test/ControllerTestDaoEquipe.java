@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import jfox.javafx.util.UtilFX;
 import projet.dao.DaoEquipe;
-import projet.dao.DaoMemo;
 
 
 public class ControllerTestDaoEquipe {
