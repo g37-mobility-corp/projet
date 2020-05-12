@@ -30,12 +30,6 @@
     </target>
 	
 	
-	 <!-- ================================= 
-	          target: 1-tables              
-	         ================================= -->
-	    <target name="1-tables" description="Crée talbes, séquences et vues">
-	    	<execute-sql sqlfile="1-tables.sql"/>
-	    </target>
 	
 
     <!-- ================================= 
@@ -46,13 +40,7 @@
     </target>
 	
 
-    <!-- ================================= 
-          target: 2-data              
-         ================================= -->
-    <target name="2-data" description="Insère données initiales">
-    	<execute-sql sqlfile="2-data.sql"/>
-    </target>
-	
+    
 	<!-- ================================= 
 	          target: 2-data              
 	         ================================= -->
@@ -64,9 +52,7 @@
     <!-- ================================= 
           target: 3-procedures              
          ================================= -->
-    <target name="3-procedures" description="Crée triggers et procédures stockées">
-    	<execute-sql sqlfile="3-procedures.sql" delimiter="/" />
-    </target>
+    
 
 	<target name="3-procedures-projet" description="Crée triggers et procédures stockées">
     	<execute-sql sqlfile="3-procedures-dev.sql" delimiter="/" />
@@ -76,13 +62,7 @@
     <!-- ================================= 
           target: 9-tout              
          ================================= -->
-    <target name="9-tout" description="description">
-    	
-    	<antcall target="1-tables" />
-		<antcall target="2-data" />
-		<antcall target="3-procedures" />
-        
-    </target>
+    
 
 	<target name="9-tout-projet" description="description">
     	

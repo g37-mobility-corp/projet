@@ -8,10 +8,7 @@ import projet.data.Benevole;
 import projet.data.Categorie;
 import projet.data.Compte;
 import projet.data.Equipe;
-import projet.data.Memo;
 import projet.data.Participant;
-import projet.data.Personne;
-import projet.data.Service;
 
 
 @Mapper
@@ -20,14 +17,6 @@ public interface IMapper {
 	Compte update( @MappingTarget Compte target, Compte source  );
 	
 	Categorie update( @MappingTarget Categorie target, Categorie source );
-
-	@Mapping( target="categorie", expression="java( source.getCategorie() )" )
-	Personne update( @MappingTarget Personne target, Personne source );
-
-	@Mapping( target="categorie", expression="java( source.getCategorie() )" )
-	Memo update( @MappingTarget Memo target, Memo source );
-
-	Service update( @MappingTarget Service target, Service source );
 	
 	Equipe update( @MappingTarget Equipe target, Equipe source );
 
