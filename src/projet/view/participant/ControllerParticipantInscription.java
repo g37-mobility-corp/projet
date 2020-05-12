@@ -102,7 +102,7 @@ public class ControllerParticipantInscription {
 			textFieldId.textProperty().bindBidirectional( courant.idProperty(), new ConverterStringInteger()  );
 							
 			// Catégorie
-			comboBoxCategorie.setItems( courant.getCategories() );
+			comboBoxCategorie.setItems( courant.getCategories());
 			comboBoxCategorie.valueProperty().bindBidirectional( courant.categorieProperty() );
 							
 			// Titre

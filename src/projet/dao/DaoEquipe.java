@@ -22,6 +22,9 @@ public class DaoEquipe {
 
 	@Inject
 	private DataSource		dataSource;
+	
+	@Inject
+	private DaoParticipant daoParticipant;
 
 	
 	// Actions
@@ -35,13 +38,22 @@ public class DaoEquipe {
 		
 		try {
 			cn = dataSource.getConnection();
-			sql = "INSERT INTO equipe ( idcompte, idparcours, nom_equipe, categorie ) VALUES( ?, ?, ?, ? ) ";
+			sql = "INSERT INTO equipe ( idcompte, idparcours, nom_equipe, categorie,idchef,idcoequipier ) VALUES( ?, ?, ?, ?,? ,?) ";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
 			stmt.setObject( 1, equipe.getIdcompte() );
 			stmt.setObject( 2, equipe.getIdparcours() );
 			stmt.setObject( 3, equipe.getNom() );
 			stmt.setObject( 4, equipe.getCategorie() );
-			
+			if ( equipe.getChef() == null ) {
+				stmt.setObject( 5, null );
+			} else {
+				stmt.setObject( 5,equipe.getChef().getId() );
+			}
+			if ( equipe.getCoequipier() == null ) {
+				stmt.setObject( 6, null );
+			} else {
+				stmt.setObject( 6, equipe.getCoequipier().getId() );
+			}
 			stmt.executeUpdate();
 
 			// Récupère l'identifiant généré par le SGBD
@@ -68,14 +80,27 @@ public class DaoEquipe {
 
 		try {
 			cn = dataSource.getConnection();
-			sql = "UPDATE equipe SET idcompte = ?, idparcours = ?, nom_equipe = ?, categorie = ? WHERE idequipe =  ?";
+			sql = "UPDATE equipe SET idcompte = ?, idparcours = ?, nom_equipe = ?, categorie = ?, idchef = ?, idcoequipier = ? WHERE idequipe =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject( 1, equipe.getIdcompte() );
 			stmt.setObject( 2, equipe.getIdparcours() );
 			stmt.setObject( 3, equipe.getNom() );
 			stmt.setObject( 4, equipe.getCategorie() );
 			
-			stmt.setObject( 5, equipe.getIdequipe() );
+			if ( equipe.getChef() == null ) {
+				stmt.setObject( 5, null );
+			} else {
+				stmt.setObject( 5,equipe.getChef().getId() );
+			}
+			if ( equipe.getCoequipier() == null ) {
+				stmt.setObject( 6, null );
+			} else {
+				stmt.setObject( 6, equipe.getCoequipier().getId() );
+			}
+			
+			stmt.setObject( 7, equipe.getIdequipe() );
+			
+			
 			stmt.executeUpdate();
 			
 			supprimerConcerner( equipe.getIdequipe() );
@@ -177,6 +202,16 @@ public class DaoEquipe {
 		equipe.setIdparcours( rs.getObject( "idparcours", Integer.class ) );
 		equipe.setNom( rs.getObject( "nom_equipe", String.class ) );
 		equipe.setCategorie( rs.getObject( "categorie", String.class ) );
+		
+		Integer idChef= rs.getObject( "idchef", Integer.class );
+		if ( idChef != null ) {
+		equipe.setChef( daoParticipant.retrouver( idChef ) );
+		}
+		
+		Integer idCoequipier= rs.getObject( "idcoequipier", Integer.class );
+		if ( idCoequipier!= null ) {
+		equipe.setCoequipier( daoParticipant.retrouver( idCoequipier) );
+		}
 		
 		
 		return equipe;

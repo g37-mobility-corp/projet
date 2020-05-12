@@ -14,6 +14,8 @@ public class Equipe  {
 	private final Property<Integer>	idequipe	= new SimpleObjectProperty<>();
 	private final Property<Integer>	idcompte	= new SimpleObjectProperty<>();
 	private final Property<Integer>	idparcours	= new SimpleObjectProperty<>();
+	private final Property<Participant>	Chef	     = new SimpleObjectProperty<>();
+	private final Property<Participant>	Coequipier = new SimpleObjectProperty<>();
 	private final StringProperty	nom			= new SimpleStringProperty();
 	private final StringProperty	categorie 	= new SimpleStringProperty();
 	
@@ -23,7 +25,7 @@ public class Equipe  {
 	public Equipe() {
 	}
 
-	public Equipe( int idequipe, int idcompte, int idparcours, String nom, String categorie ) {
+	public Equipe( int idequipe, int idcompte, int idparcours,int idchef,int idcoequipier ,String nom, String categorie ) {
 		setIdequipe(idequipe);
 		setIdcompte(idcompte);
 		setIdparcours(idparcours);
@@ -107,11 +109,36 @@ public class Equipe  {
 	public final void setIdequipe(final Integer idequipe) {
 		this.idequipeProperty().setValue(idequipe);
 	}
+
+	public final Property<Participant> ChefProperty() {
+		return this.Chef;
+	}
 	
+	//getter & setters chef et coequipier
+
+	public final Participant getChef() {
+		return this.ChefProperty().getValue();
+	}
 	
+
+	public final void setChef(final Participant Chef) {
+		this.ChefProperty().setValue(Chef);
+	}
 	
+
+	public final Property<Participant> CoequipierProperty() {
+		return this.Coequipier;
+	}
 	
+
+	public final Participant getCoequipier() {
+		return this.CoequipierProperty().getValue();
+	}
 	
+
+	public final void setCoequipier(final Participant Coequipier) {
+		this.CoequipierProperty().setValue(Coequipier);
+	}
 	
 	
 }
