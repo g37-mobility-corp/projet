@@ -27,7 +27,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="paneRoot" prefHeight="561.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.memo.ControllerMemoForm">
+<AnchorPane fx:id="paneRoot" prefHeight="561.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.participant.ControllerParticipantInscription">
    <children>
       <Label alignment="CENTER" layoutX="20.0" layoutY="7.0" styleClass="titre-vue" text="Inscription Participants" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="-20.0" AnchorPane.topAnchor="7.0">
          <font>
@@ -49,9 +49,9 @@
                   <Label text="Id :" />
                   <TextField fx:id="textFieldId" editable="false" focusTraversable="false" maxWidth="-Infinity" prefHeight="25.0" prefWidth="50.0" GridPane.columnIndex="1" />
                   <Label text="Nom d'équipe :" GridPane.rowIndex="2" />
-                  <TextField fx:id="textFieldTitre" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="textFieldNomEquipe" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Label text="Catégorie :" GridPane.rowIndex="1" />
-                  <ComboBox prefWidth="150.0" promptText="Selectionner" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="comboBoxCategorie" prefWidth="150.0" promptText="Selectionner" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>
@@ -64,7 +64,7 @@
                      <content>
                         <AnchorPane>
                            <children>
-                              <TextArea fx:id="textAreaDescription" prefHeight="250.0" prefWidth="419.0" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0" />
+                              <TextArea fx:id="textAreaDocuments" prefHeight="250.0" prefWidth="419.0" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0" />
                            </children>
                         </AnchorPane>
                      </content>
@@ -92,19 +92,19 @@
                                     <Label prefHeight="40.0" prefWidth="104.0" text="Date de naissance" GridPane.rowIndex="2" />
                                     <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="208.0" spacing="10.0" GridPane.columnIndex="1">
                                        <children>
-                                          <TextField prefHeight="25.0" prefWidth="219.0" />
+                                          <TextField fx:id="textFieldNomCapitaine" prefHeight="25.0" prefWidth="219.0" />
                                        </children>
                                     </HBox>
-                                    <TextField fx:id="textFieldEffectif" prefHeight="25.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                    <TextField fx:id="textFieldBudget" prefHeight="25.0" prefWidth="209.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="textFieldNumeroCapitaine" prefHeight="25.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <TextField fx:id="textFieldPrenomCapitaine" prefHeight="25.0" prefWidth="209.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <Label text="Nom:" />
                                     <Label text="Numéro :" GridPane.rowIndex="3" />
                                     <Label text="Prénom :" GridPane.rowIndex="1" />
-                                    <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                    <TextField prefHeight="25.0" prefWidth="213.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                    <TextField prefHeight="50.0" prefWidth="213.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                    <TextField prefHeight="25.0" prefWidth="212.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                    <TextField prefHeight="25.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                    <DatePicker fx:id="datePickerBirthCapitaine" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField fx:id="textFieldEmailCapitaine" prefHeight="25.0" prefWidth="213.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <TextField fx:id="textFieldAdresseCapitaine" prefHeight="50.0" prefWidth="213.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <TextField fx:id="textFieldVilleCapitaine" prefHeight="25.0" prefWidth="212.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                    <TextField fx:id="textFieldCodePostaleCapitaine" prefHeight="25.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                     <Label text="Email :" GridPane.rowIndex="4" />
                                     <Label text="Adresse :" GridPane.rowIndex="5" />
                                     <Label text="Ville :" GridPane.rowIndex="6" />
@@ -143,17 +143,17 @@
                                     <Label text="Date de naissance :" GridPane.rowIndex="2" />
                                     <Label text="Numéro:" GridPane.rowIndex="3" />
                                     <Label text="Adresse :" GridPane.rowIndex="5" />
-                                    <TextField GridPane.columnIndex="1" />
-                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <TextField fx:id="textFieldNomEquipier" GridPane.columnIndex="1" />
+                                    <TextField fx:id="textFieldPrenomEquipier" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <DatePicker fx:id="datePickerBirthEquipier" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField fx:id="textFieldNumeroEquipier" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                     <Label text="Code Postale :" GridPane.rowIndex="6" />
                                     <Label text="Ville :" GridPane.rowIndex="7" />
-                                    <TextField alignment="BOTTOM_CENTER" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                    <TextField prefHeight="40.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <TextField fx:id="textFieldCodePostaleEquipier" alignment="BOTTOM_CENTER" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                    <TextField fx:id="textFieldVilleEquipier" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                    <TextField fx:id="textFieldAdresseEquipier" prefHeight="40.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                                     <Label text="Email :" GridPane.rowIndex="4" />
-                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <TextField fx:id="textFieldEmailEquipier" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                  </children>
                               </GridPane>
                            </children></AnchorPane>
@@ -177,9 +177,9 @@
                                     <Label text="Formule :" />
                                     <Label text="Plateau Repas :" GridPane.rowIndex="1" />
                                     <Label text="Réglement : " GridPane.rowIndex="2" />
-                                    <CheckBox alignment="CENTER" mnemonicParsing="false" text="Payé ?" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1">
+                                    <CheckBox fx:id="checkBoxReglement" alignment="CENTER" mnemonicParsing="false" text="Payé ?" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField fx:id="textFieldRepas" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <HBox fx:id="toggleGroupFormule" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1">
                                        <children>
                                           <RadioButton mnemonicParsing="false" text="Mini Bol d'air" />
                                           <RadioButton mnemonicParsing="false" text="Bol d'air" />
