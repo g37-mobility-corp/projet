@@ -19,7 +19,7 @@ public class ModelEquipe  {
 	
 	// Données observables 
 	
-	private final ObservableList<Equipe> liste = FXCollections.observableArrayList(); 
+	private final ObservableList<Equipe> liste = FXCollections.observableArrayList();
 	
 	private final Equipe	courant = new Equipe();
 	
