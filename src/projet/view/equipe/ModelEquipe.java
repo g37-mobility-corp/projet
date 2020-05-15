@@ -10,14 +10,16 @@ import jfox.javafx.util.UtilFX;
 import projet.commun.IMapper;
 import projet.dao.DaoEquipe;
 import projet.data.Equipe;
+import projet.data.Participant;
+import projet.view.participant.ModelParticipant;
 
 
 public class ModelEquipe  {
 	
 	
-	// Données observables
+	// Données observables 
 	
-	private final ObservableList<Equipe> liste = FXCollections.observableArrayList();
+	private final ObservableList<Equipe> liste = FXCollections.observableArrayList(); 
 	
 	private final Equipe	courant = new Equipe();
 	
@@ -28,6 +30,8 @@ public class ModelEquipe  {
 	private IMapper			mapper;
     @Inject
 	private DaoEquipe			daoEquipe;
+    @Inject
+    private ModelParticipant modelParticipant;
 	
     
 	// Initialisations
@@ -47,6 +51,10 @@ public class ModelEquipe  {
 		return courant;
 	}
 	
+	public ObservableList<Participant> getParticipants() {
+		return modelParticipant.getListe();
+		}
+	
 	
 	
 	
@@ -55,15 +63,20 @@ public class ModelEquipe  {
 	public void actualiserListe() {
 		liste.setAll( daoEquipe.listerTout() );
  	}
+	
+	public void actualiserListePersonnesPourDialogAjout() {
+ 	}
 
 
 	// Actions
 	
 	public void preparerAjouter() {
+		modelParticipant.actualiserListe();
 		mapper.update( courant, new Equipe() );
 	}
 	
 	public void preparerModifier( Equipe item ) {
+		modelParticipant.actualiserListe();
 		mapper.update( courant, daoEquipe.retrouver( item.getIdequipe() ) );
 		
 	}
@@ -112,10 +125,5 @@ public class ModelEquipe  {
 		
 	}
 
-	
-	
-	
-	
-	
 	
 }
