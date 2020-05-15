@@ -23,6 +23,8 @@ public class DaoParticipant {
 
 	@Inject
 	private DataSource		dataSource;
+	@Inject
+	private DaoEquipe daoEquipe;
 
 	
 	// Actions
@@ -40,7 +42,7 @@ public class DaoParticipant {
 			// Insère le participant
 			sql = "INSERT INTO participant(idequipe, nom, prenom, telephone, birthdate) VALUES ( ?, ?, ?, ?, ? )";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS ); 
-			stmt.setObject( 1, participant.getIdequipe() ); 
+			stmt.setObject( 1, participant.getEquipe().getIdequipe() ); 
 			stmt.setObject( 2, participant.getNom() );
 			stmt.setObject( 3, participant.getPrenom() );
 			stmt.setObject( 4, participant.getTelephone() );
@@ -75,7 +77,7 @@ public class DaoParticipant {
 			// Modifie le participant
 			sql = "UPDATE participant SET idequipe = ?, nom = ?, prenom = ?, telephone = ?, birthdate = ? WHERE idparticipant =  ?";
 			stmt = cn.prepareStatement( sql );
-			stmt.setObject( 1, participant.getIdequipe() ); 
+			stmt.setObject( 1, participant.getEquipe().getIdequipe() ); 
 			stmt.setObject( 2, participant.getNom() );
 			stmt.setObject( 3, participant.getPrenom() );
 			stmt.setObject( 4, participant.getTelephone() );
@@ -206,7 +208,13 @@ public class DaoParticipant {
 	private Participant construireParticipant( ResultSet rs ) throws SQLException {
 		Participant participant = new Participant();
 		participant.setId( rs.getObject( "idparticipant", Integer.class ) );
-		participant.setIdequipe( rs.getObject( "idequipe", Integer.class ) );
+		//participant.setEquipe( rs.getObject( "idequipe", Integer.class ) );
+		
+		Integer idEquipe= rs.getObject( "idequipe", Integer.class );
+		if ( idEquipe!= null ) {
+			participant.setEquipe( daoEquipe.retrouver( idEquipe) );
+		}
+		
 		participant.setNom( rs.getObject( "nom", String.class ) );
 		participant.setPrenom( rs.getObject( "prenom", String.class ) );
 		participant.setTelephone( rs.getObject( "telephone", String.class ) );
