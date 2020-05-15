@@ -3,6 +3,8 @@ package projet.view.participant;
 import javax.inject.Inject;
 
 import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -18,8 +20,10 @@ import jfox.javafx.util.ConverterStringLocalDate;
 import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
 import projet.data.Categorie;
+import projet.data.Equipe;
 import projet.data.Participant;
 import projet.view.compte.ModelCompte;
+import projet.view.equipe.ModelEquipe;
 
 public class ControllerParticipantInscription {
 
@@ -29,7 +33,7 @@ public class ControllerParticipantInscription {
 		@FXML
 		private TextField		textFieldId;
 		@FXML
-		private ComboBox<Categorie>	comboBoxCategorie;
+		private ComboBox<String>   		comboBoxCategorie;
 		@FXML
 		private TextField		textFieldNomEquipe;
 		@FXML
@@ -81,12 +85,18 @@ public class ControllerParticipantInscription {
 		private TextField		textFieldRepas;
 		
 	// Autres champs
-		private Participant courant;
+		private Equipe courantEquipe;
+		private Participant courantCapitaine;
+		private Participant courantEquipier;
+
+		
 		
 		@Inject
 		private IManagerGui		managerGui;
 		@Inject
 		private ModelParticipant	modelParticipant;
+		@Inject
+		private ModelEquipe	modelEquipe;
 			
 		
 		
@@ -95,18 +105,21 @@ public class ControllerParticipantInscription {
 		@FXML
 		private void initialize() {
 			// Data binding
-			courant = modelParticipant.getCourant();
+			courantEquipe = modelEquipe.getCourant();
+			courantCapitaine = modelParticipant.getCourant();
+			courantEquipier = modelParticipant.getCourant();
 							
 			// Toujours Visible
 			// id
-			textFieldId.textProperty().bindBidirectional( courant.idProperty(), new ConverterStringInteger()  );
+			textFieldId.textProperty().bindBidirectional( courantEquipe.idequipeProperty(), new ConverterStringInteger()  );
 							
 			// Catégorie
-			comboBoxCategorie.setItems( courant.getCategories());
-			comboBoxCategorie.valueProperty().bindBidirectional( courant.categorieProperty() );
+			final ObservableList<String> categories = FXCollections.observableArrayList("HOMME", "FEMME", "MIXTE", "VAE");
+			comboBoxCategorie.setItems(categories);
+			comboBoxCategorie.valueProperty().bindBidirectional( courantEquipe.categorieProperty() );
 							
 			// Titre
-			textFieldNomEquipe.textProperty().bindBidirectional( courant.nomEquipeProperty() );
+			textFieldNomEquipe.textProperty().bindBidirectional( courantEquipe.nomProperty() );
 							
 			// Document
 			textAreaDocuments.textProperty().bindBidirectional( courant.documentProperty() );
@@ -118,10 +131,10 @@ public class ControllerParticipantInscription {
 			textFieldPrenomCapitaine.textProperty().bindBidirectional( courant.prenomCapitaineProperty() );
 			// Birthday
 			datePickerBirthCapitaine.getEditor().textProperty().bindBidirectional( courant.birthCapitaineProperty(), new ConverterStringLocalDate());
-			datePickerBirthCapitaine.getEditor().focusedProperty().addListener(new ListenerFocusValidation( courant.birthCapitaineProperty())  );
+			datePickerBirthCapitaine.getEditor().focusedProperty().addListener(new ListenerFocusValidation( courant.birthCapitaineProperty()) );
 			UtilFX.bindBidirectional( datePickerBirthCapitaine.getEditor(), courant.birthCapitaineProperty(), new ConverterStringLocalDate() );
 			// Numero
-			textFieldNumeroCapitaine.textProperty().bindBidirectional( courant.numeroCapitaineProperty(), new ConverterStringInteger()  );
+			textFieldNumeroCapitaine.textProperty().bindBidirectional( courant.numeroCapitaineProperty(), new ConverterStringInteger() );
 			// Email
 			textFieldEmailCapitaine.textProperty().bindBidirectional( courant.emailCapitaineProperty() );
 			// Adresse

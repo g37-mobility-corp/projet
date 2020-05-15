@@ -14,9 +14,9 @@ public class Participant {
 	// Données observables
 
 	private final Property<Integer>		id			= new SimpleObjectProperty<>();
-	private final Property<Integer>		idequipe	= new SimpleObjectProperty<>();
+	private final Property<Integer>		idequipe			= new SimpleObjectProperty<>();
 	private final StringProperty		nom	 		= new SimpleStringProperty();
-	private final StringProperty		prenom		= new SimpleStringProperty();
+	private final StringProperty		prenom	= new SimpleStringProperty();
 	private final StringProperty		telephone	= new SimpleStringProperty();
 	private final Property<LocalDate>	birthdate	= new SimpleObjectProperty<>();
 	
