@@ -88,19 +88,19 @@
                                     <Label prefHeight="40.0" prefWidth="104.0" text="Date de naissance" GridPane.rowIndex="2" />
                                     <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="208.0" spacing="10.0" GridPane.columnIndex="1">
                                        <children>
-                                          <TextField prefHeight="25.0" prefWidth="219.0" />
+                                          <TextField fx:id="textFieldNomBenevole" prefHeight="25.0" prefWidth="219.0" />
                                        </children>
                                     </HBox>
-                                    <TextField fx:id="textFieldEffectif" prefHeight="25.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                    <TextField fx:id="textFieldBudget" prefHeight="25.0" prefWidth="209.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="textFieldNumeroBenevole" prefHeight="25.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <TextField fx:id="textFieldPrenomBenevole" prefHeight="25.0" prefWidth="209.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <Label text="Nom:" />
                                     <Label text="Numéro :" GridPane.rowIndex="3" />
                                     <Label text="Prénom :" GridPane.rowIndex="1" />
-                                    <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                    <TextField prefHeight="25.0" prefWidth="213.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                    <TextField prefHeight="50.0" prefWidth="213.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                    <TextField prefHeight="25.0" prefWidth="212.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                    <TextField prefHeight="25.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                    <DatePicker fx:id="datePickerBirthBenevole" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField fx:id="textFieldEmailBenevole" prefHeight="25.0" prefWidth="213.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <TextField fx:id="textFieldAdresseBenevole" prefHeight="50.0" prefWidth="213.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <TextField fx:id="textFieldVilleBenevole" prefHeight="25.0" prefWidth="212.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                    <TextField fx:id="textFieldCodePostaleBenevole" prefHeight="25.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                     <Label text="Email :" GridPane.rowIndex="4" />
                                     <Label text="Adresse :" GridPane.rowIndex="5" />
                                     <Label text="Ville :" GridPane.rowIndex="6" />
@@ -133,15 +133,15 @@
                                     <Label text="Permis de conduire :" GridPane.rowIndex="1" />
                                     <Label text="Numéro de plaque :" GridPane.rowIndex="2" />
                                     <Label text="Brevet de secourisme :" GridPane.rowIndex="3" />
-                                    <CheckBox alignment="CENTER" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <CheckBox fx:id="checkBoxBrevetSecourisme" alignment="CENTER" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <TextField fx:id="textFieldPlaqueImma" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <children>
-                                          <CheckBox alignment="TOP_LEFT" mnemonicParsing="false" />
+                                          <CheckBox fx:id="checkBoxPermisConduire" alignment="TOP_LEFT" mnemonicParsing="false" />
                                        </children>
                                     </HBox>
                                     <Label text="Poste :" />
-                                    <ComboBox prefWidth="150.0" promptText="Selectionner" GridPane.columnIndex="1" />
+                                    <ComboBox fx:id="comboBoxPoste" prefWidth="150.0" promptText="Selectionner" GridPane.columnIndex="1" />
                                  </children>
                               </GridPane>
                            </children>
