@@ -126,52 +126,52 @@ public class ControllerParticipantInscription {
 					
 			// Capitaine
 			// Nom
-			textFieldNomCapitaine.textProperty().bindBidirectional( courant.nomCapitaineProperty() );
+			textFieldNomCapitaine.textProperty().bindBidirectional( courantCapitaine.nomProperty() );
 			// Prénom
-			textFieldPrenomCapitaine.textProperty().bindBidirectional( courant.prenomCapitaineProperty() );
+			textFieldPrenomCapitaine.textProperty().bindBidirectional( courantCapitaine.prenomProperty() );
 			// Birthday
-			datePickerBirthCapitaine.getEditor().textProperty().bindBidirectional( courant.birthCapitaineProperty(), new ConverterStringLocalDate());
-			datePickerBirthCapitaine.getEditor().focusedProperty().addListener(new ListenerFocusValidation( courant.birthCapitaineProperty()) );
-			UtilFX.bindBidirectional( datePickerBirthCapitaine.getEditor(), courant.birthCapitaineProperty(), new ConverterStringLocalDate() );
+			datePickerBirthCapitaine.getEditor().textProperty().bindBidirectional( courantCapitaine.birthdateProperty(), new ConverterStringLocalDate());
+			datePickerBirthCapitaine.getEditor().focusedProperty().addListener(new ListenerFocusValidation( courantCapitaine.birthdateProperty()) );
+			UtilFX.bindBidirectional( datePickerBirthCapitaine.getEditor(), courantCapitaine.birthdateProperty(), new ConverterStringLocalDate() );
 			// Numero
-			textFieldNumeroCapitaine.textProperty().bindBidirectional( courant.numeroCapitaineProperty(), new ConverterStringInteger() );
+			textFieldNumeroCapitaine.textProperty().bindBidirectional( courantCapitaine.telephoneProperty());
 			// Email
-			textFieldEmailCapitaine.textProperty().bindBidirectional( courant.emailCapitaineProperty() );
+			textFieldEmailCapitaine.textProperty().bindBidirectional( courantCapitaine.emailCapitaineProperty() );
 			// Adresse
-			textFieldAdresseCapitaine.textProperty().bindBidirectional( courant.adresseCapitaineProperty() );
+			textFieldAdresseCapitaine.textProperty().bindBidirectional( courantCapitaine.adresseCapitaineProperty() );
 			// Code Postale
-			textFieldCodePostaleCapitaine.textProperty().bindBidirectional( courant.codePostaleCapitaineProperty(), new ConverterStringInteger()  );
+			textFieldCodePostaleCapitaine.textProperty().bindBidirectional( courantCapitaine.codePostaleCapitaineProperty(), new ConverterStringInteger()  );
 			// Ville
-			textFieldVilleCapitaine.textProperty().bindBidirectional( courant.villeCapitaineProperty() );
+			textFieldVilleCapitaine.textProperty().bindBidirectional( courantCapitaine.villeCapitaineProperty() );
 					
 			// Equipier
 			// Nom
-			textFieldNomEquipier.textProperty().bindBidirectional( courant.nomEquipierProperty() );
+			textFieldNomEquipier.textProperty().bindBidirectional( courantEquipier.nomProperty() );
 			// Prénom
-			textFieldPrenomEquipier.textProperty().bindBidirectional( courant.prenomEquipierProperty() );
+			textFieldPrenomEquipier.textProperty().bindBidirectional( courantEquipier.prenomProperty() );
 			// Birthday
-			datePickerBirthEquipier.getEditor().textProperty().bindBidirectional( courant.birthEquipierProperty(), new ConverterStringLocalDate() );
-			datePickerBirthEquipier.getEditor().focusedProperty().addListener(new ListenerFocusValidation( courant.birthEquipierProperty())  );
-			UtilFX.bindBidirectional( datePickerBirthEquipier.getEditor(), courant.birthEquipierProperty(), new ConverterStringLocalDate() );
+			datePickerBirthEquipier.getEditor().textProperty().bindBidirectional( courantEquipier.birthdateProperty(), new ConverterStringLocalDate() );
+			datePickerBirthEquipier.getEditor().focusedProperty().addListener(new ListenerFocusValidation( courantEquipier.birthdateProperty())  );
+			UtilFX.bindBidirectional( datePickerBirthEquipier.getEditor(), courantEquipier.birthdateProperty(), new ConverterStringLocalDate() );
 			// Numero
-			textFieldNumeroEquipier.textProperty().bindBidirectional( courant.numeroEquipierProperty(), new ConverterStringInteger()  );
+			textFieldNumeroEquipier.textProperty().bindBidirectional( courantEquipier.telephoneProperty(), new ConverterStringInteger()  );
 			// Email
-			textFieldEmailEquipier.textProperty().bindBidirectional( courant.emailEquipierProperty() );
+			textFieldEmailEquipier.textProperty().bindBidirectional( courantEquipier.emailEquipierProperty() );
 			// Adresse
-			textFieldAdresseEquipier.textProperty().bindBidirectional( courant.adresseEquipierProperty() );
+			textFieldAdresseEquipier.textProperty().bindBidirectional( courantEquipier.adresseEquipierProperty() );
 			// Code Postale
-			textFieldCodePostaleEquipier.textProperty().bindBidirectional( courant.codePostaleEquipierProperty(), new ConverterStringInteger()  );
+			textFieldCodePostaleEquipier.textProperty().bindBidirectional( courantEquipier.codePostaleEquipierProperty(), new ConverterStringInteger()  );
 			// Ville
-			textFieldVilleEquipier.textProperty().bindBidirectional( courant.villeEquipierProperty() );
+			textFieldVilleEquipier.textProperty().bindBidirectional( courantEquipier.villeEquipierProperty() );
 								
 			// Regelement
 			// Reglement
-			checkBoxReglement.selectedProperty().bindBidirectional( courant.reglementProperty() );
+			checkBoxReglement.selectedProperty().bindBidirectional( courantEquipe.reglementProperty() );
 			// Repas
-			textFieldRepas.textProperty().bindBidirectional( courant.repasProperty() );
+			textFieldRepas.textProperty().bindBidirectional( courantEquipe.repasProperty() );
 			// Formule
 			toggleGroupFormule.selectedToggleProperty().addListener( obs -> actualiserStatutDansModele() ) ; 
-			courant.statutProperty().addListener(  obs -> actualiserStatutDansVue() );
+			courantEquipe.statutProperty().addListener(  obs -> actualiserStatutDansVue() );
 			actualiserStatutDansVue();			
 		}
 	
