@@ -212,7 +212,7 @@ public class DaoParticipant {
 		
 		Integer idEquipe= rs.getObject( "idequipe", Integer.class );
 		if ( idEquipe!= null ) {
-			participant.setEquipe( daoEquipe.retrouver( idEquipe) );
+			//participant.setEquipe( daoEquipe.retrouver( idEquipe) );
 		}
 		
 		participant.setNom( rs.getObject( "nom", String.class ) );

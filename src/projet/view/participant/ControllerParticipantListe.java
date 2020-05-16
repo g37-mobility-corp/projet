@@ -42,7 +42,7 @@ public class ControllerParticipantListe {
 		// Data binding
 		listView.setItems( modelParticipant.getListe() );
 		
-		listView.setCellFactory(  UtilFX.cellFactory( item -> item.getNom() ));
+		listView.setCellFactory(  UtilFX.cellFactory( item -> item.toString() ));
 		
 		// Configuraiton des boutons
 		listView.getSelectionModel().selectedItemProperty().addListener(

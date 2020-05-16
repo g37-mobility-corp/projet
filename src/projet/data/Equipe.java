@@ -18,6 +18,7 @@ public class Equipe  {
 	private final Property<Participant>	Coequipier 	= new SimpleObjectProperty<>();
 	private final StringProperty		nom			= new SimpleStringProperty();
 	private final StringProperty		categorie 	= new SimpleStringProperty();
+	private final Property<Boolean> 	valide 		= new SimpleObjectProperty<>();
 	
 	
 	// Constructeurs
@@ -25,7 +26,7 @@ public class Equipe  {
 	public Equipe() {
 	}
 
-	public Equipe( int idequipe, int idcompte, int idparcours, Participant chef, Participant coequipier , String nom, String categorie ) {
+	public Equipe( int idequipe, int idcompte, int idparcours, Participant chef, Participant coequipier , String nom, String categorie, Boolean valide ) {
 		setIdequipe(idequipe);
 		setIdcompte(idcompte);
 		setIdparcours(idparcours);
@@ -33,6 +34,7 @@ public class Equipe  {
 		setCoequipier(coequipier);
 		setNom(nom);
 		setCategorie(categorie);
+		setValide(valide);
 	}
 	
 
@@ -141,6 +143,21 @@ public class Equipe  {
 	public final void setCoequipier(final Participant Coequipier) {
 		this.CoequipierProperty().setValue(Coequipier);
 	}
+
+	public final Property<Boolean> valideProperty() {
+		return this.valide;
+	}
+	
+
+	public final Boolean getValide() {
+		return this.valideProperty().getValue();
+	}
+	
+
+	public final void setValide(final Boolean valide) {
+		this.valideProperty().setValue(valide);
+	}
+	
 	
 	
 }

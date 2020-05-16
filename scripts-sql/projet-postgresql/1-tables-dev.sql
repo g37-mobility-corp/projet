@@ -40,7 +40,7 @@ CREATE TABLE participant (
 	-- idequipe ajouter apres la declaration de la table equipe
 	nom				VARCHAR(25)  	NOT NULL,
 	prenom			VARCHAR(25) 	NOT NULL,
-	telephone		VARCHAR(10)				,
+	telephone		VARCHAR(14)				,
 	birthdate		DATE			NOT NULL,
 	PRIMARY KEY (idparticipant)
  	
@@ -55,6 +55,7 @@ CREATE TABLE equipe (
 	idcoequipier		INT						,
 	nom_equipe			VARCHAR(25)		NOT NULL,
 	categorie 			VARCHAR(25)		NOT NULL,
+	valide				BOOLEAN 		NOT NULL DEFAULT FALSE,
 	CHECK( categorie IN ('HOMME','FEMME','MIXTE','VAE') ),
 	PRIMARY KEY (idequipe),
 	FOREIGN KEY (idcompte) REFERENCES compte (idcompte),
@@ -65,7 +66,7 @@ CREATE TABLE equipe (
 );
 
 -- Liaion Participant -> Equipe
-ALTER TABLE participant ADD COLUMN idequipe INT NOT NULL, 
+ALTER TABLE participant ADD COLUMN idequipe INT , 
 						ADD FOREIGN KEY (idequipe) REFERENCES equipe (idequipe);
 
 
@@ -82,7 +83,7 @@ CREATE TABLE benevole (
 	idposte			INT						,
 	nom				VARCHAR(25)  	NOT NULL,
 	prenom			VARCHAR(25) 	NOT NULL,
-	telephone		VARCHAR(10)				,
+	telephone		VARCHAR(15)				,
 	birthdate		DATE			NOT NULL,
 	PRIMARY KEY (idbenevole),
  	FOREIGN KEY (idposte) REFERENCES poste (idposte)

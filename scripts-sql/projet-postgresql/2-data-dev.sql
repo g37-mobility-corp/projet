@@ -38,8 +38,8 @@ ALTER TABLE parcours ALTER COLUMN idparcours RESTART WITH 3;
 
 -- Equipe
   
-INSERT INTO equipe (idequipe, idcompte, idparcours, nom_equipe, categorie ) VALUES 
-  (1,2,1,'MobilityCorp','MIXTE' );
+INSERT INTO equipe (idequipe, idcompte, idparcours, nom_equipe, categorie ,valide) VALUES 
+  (1,2,1,'MobilityCorp','MIXTE',true );
 
 ALTER TABLE equipe ALTER COLUMN idequipe RESTART WITH 2;
 
@@ -48,7 +48,17 @@ ALTER TABLE equipe ALTER COLUMN idequipe RESTART WITH 2;
 
 INSERT INTO participant (idparticipant, idequipe, nom, prenom,telephone,birthdate) VALUES 
   ( 1, 1, 'GRASSET', 'Jérôme','06XXXXXXXX', {d  '2020-02-25' } ),
-  ( 2, 1, 'BOUBY', 'Claude', '06XXXXXXXX', {d  '2020-01-12' } );
+  ( 2, 1, 'BOUBY', 'Claude', '06XXXXXXXX', {d  '2020-01-12' } ),
+  (3,null,'Brynn','Cailin','0571217323','19-11-04'),
+  (4,null,'Carl','Philip','05 97 59 48 85','19-11-10'),
+  (5,null,'James','Ali','07 67 82 02 62','19-06-03'),
+  (6,null,'Aline','Tad','01 02 61 01 14','20-10-31'),
+  (7,null,'Rogan','Frances','06 50 31 57 43','20-10-01'),
+  (8,null,'Nita','Gavin','05 42 76 63 05','20-01-26'),
+  (9,null,'Gloria','Malcolm','06 70 05 17 03','19-09-16'),
+  (10,null,'Wynne','Aimee','06 40 77 85 16','19-11-16'),
+  (11,null,'Kibo','Ivana','05 43 37 00 07','19-10-23'),
+  (12,null,'Elton','Rahim','05 15 08 82 10','20-08-26');
 
 ALTER TABLE participant ALTER COLUMN idparticipant RESTART WITH 3;
 

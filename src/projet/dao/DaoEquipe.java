@@ -38,7 +38,7 @@ public class DaoEquipe {
 		
 		try {
 			cn = dataSource.getConnection();
-			sql = "INSERT INTO equipe ( idcompte, idparcours, nom_equipe, categorie, idchef, idcoequipier ) VALUES( ?, ?, ?, ?, ? ,?)";
+			sql = "INSERT INTO equipe ( idcompte, idparcours, nom_equipe, categorie, idchef, idcoequipier,valide ) VALUES( ?, ?, ?, ?, ? ,?,?)";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
 			stmt.setObject( 1, equipe.getIdcompte() );
 			stmt.setObject( 2, equipe.getIdparcours() );
@@ -54,6 +54,7 @@ public class DaoEquipe {
 			} else {
 				stmt.setObject( 6, equipe.getCoequipier().getId() );
 			}
+			stmt.setObject(7, equipe.getValide());
 			stmt.executeUpdate();
 
 			// Récupère l'identifiant généré par le SGBD
@@ -80,7 +81,7 @@ public class DaoEquipe {
 
 		try {
 			cn = dataSource.getConnection();
-			sql = "UPDATE equipe SET idcompte = ?, idparcours = ?, nom_equipe = ?, categorie = ?, idchef = ?, idcoequipier = ? WHERE idequipe =  ?";
+			sql = "UPDATE equipe SET idcompte = ?, idparcours = ?, nom_equipe = ?, categorie = ?, idchef = ?, idcoequipier = ?, valide = ? WHERE idequipe =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject( 1, equipe.getIdcompte() );
 			stmt.setObject( 2, equipe.getIdparcours() );
@@ -97,8 +98,8 @@ public class DaoEquipe {
 			} else {
 				stmt.setObject( 6, equipe.getCoequipier().getId() );
 			}
-			
-			stmt.setObject( 7, equipe.getIdequipe() );
+			stmt.setObject( 7, equipe.getValide() );
+			stmt.setObject( 8, equipe.getIdequipe() );
 			
 			
 			stmt.executeUpdate();
@@ -202,7 +203,7 @@ public class DaoEquipe {
 		equipe.setIdparcours( rs.getObject( "idparcours", Integer.class ) );
 		equipe.setNom( rs.getObject( "nom_equipe", String.class ) );
 		equipe.setCategorie( rs.getObject( "categorie", String.class ) );
-		
+		equipe.setValide(rs.getObject("valide",Boolean.class));
 		Integer idChef= rs.getObject( "idchef", Integer.class );
 		if ( idChef != null ) {
 		equipe.setChef( daoParticipant.retrouver( idChef ) );

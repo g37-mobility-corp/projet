@@ -3,6 +3,7 @@ package projet.view.equipe;
 import javax.inject.Inject;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.util.converter.IntegerStringConverter;
@@ -25,6 +26,8 @@ public class ControllerEquipeForm {
 	private ComboBox<Participant> comboBoxChef;
 	@FXML
 	private ComboBox<Participant> comboBoxCoequipier;
+	@FXML 
+	private CheckBox checkBoxValide;
 	
 
 	
@@ -54,6 +57,8 @@ public class ControllerEquipeForm {
 		
 		comboBoxCoequipier.setItems( modelEquipe.getParticipants() );
 		comboBoxCoequipier.valueProperty().bindBidirectional( courant.CoequipierProperty() );
+		
+		checkBoxValide.setSelected(courant.getValide());
 		
 		
 		
