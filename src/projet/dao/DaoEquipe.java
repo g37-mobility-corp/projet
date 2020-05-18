@@ -107,7 +107,7 @@ public class DaoEquipe {
 			
 			stmt.executeUpdate();
 			
-			supprimerConcerner( equipe.getIdequipe() );
+			//supprimerConcerner( equipe.getIdequipe() );
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -124,7 +124,7 @@ public class DaoEquipe {
 		String				sql;
 
 		try {
-			supprimerConcerner(idEquipe);
+			//supprimerConcerner(idEquipe);
 			
 			cn = dataSource.getConnection();
 			sql = "DELETE FROM equipe WHERE idequipe = ? ";
