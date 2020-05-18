@@ -60,7 +60,7 @@ INSERT INTO participant (idparticipant, idequipe, nom, prenom,telephone,birthdat
   (11,null,'Kibo','Ivana','05 43 37 00 07','19-10-23'),
   (12,null,'Elton','Rahim','05 15 08 82 10','20-08-26');
 
-ALTER TABLE participant ALTER COLUMN idparticipant RESTART WITH 3;
+ALTER TABLE participant ALTER COLUMN idparticipant RESTART WITH 13;
 
 -- Insertion des participants dans l'équipe 
 UPDATE equipe SET idchef = 1, idcoequipier = 2 WHERE idequipe =  1;
