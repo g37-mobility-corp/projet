@@ -16,7 +16,6 @@ import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
 import projet.data.Categorie;
 import projet.data.Participant;
-import projet.view.participant.ListenerFocusValidation;
 import projet.view.participant.ModelParticipant;
 import projet.data.Benevole;
 
