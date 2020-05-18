@@ -2,6 +2,8 @@ package projet.view.benevole;
 
 import javax.inject.Inject;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -74,15 +76,15 @@ public class ControllerBenevoleInscription {
 				
 			// Benevole
 				// Nom
-				textFieldNomBenevole.textProperty().bindBidirectional( courant.nomBenevoleProperty() );
+				textFieldNomBenevole.textProperty().bindBidirectional( courant.nomProperty() );
 				// Prénom
-				textFieldPrenomBenevole.textProperty().bindBidirectional( courant.prenomBenevoleProperty() );
+				textFieldPrenomBenevole.textProperty().bindBidirectional( courant.prenomProperty() );
 				// Birthday
-				datePickerBirthBenevole.getEditor().textProperty().bindBidirectional( courant.birthBenevoleProperty(), new ConverterStringLocalDate());
-				datePickerBirthBenevole.getEditor().focusedProperty().addListener(new ListenerFocusValidation( courant.birthBenevoleProperty())  );
-				UtilFX.bindBidirectional( datePickerBirthBenevole.getEditor(), courant.birthBenevoleProperty(), new ConverterStringLocalDate() );
+				datePickerBirthBenevole.getEditor().textProperty().bindBidirectional( courant.birthdateProperty(), new ConverterStringLocalDate());
+				datePickerBirthBenevole.getEditor().focusedProperty().addListener(new ListenerFocusValidation( courant.birthdateProperty())  );
+				UtilFX.bindBidirectional( datePickerBirthBenevole.getEditor(), courant.birthdateProperty(), new ConverterStringLocalDate() );
 				// Numero
-				textFieldNumeroBenevole.textProperty().bindBidirectional( courant.numeroBenevoleProperty(), new ConverterStringInteger()  );
+				textFieldNumeroBenevole.textProperty().bindBidirectional( courant.telephoneProperty());
 				// Email
 				textFieldEmailBenevole.textProperty().bindBidirectional( courant.emailBenevoleProperty() );
 				// Adresse
@@ -95,14 +97,15 @@ public class ControllerBenevoleInscription {
 			// Réglement
 				
 				// Poste
-				comboBoxPoste.setItems( courant.getPoste() );
+				//final ObservableList<String> postes = FXCollections.observableArrayList("HOMME", "FEMME", "MIXTE", "VAE");
+				comboBoxPoste.setItems(postes);
 				comboBoxPoste.valueProperty().bindBidirectional( courant.posteProperty() );
 				//Permis de conduire
-				checkBoxPermisConduire.selectedProperty().bindBidirectional( courant.permisConduireProperty() );
+				checkBoxPermisConduire.selectedProperty().bindBidirectional( courant.permisConduireProperty());
 				//Numéro de plaque
 				textFieldPlaqueImma.textProperty().bindBidirectional( courant.plaqueImmaProperty() );
 				//Brevet de secourisme
-				checkBoxBrevetSecourisme.selectedProperty().bindBidirectional( courant.brevetSecourismeProperty() );
+				checkBoxBrevetSecourisme.selectedProperty().bindBidirectional( courant.brevetSecourismeProperty());
 				
 			}
 
