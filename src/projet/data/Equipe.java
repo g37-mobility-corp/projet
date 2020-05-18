@@ -13,7 +13,7 @@ public class Equipe  {
 
 	private final Property<Integer>		idequipe	= new SimpleObjectProperty<>();
 	private final Property<Integer>		idcompte	= new SimpleObjectProperty<>();
-	private final Property<Integer>		idparcours	= new SimpleObjectProperty<>();
+	private final Property<Parcours>	parcours	= new SimpleObjectProperty<>();
 	private final Property<Participant>	Chef		= new SimpleObjectProperty<>();
 	private final Property<Participant>	Coequipier 	= new SimpleObjectProperty<>();
 	private final StringProperty		nom			= new SimpleStringProperty();
@@ -26,10 +26,10 @@ public class Equipe  {
 	public Equipe() {
 	}
 
-	public Equipe( int idequipe, int idcompte, int idparcours, Participant chef, Participant coequipier , String nom, String categorie, Boolean valide ) {
+	public Equipe( int idequipe, int idcompte, Parcours parcours, Participant chef, Participant coequipier , String nom, String categorie, Boolean valide ) {
 		setIdequipe(idequipe);
 		setIdcompte(idcompte);
-		setIdparcours(idparcours);
+		setParcours(parcours);
 		setChef(chef);
 		setCoequipier(coequipier);
 		setNom(nom);
@@ -86,19 +86,7 @@ public class Equipe  {
 	}
 	
 
-	public final Property<Integer> idparcoursProperty() {
-		return this.idparcours;
-	}
 	
-
-	public final Integer getIdparcours() {
-		return this.idparcoursProperty().getValue();
-	}
-	
-
-	public final void setIdparcours(final Integer idparcours) {
-		this.idparcoursProperty().setValue(idparcours);
-	}
 
 	public final Property<Integer> idequipeProperty() {
 		return this.idequipe;
@@ -157,6 +145,21 @@ public class Equipe  {
 	public final void setValide(final Boolean valide) {
 		this.valideProperty().setValue(valide);
 	}
+
+	public final Property<Parcours> parcoursProperty() {
+		return this.parcours;
+	}
+	
+
+	public final Parcours getParcours() {
+		return this.parcoursProperty().getValue();
+	}
+	
+
+	public final void setParcours(final Parcours parcours) {
+		this.parcoursProperty().setValue(parcours);
+	}
+	
 	
 	
 	
