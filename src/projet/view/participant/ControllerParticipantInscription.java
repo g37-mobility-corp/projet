@@ -37,7 +37,9 @@ public class ControllerParticipantInscription {
 		@FXML
 		private TextField		textFieldNomEquipe;
 		@FXML
-		private TextArea		textAreaDocuments;
+		private TextArea		textAreaDocumentsCapitaine;
+		@FXML
+		private TextArea		textAreaDocumentsEquipier;
 		
 	
 	// Capitaine
@@ -122,7 +124,9 @@ public class ControllerParticipantInscription {
 			textFieldNomEquipe.textProperty().bindBidirectional( courantEquipe.nomProperty() );
 							
 			// Document
-			textAreaDocuments.textProperty().bindBidirectional( courant.documentProperty() );
+			textAreaDocumentsCapitaine.textProperty().bindBidirectional( courantCapitaine.documentsCapitaineProperty() );
+			// Document
+			textAreaDocumentsCapitaine.textProperty().bindBidirectional( courantEquipier.documentsEquipierProperty() );
 					
 			// Capitaine
 			// Nom
@@ -164,8 +168,8 @@ public class ControllerParticipantInscription {
 			// Ville
 			textFieldVilleEquipier.textProperty().bindBidirectional( courantEquipier.villeEquipierProperty() );
 								
-			// Regelement
 			// Reglement
+			// Reglement fait?
 			checkBoxReglement.selectedProperty().bindBidirectional( courantEquipe.reglementProperty() );
 			// Repas
 			textFieldRepas.textProperty().bindBidirectional( courantEquipe.repasProperty() );
