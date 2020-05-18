@@ -159,7 +159,7 @@ public class ControllerParticipantInscription {
 			datePickerBirthEquipier.getEditor().focusedProperty().addListener(new ListenerFocusValidation( courantEquipier.birthdateProperty())  );
 			UtilFX.bindBidirectional( datePickerBirthEquipier.getEditor(), courantEquipier.birthdateProperty(), new ConverterStringLocalDate() );
 			// Numero
-			textFieldNumeroEquipier.textProperty().bindBidirectional( courantEquipier.telephoneProperty(), new ConverterStringInteger()  );
+			textFieldNumeroEquipier.textProperty().bindBidirectional( courantEquipier.telephoneProperty() );
 			// Email
 			textFieldEmailEquipier.textProperty().bindBidirectional( courantEquipier.emailEquipierProperty() );
 			// Adresse

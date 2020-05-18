@@ -129,9 +129,4 @@ public class Participant {
 		return this.getNom()+' '+this.getPrenom();
 	}
 
-
-
-
-
-
 }

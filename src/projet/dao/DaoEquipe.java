@@ -107,7 +107,7 @@ public class DaoEquipe {
 			
 			stmt.executeUpdate();
 			
-			supprimerConcerner( equipe.getIdequipe() );
+			//supprimerConcerner( equipe.getIdequipe() );
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -124,7 +124,7 @@ public class DaoEquipe {
 		String				sql;
 
 		try {
-			supprimerConcerner(idEquipe);
+			//supprimerConcerner(idEquipe);
 			
 			cn = dataSource.getConnection();
 			sql = "DELETE FROM equipe WHERE idequipe = ? ";
@@ -206,7 +206,7 @@ public class DaoEquipe {
 		
 		Integer idParcours= rs.getObject( "idparcours", Integer.class );
 		if ( idParcours != null ) {
-		equipe.setParcours( daoParcours.retrouver( idParcours ) );
+			equipe.setParcours( daoParcours.retrouver( idParcours ) );
 		}
 		
 		equipe.setNom( rs.getObject( "nom_equipe", String.class ) );
@@ -214,12 +214,12 @@ public class DaoEquipe {
 		equipe.setValide(rs.getObject("valide",Boolean.class));
 		Integer idChef= rs.getObject( "idchef", Integer.class );
 		if ( idChef != null ) {
-		equipe.setChef( daoParticipant.retrouver( idChef ) );
+			equipe.setChef( daoParticipant.retrouver( idChef ) );
 		}
 		
 		Integer idCoequipier= rs.getObject( "idcoequipier", Integer.class );
 		if ( idCoequipier!= null ) {
-		equipe.setCoequipier( daoParticipant.retrouver( idCoequipier) );
+			equipe.setCoequipier( daoParticipant.retrouver( idCoequipier) );
 		}
 		
 		
