@@ -68,11 +68,6 @@ public class MenuBarAppli extends MenuBar {
 		menu =  new Menu( "Données" );;
 		this.getMenus().add(menu);
 		menuDonnees = menu;
-				
-		item = new MenuItem( "Catégories" );
-		item.setOnAction(  (e) -> managerGui.showView( EnumView.CategorieListe )  );
-		menu.getItems().add( item );
-		itemCategories = item;
 		
 		item = new MenuItem( "Comptes" );
 		item.setOnAction(  (e) -> managerGui.showView( EnumView.CompteListe )  );
