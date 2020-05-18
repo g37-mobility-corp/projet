@@ -206,7 +206,7 @@ public class DaoEquipe {
 		
 		Integer idParcours= rs.getObject( "idparcours", Integer.class );
 		if ( idParcours != null ) {
-		equipe.setParcours( daoParcours.retrouver( idParcours ) );
+			equipe.setParcours( daoParcours.retrouver( idParcours ) );
 		}
 		
 		equipe.setNom( rs.getObject( "nom_equipe", String.class ) );
@@ -214,12 +214,12 @@ public class DaoEquipe {
 		equipe.setValide(rs.getObject("valide",Boolean.class));
 		Integer idChef= rs.getObject( "idchef", Integer.class );
 		if ( idChef != null ) {
-		equipe.setChef( daoParticipant.retrouver( idChef ) );
+			equipe.setChef( daoParticipant.retrouver( idChef ) );
 		}
 		
 		Integer idCoequipier= rs.getObject( "idcoequipier", Integer.class );
 		if ( idCoequipier!= null ) {
-		equipe.setCoequipier( daoParticipant.retrouver( idCoequipier) );
+			equipe.setCoequipier( daoParticipant.retrouver( idCoequipier) );
 		}
 		
 		
