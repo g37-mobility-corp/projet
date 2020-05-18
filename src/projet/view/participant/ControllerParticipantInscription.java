@@ -176,7 +176,7 @@ public class ControllerParticipantInscription {
 			textFieldRepas.textProperty().bindBidirectional( courantEquipe.repasProperty() );
 			// Formule
 			toggleGroupFormule.selectedToggleProperty().addListener( obs -> actualiserStatutDansModele() ) ; 
-			courantEquipe.statutProperty().addListener(  obs -> actualiserStatutDansVue() );
+			courantEquipe.parcoursProperty().addListener(  obs -> actualiserStatutDansVue() );
 			actualiserStatutDansVue();			
 		}
 	

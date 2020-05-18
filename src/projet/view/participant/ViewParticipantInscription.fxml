@@ -184,8 +184,11 @@
                                     <TextField fx:id="textFieldRepas" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <HBox fx:id="toggleGroupFormule" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1">
                                        <children>
-                                          <RadioButton mnemonicParsing="false" text="Mini Bol d'air" />
-                                          <RadioButton mnemonicParsing="false" text="Bol d'air" />
+                                          <RadioButton mnemonicParsing="false" text="Mini Bol d'air">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="formule" />
+                                             </toggleGroup></RadioButton>
+                                          <RadioButton mnemonicParsing="false" text="Bol d'air" toggleGroup="$formule" />
                                        </children>
                                     </HBox>
                                  </children>
