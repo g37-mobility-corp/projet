@@ -141,7 +141,6 @@ public class MenuBarAppli extends MenuBar {
 		itemDeconnecter.setDisable(true);
 		
 		menuDonnees.setVisible(false);
-		itemCategories.setVisible(false);
 		itemComptes.setVisible(false);
 		menuEtats.setVisible(false);
 		menuTests.setVisible(false);
@@ -155,7 +154,6 @@ public class MenuBarAppli extends MenuBar {
 			}
 			if( compteActif.isInRole( Roles.ADMINISTRATEUR ) ) {
 				menuDonnees.setVisible(true);
-				itemCategories.setVisible(true);
 				itemComptes.setVisible(true);
 				menuTests.setVisible(true);
 			}
