@@ -25,6 +25,9 @@ public class DaoEquipe {
 	
 	@Inject
 	private DaoParticipant daoParticipant;
+	
+	@Inject
+	private DaoParcours daoParcours;
 
 	
 	// Actions
@@ -41,7 +44,7 @@ public class DaoEquipe {
 			sql = "INSERT INTO equipe ( idcompte, idparcours, nom_equipe, categorie, idchef, idcoequipier,valide ) VALUES( ?, ?, ?, ?, ? ,?,?)";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
 			stmt.setObject( 1, equipe.getIdcompte() );
-			stmt.setObject( 2, equipe.getIdparcours() );
+			stmt.setObject( 2, equipe.getParcours().getIdparcours() );
 			stmt.setObject( 3, equipe.getNom() );
 			stmt.setObject( 4, equipe.getCategorie() );
 			if ( equipe.getChef() == null ) {
@@ -84,7 +87,7 @@ public class DaoEquipe {
 			sql = "UPDATE equipe SET idcompte = ?, idparcours = ?, nom_equipe = ?, categorie = ?, idchef = ?, idcoequipier = ?, valide = ? WHERE idequipe =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject( 1, equipe.getIdcompte() );
-			stmt.setObject( 2, equipe.getIdparcours() );
+			stmt.setObject( 2, equipe.getParcours().getIdparcours() );
 			stmt.setObject( 3, equipe.getNom() );
 			stmt.setObject( 4, equipe.getCategorie() );
 			
@@ -200,7 +203,12 @@ public class DaoEquipe {
 		Equipe equipe = new Equipe();
 		equipe.setIdequipe( rs.getObject( "idequipe", Integer.class ) );
 		equipe.setIdcompte( rs.getObject( "idcompte", Integer.class ) );
-		equipe.setIdparcours( rs.getObject( "idparcours", Integer.class ) );
+		
+		Integer idParcours= rs.getObject( "idparcours", Integer.class );
+		if ( idParcours != null ) {
+		equipe.setParcours( daoParcours.retrouver( idParcours ) );
+		}
+		
 		equipe.setNom( rs.getObject( "nom_equipe", String.class ) );
 		equipe.setCategorie( rs.getObject( "categorie", String.class ) );
 		equipe.setValide(rs.getObject("valide",Boolean.class));

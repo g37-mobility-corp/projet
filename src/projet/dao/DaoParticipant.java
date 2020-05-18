@@ -18,13 +18,13 @@ import projet.data.Participant;
 
 public class DaoParticipant {
 
-	
+
 	// Champs
 
 	@Inject
 	private DataSource		dataSource;
 
-	
+
 	// Actions
 
 	public int inserer( Participant participant )  {
@@ -39,7 +39,7 @@ public class DaoParticipant {
 
 			// Insère le participant
 			sql = "INSERT INTO participant(nom, prenom, telephone, birthdate) VALUES ( ?, ?, ?, ? )";
-			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS ); 
+			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
 			stmt.setObject( 1, participant.getNom() );
 			stmt.setObject( 2, participant.getPrenom() );
 			stmt.setObject( 3, participant.getTelephone() );
@@ -50,17 +50,17 @@ public class DaoParticipant {
 			rs = stmt.getGeneratedKeys();
 			rs.next();
 			participant.setId( rs.getObject( 1, Integer.class) );
-	
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
 			UtilJdbc.close( stmt, cn );
 		}
-		
+
 		// Retourne l'identifiant
 		return participant.getId();
 	}
-	
+
 
 	public void modifier( Participant participant )  {
 
@@ -80,7 +80,7 @@ public class DaoParticipant {
 			stmt.setObject( 4, participant.getBirthdate() );
 			stmt.setObject( 5, participant.getId() );
 			stmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
@@ -88,7 +88,7 @@ public class DaoParticipant {
 		}
 
 	}
-	
+
 
 	public void supprimer( int idParticipant )  {
 
@@ -111,7 +111,7 @@ public class DaoParticipant {
 			UtilJdbc.close( stmt, cn );
 		}
 	}
-	
+
 
 	public Participant retrouver( int idparticipant )  {
 
@@ -139,7 +139,7 @@ public class DaoParticipant {
 			UtilJdbc.close( rs, stmt, cn );
 		}
 	}
-	
+
 
 	public List<Participant> listerTout()   {
 
@@ -170,7 +170,7 @@ public class DaoParticipant {
 
 
 	public Participant validerAuthentification( String email, String motDePasse )  {
-		
+
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
 		ResultSet 			rs 		= null;
@@ -186,7 +186,7 @@ public class DaoParticipant {
 			rs = stmt.executeQuery();
 
 			if ( rs.next() ) {
-				return construireParticipant( rs );			
+				return construireParticipant( rs );
 			} else {
 				return null;
 			}
@@ -197,10 +197,10 @@ public class DaoParticipant {
 		}
 	}
 
-	
-	
+
+
 	// Méthodes auxiliaires
-	
+
 	private Participant construireParticipant( ResultSet rs ) throws SQLException {
 		Participant participant = new Participant();
 		participant.setId( rs.getObject( "idparticipant", Integer.class ) );
@@ -210,5 +210,5 @@ public class DaoParticipant {
 		participant.setBirthdate( rs.getObject( "birthdate", LocalDate.class ) );
 		return participant;
 	}
-	
+
 }

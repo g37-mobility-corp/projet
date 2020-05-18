@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.util.converter.IntegerStringConverter;
 import jfox.javafx.view.IManagerGui;
 import projet.data.Equipe;
+import projet.data.Parcours;
 import projet.data.Participant;
 import projet.view.EnumView;
 
@@ -28,6 +29,9 @@ public class ControllerEquipeForm {
 	private ComboBox<Participant> comboBoxCoequipier;
 	@FXML 
 	private CheckBox checkBoxValide;
+	
+	@FXML
+	private ComboBox<Parcours> comboBoxParcours;
 	
 
 	
@@ -59,6 +63,10 @@ public class ControllerEquipeForm {
 		comboBoxCoequipier.valueProperty().bindBidirectional( courant.CoequipierProperty() );
 		
 		checkBoxValide.setSelected(courant.getValide());
+		
+		comboBoxParcours.setItems( modelEquipe.getParcours() );
+		comboBoxParcours.valueProperty().bindBidirectional( courant.parcoursProperty() );
+		
 		
 		
 		

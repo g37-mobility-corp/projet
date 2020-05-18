@@ -10,7 +10,9 @@ import jfox.javafx.util.UtilFX;
 import projet.commun.IMapper;
 import projet.dao.DaoEquipe;
 import projet.data.Equipe;
+import projet.data.Parcours;
 import projet.data.Participant;
+import projet.view.parcours.ModelParcours;
 import projet.view.participant.ModelParticipant;
 
 
@@ -32,6 +34,8 @@ public class ModelEquipe  {
 	private DaoEquipe			daoEquipe;
     @Inject
     private ModelParticipant modelParticipant;
+    @Inject
+    private ModelParcours modelParcours;
 	
     
 	// Initialisations
@@ -55,6 +59,9 @@ public class ModelEquipe  {
 		return modelParticipant.getListe();
 		}
 	
+	public ObservableList<Parcours> getParcours() {
+		return modelParcours.getListe();
+		}
 	
 	
 	
@@ -72,11 +79,13 @@ public class ModelEquipe  {
 	
 	public void preparerAjouter() {
 		modelParticipant.actualiserListe();
+		modelParcours.actualiserListe();
 		mapper.update( courant, new Equipe() );
 	}
 	
 	public void preparerModifier( Equipe item ) {
 		modelParticipant.actualiserListe();
+		modelParcours.actualiserListe();
 		mapper.update( courant, daoEquipe.retrouver( item.getIdequipe() ) );
 		
 	}

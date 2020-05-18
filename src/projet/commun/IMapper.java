@@ -8,6 +8,7 @@ import projet.data.Benevole;
 import projet.data.Categorie;
 import projet.data.Compte;
 import projet.data.Equipe;
+import projet.data.Parcours;
 import projet.data.Participant;
 
 
@@ -23,5 +24,7 @@ public interface IMapper {
 	Participant update( @MappingTarget Participant target, Participant source );
 	
 	Benevole update( @MappingTarget Benevole target, Benevole source );
+	
+	Parcours update( @MappingTarget Parcours target, Parcours source  );
 	
 }
