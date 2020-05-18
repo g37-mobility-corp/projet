@@ -2,6 +2,8 @@ package projet.view.equipe;
 
 import javax.inject.Inject;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -32,6 +34,8 @@ public class ControllerEquipeForm {
 	
 	@FXML
 	private ComboBox<Parcours> comboBoxParcours;
+	@FXML
+	private ComboBox<String> comboBoxCategories;
 	
 
 	
@@ -67,7 +71,9 @@ public class ControllerEquipeForm {
 		comboBoxParcours.setItems( modelEquipe.getParcours() );
 		comboBoxParcours.valueProperty().bindBidirectional( courant.parcoursProperty() );
 		
-		
+		final ObservableList<String> categories = FXCollections.observableArrayList("HOMME", "FEMME", "MIXTE", "VAE");
+		comboBoxCategories.setItems( categories );
+		comboBoxCategories.valueProperty().bindBidirectional( courant.categorieProperty() );
 		
 		
 	}
