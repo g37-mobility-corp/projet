@@ -5,11 +5,15 @@ import javax.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
 import projet.data.Equipe;
+import projet.data.Parcours;
 import projet.data.Equipe;
 import projet.view.EnumView;
 
@@ -20,7 +24,16 @@ public class ControllerEquipeListe {
 	// Composants de la vue
 
 	@FXML
-	private ListView<Equipe>		listView;
+	private TableView<Equipe>		tableView;
+	@FXML
+	private TableColumn<Equipe,String> nomCol;
+	@FXML
+	private TableColumn<Equipe,String> parcoursCol;
+	@FXML
+	private TableColumn<Equipe,String> categorieCol;
+	@FXML
+	private TableColumn<Equipe,Boolean> valideCol;
+	
 	@FXML
 	private Button				buttonModifier;
 	@FXML
@@ -39,14 +52,29 @@ public class ControllerEquipeListe {
 
 	@FXML
 	private void initialize() {
+		
 
 		// Data binding
-		listView.setItems( modelEquipe.getListe() );
 		
-		listView.setCellFactory(  UtilFX.cellFactory( item -> item.getNom() ));
+		// Defines how to fill data for each cell.
+	    // Get value from property of UserAccount. .
+		nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
+	    parcoursCol.setCellValueFactory(new PropertyValueFactory<>("parcours"));
+	    categorieCol.setCellValueFactory(new PropertyValueFactory<>("categorie"));
+	    valideCol.setCellValueFactory(new PropertyValueFactory<>("valide"));
+	    
+	    nomCol.setSortType(TableColumn.SortType.DESCENDING);
+	    // Display row data
+	    tableView.setItems( modelEquipe.getListe() );
+	    
+	    //tableView.getColumns().addAll(nomCol, parcoursCol, categorieCol, valideCol);
+	    
+	      
+		
+		//tableView.setRowFactory(  UtilFX.cellFactory( item -> item.getNom() ));
 		
 		// Configuraiton des boutons
-		listView.getSelectionModel().selectedItemProperty().addListener(
+		tableView.getSelectionModel().selectedItemProperty().addListener(
 				(obs, oldVal, newVal) -> {
 					configurerBoutons();
 		});
@@ -56,8 +84,8 @@ public class ControllerEquipeListe {
 	
 	public void refresh() {
 		modelEquipe.actualiserListe();
-		UtilFX.selectInListView( listView, modelEquipe.getCourant() );
-		listView.requestFocus();
+		//UtilFX.selectInListView( tableView, modelEquipe.getCourant() );
+		tableView.requestFocus();
 	}
 
 	
@@ -71,7 +99,7 @@ public class ControllerEquipeListe {
 
 	@FXML
 	private void doModifier() {
-		Equipe item = listView.getSelectionModel().getSelectedItem();
+		Equipe item = tableView.getSelectionModel().getSelectedItem();
 		if ( item == null ) {
 			managerGui.showDialogError( "Aucun élément n'est sélectionné dans la liste.");
 		} else {
@@ -82,7 +110,7 @@ public class ControllerEquipeListe {
 
 	@FXML
 	private void doSupprimer() {
-		Equipe item = listView.getSelectionModel().getSelectedItem();
+		Equipe item = tableView.getSelectionModel().getSelectedItem();
 		if ( item == null ) {
 			managerGui.showDialogError( "Aucun élément n'est sélectionné dans la liste.");
 		} else {
@@ -102,7 +130,7 @@ public class ControllerEquipeListe {
 	private void gererClicSurListe( MouseEvent event ) {
 		if (event.getButton().equals(MouseButton.PRIMARY)) {
 			if (event.getClickCount() == 2) {
-				if ( listView.getSelectionModel().getSelectedIndex() == -1 ) {
+				if ( tableView.getSelectionModel().getSelectedIndex() == -1 ) {
 					managerGui.showDialogError( "Aucun élément n'est sélectionné dans la liste.");
 				} else {
 					doModifier();
@@ -116,7 +144,7 @@ public class ControllerEquipeListe {
 	
 	private void configurerBoutons() {
 		
-    	if( listView.getSelectionModel().getSelectedItems().isEmpty() ) {
+    	if( tableView.getSelectionModel().getSelectedItems().isEmpty() ) {
 			buttonModifier.setDisable(true);
 			buttonSupprimer.setDisable(true);
 		} else {
