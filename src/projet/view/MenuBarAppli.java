@@ -50,7 +50,7 @@ public class MenuBarAppli extends MenuBar {
 		
 		// Menu Système
 		
-		menu =  new Menu( "Système" );;
+		menu =  new Menu( "Système" );
 		this.getMenus().add(menu);
 		
 		item = new MenuItem( "Se déconnecter" );
