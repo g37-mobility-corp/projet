@@ -18,7 +18,7 @@ public class Equipe  {
 	private final Property<Participant>	Coequipier 	= new SimpleObjectProperty<>();
 	private final StringProperty		nom			= new SimpleStringProperty();
 	private final StringProperty		categorie 	= new SimpleStringProperty();
-	private final Property<Boolean> 	valide 		= new SimpleObjectProperty<>();
+	private final Property<Boolean> 	valide 		= new SimpleObjectProperty<>(false);
 	
 	
 	// Constructeurs

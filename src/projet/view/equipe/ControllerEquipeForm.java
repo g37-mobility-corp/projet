@@ -66,6 +66,9 @@ public class ControllerEquipeForm {
 		comboBoxCoequipier.setItems( modelEquipe.getParticipants() );
 		comboBoxCoequipier.valueProperty().bindBidirectional( courant.CoequipierProperty() );
 		
+		if(courant.getValide() == null) {
+			courant.setValide(false);
+		}
 		checkBoxValide.setSelected(courant.getValide());
 		
 		comboBoxParcours.setItems( modelEquipe.getParcours() );
