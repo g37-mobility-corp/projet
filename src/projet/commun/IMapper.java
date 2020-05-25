@@ -18,7 +18,9 @@ public interface IMapper {
 	Compte update( @MappingTarget Compte target, Compte source  );
 	
 	Categorie update( @MappingTarget Categorie target, Categorie source );
-	
+
+	@Mapping( target="chef", expression="java( source.getChef() )" )
+	@Mapping( target="coequipier", expression="java( source.getCoequipier() )" )
 	Equipe update( @MappingTarget Equipe target, Equipe source );
 
 	Participant update( @MappingTarget Participant target, Participant source );
