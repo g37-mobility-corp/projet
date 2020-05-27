@@ -46,9 +46,9 @@ ALTER TABLE equipe ALTER COLUMN idequipe RESTART WITH 2;
 
 -- Participant
 
-INSERT INTO participant (idparticipant, nom, prenom,telephone,birthdate) VALUES
-  ( 1, 'GRASSET', 'Jérôme','06XXXXXXXX', {d  '2020-02-25' } ),
-  ( 2, 'BOUBY', 'Claude', '06XXXXXXXX', {d  '2020-01-12' } ),
+INSERT INTO participant (idparticipant,email, nom, prenom,telephone,birthdate) VALUES
+  (1, 'GRASSET', 'Jérôme','06XXXXXXXX', {d  '2020-02-25' } ),
+  (2,'BOUBY', 'Claude', '06XXXXXXXX', {d  '2020-01-12' } ),
   (3,'Brynn','Cailin','0571217323','19-11-04'),
   (4,'Carl','Philip','05 97 59 48 85','19-11-10'),
   (5,'James','Ali','07 67 82 02 62','19-06-03'),
