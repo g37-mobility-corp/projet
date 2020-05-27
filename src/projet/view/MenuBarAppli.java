@@ -26,7 +26,6 @@ public class MenuBarAppli extends MenuBar {
 	
 	private MenuItem itemDeconnecter;
 
-	private MenuItem itemCategories;
 	private MenuItem itemComptes;
 	
 	@Inject
@@ -120,6 +119,10 @@ public class MenuBarAppli extends MenuBar {
 
 		item = new MenuItem( "DaoParticipant" );
 		item.setOnAction(  (e) -> managerGui.showView( EnumView.TestDaoParticipant )  );
+		menu.getItems().add( item );
+
+		item = new MenuItem( "DaoBenevole" );
+		item.setOnAction(  (e) -> managerGui.showView( EnumView.TestDaoBenevole )  );
 		menu.getItems().add( item );
 
 		// Configuration initiale du menu

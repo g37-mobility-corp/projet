@@ -15,18 +15,20 @@ public class Benevole {
 	private final StringProperty		prenom		= new SimpleStringProperty();
 	private final StringProperty		telephone	= new SimpleStringProperty();
 	private final Property<LocalDate>	birthdate	= new SimpleObjectProperty<>();
+	private final Property<Poste>		idposte		= new SimpleObjectProperty<>();
 	
 	// Constructeurs
 	
 		public Benevole() {
 		}
 		
-		public Benevole( int id, String nom, String prenom,String telephone ,LocalDate birthdate) {
+		public Benevole( int id, String nom, String prenom, String telephone, LocalDate birthdate, Poste idposte) {
 			setId(id);
 			setNom(nom);
 			setPrenom(prenom);
 			setTelephone(telephone);
 			setBirthdate(birthdate);
+			setIdposte(idposte);
 		}
 
 		public final Property<Integer> idProperty() {
@@ -102,6 +104,20 @@ public class Benevole {
 		public final void setBirthdate(final LocalDate birthdate) {
 			this.birthdateProperty().setValue(birthdate);
 		}
+		
+		public final Property<Poste> idposteProperty() {
+			return this.idposte;
+		}
+		
+
+		public final Poste getIdposte() {
+			return this.idposteProperty().getValue();
+		}
+		
+
+		public final void setIdposte(final Poste idposte) {
+			this.idposteProperty().setValue(idposte);
+		}
 
 		@Override
 		public int hashCode() {
@@ -122,9 +138,6 @@ public class Benevole {
 		
 		public String toString() {
 			return this.getNom()+' '+this.getPrenom();
-		}
-		
-		
-		
+		}		
 
 }

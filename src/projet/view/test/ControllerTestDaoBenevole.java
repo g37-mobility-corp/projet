@@ -22,7 +22,7 @@ public class ControllerTestDaoBenevole {
 	@Inject
 	private DaoBenevole			dao;
 	
-	private final int		id = 4;	
+	private final int		id = 1;	
 	
 	
 	// Actions

@@ -24,6 +24,9 @@ public class DaoBenevole {
 	@Inject
 	private DataSource		dataSource;
 
+	@Inject
+	private DaoPoste daoPoste;
+
 	
 	// Actions
 
@@ -38,13 +41,14 @@ public class DaoBenevole {
 			cn = dataSource.getConnection();
 
 			// Insère le Benevole
-			sql = "INSERT INTO participant(idbenevole, nom, prenom, telephone, birthdate) VALUES ( ?, ?, ?, ?, ? )";
+			sql = "INSERT INTO benevole(idbenevole, nom, prenom, telephone, birthdate, idposte) VALUES ( ?, ?, ?, ?, ?, ? )";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS ); 
 			stmt.setObject( 1, benevole.getId() ); 
 			stmt.setObject( 2, benevole.getNom() );
 			stmt.setObject( 3, benevole.getPrenom() );
 			stmt.setObject( 4, benevole.getTelephone() );
 			stmt.setObject( 5, benevole.getBirthdate() );
+			stmt.setObject( 6, benevole.getIdposte() );
 			stmt.executeUpdate();
 
 			// Récupère l'identifiant généré par le SGBD
@@ -72,14 +76,15 @@ public class DaoBenevole {
 		try {
 			cn = dataSource.getConnection();
 
-			// Modifie le participant
-			sql = "UPDATE benevole SET nom = ?, prenom = ?, telephone = ?, birthdate = ? WHERE idbenevole =  ?";
+			// Modifie le benevole
+			sql = "UPDATE benevole SET nom = ?, prenom = ?, telephone = ?, birthdate = ?, idposte = ? WHERE idbenevole =  ?";
 			stmt = cn.prepareStatement( sql ); 
 			stmt.setObject( 1, benevole.getNom() );
 			stmt.setObject( 2, benevole.getPrenom() );
 			stmt.setObject( 3, benevole.getTelephone() );
 			stmt.setObject( 4, benevole.getBirthdate() );
-			stmt.setObject( 5, benevole.getId() );
+			stmt.setObject( 5, benevole.getIdposte().getIdposte() );
+			stmt.setObject( 6, benevole.getId() );
 			stmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -100,7 +105,7 @@ public class DaoBenevole {
 		try {
 			cn = dataSource.getConnection();
 
-			// Supprime le participant
+			// Supprime le benevole
 			sql = "DELETE FROM benevole WHERE idbenevole = ? ";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject( 1, idbenevole );
@@ -152,15 +157,15 @@ public class DaoBenevole {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "SELECT * FROM participant ORDER BY nom";
+			sql = "SELECT * FROM benevole ORDER BY nom";
 			stmt = cn.prepareStatement( sql );
 			rs = stmt.executeQuery();
 
-			List<Benevole> participants = new ArrayList<>();
+			List<Benevole> benevoles = new ArrayList<>();
 			while ( rs.next() ) {
-				participants.add( construireBenevole(rs) );
+				benevoles.add( construireBenevole(rs) );
 			}
-			return participants;
+			return benevoles;
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -180,7 +185,7 @@ public class DaoBenevole {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "SELECT * FROM participant WHERE email = ? AND motdepasse = ?";
+			sql = "SELECT * FROM benevole WHERE email = ? AND motdepasse = ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject( 1, email );
 			stmt.setObject( 2, motDePasse );
@@ -203,13 +208,17 @@ public class DaoBenevole {
 	// Méthodes auxiliaires
 	
 	private Benevole construireBenevole( ResultSet rs ) throws SQLException {
-		Benevole participant = new Benevole();
-		participant.setId( rs.getObject( "idbenevole", Integer.class ) );
-		participant.setNom( rs.getObject( "nom", String.class ) );
-		participant.setPrenom( rs.getObject( "prenom", String.class ) );
-		participant.setTelephone( rs.getObject( "telephone", String.class ) );
-		participant.setBirthdate( rs.getObject( "birthdate", LocalDate.class ) );
-		return participant;
+		Benevole benevole = new Benevole();
+		benevole.setId( rs.getObject( "idbenevole", Integer.class ) );
+		benevole.setNom( rs.getObject( "nom", String.class ) );
+		benevole.setPrenom( rs.getObject( "prenom", String.class ) );
+		benevole.setTelephone( rs.getObject( "telephone", String.class ) );
+		benevole.setBirthdate( rs.getObject( "birthdate", LocalDate.class ) );
+		Integer idPoste = rs.getObject( "idposte", Integer.class );
+		if ( idPoste != null ) {
+			benevole.setIdposte( daoPoste.retrouver( idPoste ) );
+		}
+		return benevole;
 	}
 	
 }

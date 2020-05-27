@@ -74,14 +74,14 @@ INSERT INTO poste (idposte, nom, lieu, fonction ) VALUES
 
 ALTER TABLE poste ALTER COLUMN idposte RESTART WITH 4;
 
--- -- Benevole
+-- Benevole
 
--- INSERT INTO benevole (idbenevole, idposte) VALUES
---   ( 1, 1 ),
---   ( 1, 2 ),
---   ( 1, 3 ),
---   ( 2, 1 ),
---   ( 2, 2 );
+INSERT INTO benevole (idbenevole, idposte, nom, prenom, birthdate) VALUES
+--  ( 1, 1, 'test', 'test', {d  '2020-02-25' } ),
+--  ( 1, 2, 'test2', 'test', {d  '2020-02-25' } ),
+  ( 1, 3, 'test3', 'test', {d  '2020-02-25' } ),
+--  ( 2, 1, 'test4', 'test', {d  '2020-02-25' } ),
+  ( 2, 2, 'test4', 'test', {d  '2020-02-25' } );
 
 
 -- -- Media
