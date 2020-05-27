@@ -25,6 +25,7 @@ public interface IMapper {
 
 	Participant update( @MappingTarget Participant target, Participant source );
 	
+	//@Mapping( target="poste", expression="java( source.getPoste() )" )
 	Benevole update( @MappingTarget Benevole target, Benevole source );
 	
 	Parcours update( @MappingTarget Parcours target, Parcours source  );
