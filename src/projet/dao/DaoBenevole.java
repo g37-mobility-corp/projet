@@ -41,7 +41,7 @@ public class DaoBenevole {
 			cn = dataSource.getConnection();
 
 			// Insère le Benevole
-			sql = "INSERT INTO benevole(idbenevole, nom, prenom, telephone, birthdate, idposte) VALUES ( ?, ?, ?, ?, ?, ? )";
+			sql = "INSERT INTO benevole(idbenevole, nom, prenom, telephone, birthdate, idposte, adresse, ville, codepostale, permis, plaqueimma, brevetsecourisme) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS ); 
 			stmt.setObject( 1, benevole.getId() ); 
 			stmt.setObject( 2, benevole.getNom() );
@@ -49,6 +49,12 @@ public class DaoBenevole {
 			stmt.setObject( 4, benevole.getTelephone() );
 			stmt.setObject( 5, benevole.getBirthdate() );
 			stmt.setObject( 6, benevole.getIdposte() );
+			stmt.setObject( 7, benevole.getAdresse() );
+			stmt.setObject( 8, benevole.getVille() );
+			stmt.setObject( 9, benevole.getCodepostale() );
+			stmt.setObject( 10, benevole.getPermis() );
+			stmt.setObject( 11, benevole.getPlaqueimma() );
+			stmt.setObject( 12, benevole.getBrevetsecourisme() );
 			stmt.executeUpdate();
 
 			// Récupère l'identifiant généré par le SGBD
@@ -77,14 +83,22 @@ public class DaoBenevole {
 			cn = dataSource.getConnection();
 
 			// Modifie le benevole
-			sql = "UPDATE benevole SET nom = ?, prenom = ?, telephone = ?, birthdate = ?, idposte = ? WHERE idbenevole =  ?";
+			sql = "UPDATE benevole SET nom = ?, prenom = ?, telephone = ?, birthdate = ?, idposte = ?, "
+					+ "permis = ?, plaqueimma = ?, brevetsecourisme = ?, adresse = ?, "
+					+ "ville = ?, codepostale = ? WHERE idbenevole =  ?";
 			stmt = cn.prepareStatement( sql ); 
 			stmt.setObject( 1, benevole.getNom() );
 			stmt.setObject( 2, benevole.getPrenom() );
 			stmt.setObject( 3, benevole.getTelephone() );
 			stmt.setObject( 4, benevole.getBirthdate() );
 			stmt.setObject( 5, benevole.getIdposte().getIdposte() );
-			stmt.setObject( 6, benevole.getId() );
+			stmt.setObject( 6, benevole.getPermis() );
+			stmt.setObject( 7, benevole.getPlaqueimma() );
+			stmt.setObject( 8, benevole.getBrevetsecourisme() );
+			stmt.setObject( 9, benevole.getAdresse() );
+			stmt.setObject( 10, benevole.getVille() );
+			stmt.setObject( 11, benevole.getCodepostale() );
+			stmt.setObject( 12, benevole.getId() );
 			stmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -218,6 +232,12 @@ public class DaoBenevole {
 		if ( idPoste != null ) {
 			benevole.setIdposte( daoPoste.retrouver( idPoste ) );
 		}
+		benevole.setAdresse( rs.getObject( "adresse", String.class ) );
+		benevole.setVille( rs.getObject( "ville", String.class ) );
+		benevole.setCodepostale( rs.getObject( "codepostale", String.class ) );
+		benevole.setPermis( rs.getObject( "permis", Boolean.class ) );
+		benevole.setPlaqueimma( rs.getObject( "plaqueimma", String.class ) );
+		benevole.setBrevetsecourisme( rs.getObject( "brevetsecourisme", Boolean.class ) );
 		return benevole;
 	}
 	
