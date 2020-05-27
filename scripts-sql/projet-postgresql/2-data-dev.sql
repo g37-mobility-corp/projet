@@ -28,6 +28,7 @@ INSERT INTO role (idcompte, role) VALUES
   ( 1, 'UTILISATEUR' ),
   ( 2, 'UTILISATEUR' );
 
+
 -- Parcours
 
 INSERT INTO parcours (idparcours, nom, distance, infos ) VALUES
@@ -82,6 +83,8 @@ INSERT INTO benevole (idbenevole, idposte, nom, prenom, birthdate) VALUES
   ( 1, 3, 'test3', 'test', {d  '2020-02-25' } ),
 --  ( 2, 1, 'test4', 'test', {d  '2020-02-25' } ),
   ( 2, 2, 'test4', 'test', {d  '2020-02-25' } );
+
+ALTER TABLE benevole ALTER COLUMN idbenevole RESTART WITH 3;
 
 
 -- -- Media
