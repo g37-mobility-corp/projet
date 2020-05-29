@@ -41,7 +41,7 @@ public class DaoBenevole {
 			cn = dataSource.getConnection();
 
 			// Insère le Benevole
-			sql = "INSERT INTO benevole(idbenevole, nom, prenom, telephone, birthdate, idposte, adresse, ville, codepostale, permis, plaqueimma, brevetsecourisme) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
+			sql = "INSERT INTO benevole(idbenevole, nom, prenom, telephone, birthdate, idposte, adresse, ville, codepostale, permisConduire, plaqueImma, brevetSecourisme) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS ); 
 			stmt.setObject( 1, benevole.getId() ); 
 			stmt.setObject( 2, benevole.getNom() );
@@ -51,10 +51,10 @@ public class DaoBenevole {
 			stmt.setObject( 6, benevole.getIdposte() );
 			stmt.setObject( 7, benevole.getAdresse() );
 			stmt.setObject( 8, benevole.getVille() );
-			stmt.setObject( 9, benevole.getCodepostale() );
-			stmt.setObject( 10, benevole.getPermis() );
-			stmt.setObject( 11, benevole.getPlaqueimma() );
-			stmt.setObject( 12, benevole.getBrevetsecourisme() );
+			stmt.setObject( 9, benevole.getCodePostale() );
+			stmt.setObject( 10, benevole.getPermisConduire() );
+			stmt.setObject( 11, benevole.getPlaqueImma() );
+			stmt.setObject( 12, benevole.getBrevetSecourisme() );
 			stmt.executeUpdate();
 
 			// Récupère l'identifiant généré par le SGBD
@@ -84,20 +84,20 @@ public class DaoBenevole {
 
 			// Modifie le benevole
 			sql = "UPDATE benevole SET nom = ?, prenom = ?, telephone = ?, birthdate = ?, idposte = ?, "
-					+ "permis = ?, plaqueimma = ?, brevetsecourisme = ?, adresse = ?, "
-					+ "ville = ?, codepostale = ? WHERE idbenevole =  ?";
+					+ "permisConduire = ?, plaqueImma = ?, brevetSecourisme = ?, adresse = ?, "
+					+ "ville = ?, codePostale = ? WHERE idbenevole =  ?";
 			stmt = cn.prepareStatement( sql ); 
 			stmt.setObject( 1, benevole.getNom() );
 			stmt.setObject( 2, benevole.getPrenom() );
 			stmt.setObject( 3, benevole.getTelephone() );
 			stmt.setObject( 4, benevole.getBirthdate() );
 			stmt.setObject( 5, benevole.getIdposte().getIdposte() );
-			stmt.setObject( 6, benevole.getPermis() );
-			stmt.setObject( 7, benevole.getPlaqueimma() );
-			stmt.setObject( 8, benevole.getBrevetsecourisme() );
+			stmt.setObject( 6, benevole.getPermisConduire() );
+			stmt.setObject( 7, benevole.getPlaqueImma() );
+			stmt.setObject( 8, benevole.getBrevetSecourisme() );
 			stmt.setObject( 9, benevole.getAdresse() );
 			stmt.setObject( 10, benevole.getVille() );
-			stmt.setObject( 11, benevole.getCodepostale() );
+			stmt.setObject( 11, benevole.getCodePostale() );
 			stmt.setObject( 12, benevole.getId() );
 			stmt.executeUpdate();
 			
@@ -234,10 +234,10 @@ public class DaoBenevole {
 		}
 		benevole.setAdresse( rs.getObject( "adresse", String.class ) );
 		benevole.setVille( rs.getObject( "ville", String.class ) );
-		benevole.setCodepostale( rs.getObject( "codepostale", String.class ) );
-		benevole.setPermis( rs.getObject( "permis", Boolean.class ) );
-		benevole.setPlaqueimma( rs.getObject( "plaqueimma", String.class ) );
-		benevole.setBrevetsecourisme( rs.getObject( "brevetsecourisme", Boolean.class ) );
+		benevole.setCodePostale( rs.getObject( "codePostale", String.class ) );
+		benevole.setPermisConduire( rs.getObject( "permisConduire", Boolean.class ) );
+		benevole.setPlaqueImma( rs.getObject( "plaqueImma", String.class ) );
+		benevole.setBrevetSecourisme( rs.getObject( "brevetSecourisme", Boolean.class ) );
 		return benevole;
 	}
 	

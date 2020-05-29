@@ -22,7 +22,9 @@ import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
 import projet.data.Categorie;
 import projet.data.Equipe;
+import projet.data.Parcours;
 import projet.data.Participant;
+import projet.view.EnumView;
 import projet.view.compte.ModelCompte;
 import projet.view.equipe.ModelEquipe;
 
@@ -83,7 +85,7 @@ public class ControllerParticipantInscription {
 		@FXML
 		private CheckBox		checkBoxReglement;
 		@FXML
-		private ToggleGroup		toggleGroupFormule;
+		private ComboBox <Parcours>		comboBoxParcours;
 		@FXML
 		private TextField		textFieldRepas;
 		
@@ -124,10 +126,10 @@ public class ControllerParticipantInscription {
 			// Titre
 			textFieldNomEquipe.textProperty().bindBidirectional( courantEquipe.nomProperty() );
 							
-			// Document
+			/*// Document
 			textAreaDocumentsCapitaine.textProperty().bindBidirectional( courantCapitaine.documentsCapitaineProperty() );
 			// Document
-			textAreaDocumentsCapitaine.textProperty().bindBidirectional( courantEquipier.documentsEquipierProperty() );
+			textAreaDocumentsCapitaine.textProperty().bindBidirectional( courantEquipier.documentsEquipierProperty() );*/
 					
 			// Capitaine
 			// Nom
@@ -141,13 +143,13 @@ public class ControllerParticipantInscription {
 			// Numero
 			textFieldNumeroCapitaine.textProperty().bindBidirectional( courantCapitaine.telephoneProperty());
 			// Email
-			textFieldEmailCapitaine.textProperty().bindBidirectional( courantCapitaine.emailCapitaineProperty() );
+			textFieldEmailCapitaine.textProperty().bindBidirectional( courantCapitaine.emailProperty() );
 			// Adresse
-			textFieldAdresseCapitaine.textProperty().bindBidirectional( courantCapitaine.adresseCapitaineProperty() );
+			textFieldAdresseCapitaine.textProperty().bindBidirectional( courantCapitaine.adresseProperty() );
 			// Code Postale
-			textFieldCodePostaleCapitaine.textProperty().bindBidirectional( courantCapitaine.codePostaleCapitaineProperty(), new ConverterStringInteger()  );
+			textFieldCodePostaleCapitaine.textProperty().bindBidirectional( courantCapitaine.codePostaleProperty());
 			// Ville
-			textFieldVilleCapitaine.textProperty().bindBidirectional( courantCapitaine.villeCapitaineProperty() );
+			textFieldVilleCapitaine.textProperty().bindBidirectional( courantCapitaine.villeProperty() );
 					
 			// Equipier
 			// Nom
@@ -161,41 +163,37 @@ public class ControllerParticipantInscription {
 			// Numero
 			textFieldNumeroEquipier.textProperty().bindBidirectional( courantEquipier.telephoneProperty() );
 			// Email
-			textFieldEmailEquipier.textProperty().bindBidirectional( courantEquipier.emailEquipierProperty() );
+			textFieldEmailEquipier.textProperty().bindBidirectional( courantEquipier.emailProperty() );
 			// Adresse
-			textFieldAdresseEquipier.textProperty().bindBidirectional( courantEquipier.adresseEquipierProperty() );
+			textFieldAdresseEquipier.textProperty().bindBidirectional( courantEquipier.adresseProperty() );
 			// Code Postale
-			textFieldCodePostaleEquipier.textProperty().bindBidirectional( courantEquipier.codePostaleEquipierProperty(), new ConverterStringInteger()  );
+			textFieldCodePostaleEquipier.textProperty().bindBidirectional( courantEquipier.codePostaleProperty());
 			// Ville
-			textFieldVilleEquipier.textProperty().bindBidirectional( courantEquipier.villeEquipierProperty() );
+			textFieldVilleEquipier.textProperty().bindBidirectional( courantEquipier.villeProperty() );
 								
 			// Reglement
 			// Reglement fait?
-			checkBoxReglement.selectedProperty().bindBidirectional( courantEquipe.reglementProperty() );
+			checkBoxReglement.selectedProperty().bindBidirectional( courantEquipier.reglementProperty() );
 			// Repas
-			textFieldRepas.textProperty().bindBidirectional( courantEquipe.repasProperty() );
-			// Formule
-			toggleGroupFormule.selectedToggleProperty().addListener( obs -> actualiserStatutDansModele() ) ; 
-			courantEquipe.parcoursProperty().addListener(  obs -> actualiserStatutDansVue() );
-			actualiserStatutDansVue();			
-		}
-	
-		// Méthodes auxiliaires
-		
-		private void actualiserFormuleDansModele() {
-			// Modifie le statut en fonction du bouton radio sélectionné 
-			Toggle bouton = toggleGroupFormule.getSelectedToggle();
-			int formule = toggleGroupFormule.getToggles().indexOf( bouton  );
-			modelParticipant.getCourant().setStatut( formule );
+			textFieldRepas.textProperty().bindBidirectional( courantCapitaine.repasProperty(), new ConverterStringInteger()  );
+			// Parcours
+			comboBoxParcours.setItems( modelEquipe.getParcours() );
+	        comboBoxParcours.valueProperty().bindBidirectional( courantEquipe.parcoursProperty() );
 		}
 		
-		private void actualiserFormuleDansVue() {
-			// Sélectionne le bouton radio correspondant au statut
-			int formule = modelParticipant.getCourant().getStatut();
-			Toggle bouton = toggleGroupFormule.getToggles().get( formule );
-			toggleGroupFormule.selectToggle(  bouton );
+		// Actions
+		
+		@FXML
+		private void doAnnuler() {
+			managerGui.showView( EnumView.BenevoleListe );
 		}
 		
+		@FXML
+		private void doValider() {
+			modelEquipe.validerMiseAJour();
+			modelParticipant.validerMiseAJour();
+			managerGui.showView( EnumView.BenevoleListe );
+		}
 		
 		
 }

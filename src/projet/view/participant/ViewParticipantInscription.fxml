@@ -31,7 +31,7 @@
    <children>
       <Label alignment="CENTER" layoutX="20.0" layoutY="7.0" styleClass="titre-vue" text="Inscription Participants" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="-20.0" AnchorPane.topAnchor="7.0">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font name="System Bold Italic" size="36.0" />
          </font></Label>
       <HBox alignment="CENTER" fillHeight="false" layoutX="-81.0" layoutY="52.0" prefHeight="89.0" prefWidth="620.0" AnchorPane.leftAnchor="-81.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="52.0">
          <children>
@@ -177,18 +177,14 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Label text="Formule :" />
+                                    <Label text="Parcours :" />
                                     <Label text="Plateau Repas :" GridPane.rowIndex="1" />
                                     <Label text="Réglement : " GridPane.rowIndex="2" />
                                     <CheckBox fx:id="checkBoxReglement" alignment="CENTER" mnemonicParsing="false" text="Payé ?" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     <TextField fx:id="textFieldRepas" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <HBox fx:id="toggleGroupFormule" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1">
                                        <children>
-                                          <RadioButton mnemonicParsing="false" text="Mini Bol d'air">
-                                             <toggleGroup>
-                                                <ToggleGroup fx:id="formule" />
-                                             </toggleGroup></RadioButton>
-                                          <RadioButton mnemonicParsing="false" text="Bol d'air" toggleGroup="$formule" />
+                                          <ComboBox fx:id="comboBoxParcours" prefWidth="150.0" />
                                        </children>
                                     </HBox>
                                  </children>

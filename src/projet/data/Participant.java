@@ -18,6 +18,12 @@ public class Participant {
 	private final StringProperty		nom	 		= new SimpleStringProperty();
 	private final StringProperty		prenom		= new SimpleStringProperty();
 	private final StringProperty		telephone	= new SimpleStringProperty();
+	private final StringProperty		email		= new SimpleStringProperty();
+	private final StringProperty		adresse		= new SimpleStringProperty();
+	private final StringProperty		ville		= new SimpleStringProperty();
+	private final StringProperty		codePostale		= new SimpleStringProperty();
+	private final Property<Integer>		repas		=new SimpleObjectProperty<>(); 
+	private final Property<Boolean>		reglement		=new SimpleObjectProperty<>(); 
 	private final Property<LocalDate>	birthdate	= new SimpleObjectProperty<>();
 
 
@@ -26,11 +32,17 @@ public class Participant {
 	public Participant() {
 	}
 
-	public Participant( int id, String nom, String prenom, String telephone, LocalDate birthdate) {
+	public Participant( int id, String nom, String prenom, String telephone, String email, String adresse, String ville, String codePostale, int repas, boolean reglement, LocalDate birthdate) {
 		setId(id);
 		setNom(nom);
 		setPrenom(prenom);
 		setTelephone(telephone);
+		setEmail(email);
+		setAdresse(adresse);
+		setVille(ville);
+		setCodePostale(codePostale);
+		setRepas(repas);
+		setReglement(reglement);
 		setBirthdate(birthdate);
 	}
 
@@ -92,6 +104,8 @@ public class Participant {
 	public final void setTelephone(final String telephone) {
 		this.telephoneProperty().set(telephone);
 	}
+	
+	
 
 
 	public final Property<LocalDate> birthdateProperty() {
@@ -128,5 +142,95 @@ public class Participant {
 	public String toString() {
 		return this.getNom()+' '+this.getPrenom();
 	}
+
+	public final StringProperty emailProperty() {
+		return this.email;
+	}
+	
+
+	public final String getEmail() {
+		return this.emailProperty().get();
+	}
+	
+
+	public final void setEmail(final String email) {
+		this.emailProperty().set(email);
+	}
+	
+
+	public final StringProperty adresseProperty() {
+		return this.adresse;
+	}
+	
+
+	public final String getAdresse() {
+		return this.adresseProperty().get();
+	}
+	
+
+	public final void setAdresse(final String adresse) {
+		this.adresseProperty().set(adresse);
+	}
+	
+
+	public final StringProperty villeProperty() {
+		return this.ville;
+	}
+	
+
+	public final String getVille() {
+		return this.villeProperty().get();
+	}
+	
+
+	public final void setVille(final String ville) {
+		this.villeProperty().set(ville);
+	}
+	
+
+	public final StringProperty codePostaleProperty() {
+		return this.codePostale;
+	}
+	
+
+	public final String getCodePostale() {
+		return this.codePostaleProperty().get();
+	}
+	
+
+	public final void setCodePostale(final String codePostale) {
+		this.codePostaleProperty().set(codePostale);
+	}
+	
+
+	public final Property<Integer> repasProperty() {
+		return this.repas;
+	}
+	
+
+	public final Integer getRepas() {
+		return this.repasProperty().getValue();
+	}
+	
+
+	public final void setRepas(final Integer repas) {
+		this.repasProperty().setValue(repas);
+	}
+	
+
+	public final Property<Boolean> reglementProperty() {
+		return this.reglement;
+	}
+	
+
+	public final Boolean getReglement() {
+		return this.reglementProperty().getValue();
+	}
+	
+
+	public final void setReglement(final Boolean reglement) {
+		this.reglementProperty().setValue(reglement);
+	}
+	
 
 }

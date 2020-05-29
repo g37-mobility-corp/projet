@@ -27,7 +27,7 @@ public class ModelPoste  {
     @Inject
 	private IMapper			mapper;
     @Inject
-	private DaoPoste			daoPoste;
+	private DaoPoste		daoPoste;
 	
     
 	// Initialisations

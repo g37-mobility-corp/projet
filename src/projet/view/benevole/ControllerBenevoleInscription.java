@@ -17,7 +17,10 @@ import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
 import projet.data.Categorie;
 import projet.data.Participant;
+import projet.data.Poste;
+import projet.view.EnumView;
 import projet.view.participant.ModelParticipant;
+import projet.view.poste.ModelPoste;
 import projet.data.Benevole;
 
 public class ControllerBenevoleInscription {
@@ -51,7 +54,7 @@ public class ControllerBenevoleInscription {
 		// Réglement
 			
 			@FXML
-			private ComboBox<poste>	comboBoxPoste;
+			private ComboBox<Poste>	comboBoxPoste;
 			@FXML
 			private CheckBox		checkBoxPermisConduire;
 			@FXML
@@ -65,6 +68,8 @@ public class ControllerBenevoleInscription {
 			private IManagerGui		managerGui;
 			@Inject
 			private ModelBenevole	modelBenevole;
+			@Inject
+			private ModelPoste	modelPoste;
 			
 			@FXML
 			private void initialize() {
@@ -87,20 +92,19 @@ public class ControllerBenevoleInscription {
 				// Numero
 				textFieldNumeroBenevole.textProperty().bindBidirectional( courant.telephoneProperty());
 				// Email
-				textFieldEmailBenevole.textProperty().bindBidirectional( courant.emailBenevoleProperty() );
+				textFieldEmailBenevole.textProperty().bindBidirectional( courant.emailProperty() );
 				// Adresse
-				textFieldAdresseBenevole.textProperty().bindBidirectional( courant.adresseBenevoleProperty() );
+				textFieldAdresseBenevole.textProperty().bindBidirectional( courant.adresseProperty() );
 				// Code Postale
-				textFieldCodePostaleBenevole.textProperty().bindBidirectional( courant.codePostaleBenevoleProperty(), new ConverterStringInteger()  );
+				textFieldCodePostaleBenevole.textProperty().bindBidirectional( courant.codePostaleProperty());
 				// Ville
-				textFieldVilleBenevole.textProperty().bindBidirectional( courant.villeBenevoleProperty() );
+				textFieldVilleBenevole.textProperty().bindBidirectional( courant.villeProperty() );
 				
 			// Réglement
 				
 				// Poste
-				//final ObservableList<String> postes = FXCollections.observableArrayList("HOMME", "FEMME", "MIXTE", "VAE");
-				comboBoxPoste.setItems(postes);
-				comboBoxPoste.valueProperty().bindBidirectional( courant.posteProperty() );
+				comboBoxPoste.setItems(modelPoste.getListe());
+				comboBoxPoste.valueProperty().bindBidirectional( courant.idposteProperty() );
 				//Permis de conduire
 				checkBoxPermisConduire.selectedProperty().bindBidirectional( courant.permisConduireProperty());
 				//Numéro de plaque
@@ -109,5 +113,18 @@ public class ControllerBenevoleInscription {
 				checkBoxBrevetSecourisme.selectedProperty().bindBidirectional( courant.brevetSecourismeProperty());
 				
 			}
-
+			
+			// Actions
+			
+			@FXML
+			private void doAnnuler() {
+				managerGui.showView( EnumView.BenevoleListe );
+			}
+			
+			@FXML
+			private void doValider() {
+				modelBenevole.validerMiseAJour();
+				managerGui.showView( EnumView.BenevoleListe );
+			}
+			
 }

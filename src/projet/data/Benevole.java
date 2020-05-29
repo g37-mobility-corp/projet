@@ -15,22 +15,23 @@ public class Benevole {
 	private final StringProperty		nom	 		= new SimpleStringProperty();
 	private final StringProperty		prenom		= new SimpleStringProperty();
 	private final StringProperty		telephone	= new SimpleStringProperty();
+	private final StringProperty		email		= new SimpleStringProperty();
 	private final StringProperty		adresse		= new SimpleStringProperty();
 	private final StringProperty		ville		= new SimpleStringProperty();
-	private final StringProperty		codepostale	= new SimpleStringProperty();
+	private final StringProperty		codePostale	= new SimpleStringProperty();
 	private final Property<LocalDate>	birthdate	= new SimpleObjectProperty<>();
-	private final Property<Boolean>		permis		= new SimpleObjectProperty<>();
-	private final StringProperty		plaqueimma	= new SimpleStringProperty();
-	private final Property<Boolean>		brevetsecourisme	= new SimpleObjectProperty<>();
+	private final Property<Boolean>		permisConduire		= new SimpleObjectProperty<>();
+	private final StringProperty		plaqueImma	= new SimpleStringProperty();
+	private final Property<Boolean>		brevetSecourisme	= new SimpleObjectProperty<>();
 	
 	// Constructeurs
 	
 		public Benevole() {
 		}
 		
-		public Benevole( int id, Poste idposte, String nom, String prenom, String telephone, String adresse, 
-							String ville, String codepostale, LocalDate birthdate, Boolean permis, 
-							String plaqueimma, Boolean brevetsecourisme) {
+		public Benevole( int id, Poste idposte, String nom, String prenom, String telephone, String email, String adresse, 
+							String ville, String codepostale, LocalDate birthdate, Boolean permisConduire, 
+							String plaqueImma, Boolean brevetSecourisme) {
 			setId(id);
 			setIdposte(idposte);
 			setNom(nom);
@@ -38,11 +39,11 @@ public class Benevole {
 			setTelephone(telephone);
 			setAdresse(adresse);
 			setVille(ville);
-			setCodepostale(codepostale);
+			setCodePostale(codepostale);
 			setBirthdate(birthdate);
-			setPermis(permis);
-			setPlaqueimma(plaqueimma);
-			setBrevetsecourisme(brevetsecourisme);
+			setPermisConduire(permisConduire);
+			setPlaqueImma(plaqueImma);
+			setBrevetSecourisme(brevetSecourisme);
 		}
 
 		public final Property<Integer> idProperty() {
@@ -184,64 +185,78 @@ public class Benevole {
 		}
 		
 
-		public final StringProperty codepostaleProperty() {
-			return this.codepostale;
+		public final StringProperty emailProperty() {
+			return this.email;
 		}
 		
 
-		public final String getCodepostale() {
-			return this.codepostaleProperty().get();
+		public final String getEmail() {
+			return this.emailProperty().get();
 		}
 		
 
-		public final void setCodepostale(final String codepostale) {
-			this.codepostaleProperty().set(codepostale);
+		public final void setEmail(final String email) {
+			this.emailProperty().set(email);
+		}
+
+		public final StringProperty codePostaleProperty() {
+			return this.codePostale;
 		}
 		
 
-		public final Property<Boolean> permisProperty() {
-			return this.permis;
+		public final String getCodePostale() {
+			return this.codePostaleProperty().get();
 		}
 		
 
-		public final Boolean getPermis() {
-			return this.permisProperty().getValue();
+		public final void setCodePostale(final String codePostale) {
+			this.codePostaleProperty().set(codePostale);
+		}
+
+		public final Property<Boolean> permisConduireProperty() {
+			return this.permisConduire;
 		}
 		
 
-		public final void setPermis(final Boolean permis) {
-			this.permisProperty().setValue(permis);
+		public final Boolean getPermisConduire() {
+			return this.permisConduireProperty().getValue();
 		}
 		
 
-		public final StringProperty plaqueimmaProperty() {
-			return this.plaqueimma;
+		public final void setPermisConduire(final Boolean permisConduire) {
+			this.permisConduireProperty().setValue(permisConduire);
 		}
 		
 
-		public final String getPlaqueimma() {
-			return this.plaqueimmaProperty().get();
+		public final StringProperty plaqueImmaProperty() {
+			return this.plaqueImma;
 		}
 		
 
-		public final void setPlaqueimma(final String plaqueimma) {
-			this.plaqueimmaProperty().set(plaqueimma);
+		public final String getPlaqueImma() {
+			return this.plaqueImmaProperty().get();
 		}
 		
 
-		public final Property<Boolean> brevetsecourismeProperty() {
-			return this.brevetsecourisme;
+		public final void setPlaqueImma(final String plaqueImma) {
+			this.plaqueImmaProperty().set(plaqueImma);
 		}
 		
 
-		public final Boolean getBrevetsecourisme() {
-			return this.brevetsecourismeProperty().getValue();
+		public final Property<Boolean> brevetSecourismeProperty() {
+			return this.brevetSecourisme;
 		}
 		
 
-		public final void setBrevetsecourisme(final Boolean brevetsecourisme) {
-			this.brevetsecourismeProperty().setValue(brevetsecourisme);
+		public final Boolean getBrevetSecourisme() {
+			return this.brevetSecourismeProperty().getValue();
 		}
+		
+
+		public final void setBrevetSecourisme(final Boolean brevetSecourisme) {
+			this.brevetSecourismeProperty().setValue(brevetSecourisme);
+		}
+		
 				
 
 }

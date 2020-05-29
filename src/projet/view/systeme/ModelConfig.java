@@ -15,7 +15,7 @@ public class ModelConfig {
 	
 	// Champs
 	
-	private File		dossierSchemas;
+	private File		dossierFichier;
 	
 	
 	// Initialisations
@@ -39,17 +39,17 @@ public class ModelConfig {
 		}
 		
 		
-		String valeur = props.getProperty( "dossier.schemas" );
+		String valeur = props.getProperty( "dossier.fichier" );
 		if ( valeur == null ) {
 			throw new ExceptionAnomaly( 
 				"Paramètre absent dans le fichier de configuration :\n"
-				+ "dossier.schemas" );
+				+ "dossier.fichier" );
 		}
-		dossierSchemas = new File( valeur );
-		if ( ! dossierSchemas.exists() ) {
+		dossierFichier = new File( valeur );
+		if ( ! dossierFichier.exists() ) {
 			throw new ExceptionAnomaly( 
-					"Le dossier des schémas n'existe pas :\n"
-					+ dossierSchemas.toString() );
+					"Le dossier des fichiers n'existe pas :\n"
+					+ dossierFichier.toString() );
 		}
 		
 	}
@@ -57,8 +57,8 @@ public class ModelConfig {
 	
 	// Getters
 	
-	public File getDossierSchemas() {
-		return dossierSchemas;
+	public File getDossierFichier() {
+		return dossierFichier;
 	}
 
 }

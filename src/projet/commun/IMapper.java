@@ -31,6 +31,6 @@ public interface IMapper {
 	
 	Parcours update( @MappingTarget Parcours target, Parcours source  );
 	
-	Poste update( @MappingTarget Poste target, Poste source  );
-	
+	Poste update( @MappingTarget Poste target, Poste source );
+	 
 }
