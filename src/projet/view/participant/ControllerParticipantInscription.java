@@ -177,6 +177,7 @@ public class ControllerParticipantInscription {
 			// Repas
 			textFieldRepas.textProperty().bindBidirectional( courantCapitaine.repasProperty(), new ConverterStringInteger()  );
 			// Parcours
+			modelEquipe.actualiserListe();
 			comboBoxParcours.setItems( modelEquipe.getParcours() );
 	        comboBoxParcours.valueProperty().bindBidirectional( courantEquipe.parcoursProperty() );
 		}
@@ -185,14 +186,14 @@ public class ControllerParticipantInscription {
 		
 		@FXML
 		private void doAnnuler() {
-			managerGui.showView( EnumView.BenevoleListe );
+			managerGui.showView( EnumView.ParticipantListe );
 		}
 		
 		@FXML
 		private void doValider() {
 			modelEquipe.validerMiseAJour();
 			modelParticipant.validerMiseAJour();
-			managerGui.showView( EnumView.BenevoleListe );
+			managerGui.showView( EnumView.ParticipantListe );
 		}
 		
 		

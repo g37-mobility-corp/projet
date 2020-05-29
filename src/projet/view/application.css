@@ -1,5 +1,5 @@
 .menu-bar {
-    -fx-background-color: #178AB5 ;
+    -fx-background-color: linear-gradient(#178AB5, #174EB5);
     -fx-opacity: 0.5;
     -fx-border-width: 2.0;
 

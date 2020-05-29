@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 
 
 public class ControllerInfo {
@@ -14,7 +15,7 @@ public class ControllerInfo {
 	@FXML
 	private Label		labelTitre;
 	@FXML
-	private Label		labelMessage;
+	private ImageView		imageView;
 
 	
 	// Autres champs
@@ -30,7 +31,6 @@ public class ControllerInfo {
 		
 		// Data binding
 		labelTitre.textProperty().bind( modelInfo.titreProperty() );
-		labelMessage.textProperty().bind( modelInfo.messageProperty() );
 		
 	}
 	

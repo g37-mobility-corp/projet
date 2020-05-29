@@ -64,7 +64,7 @@
                      <content>
                         <AnchorPane>
                            <children>
-                              <TextArea fx:id="textAreaDocumentsCapitaine" layoutX="14.0" layoutY="33.0" prefHeight="106.0" prefWidth="419.0" AnchorPane.bottomAnchor="206.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="33.0" />
+                              <TextArea fx:id="textAreaDocumentsCapitaine" layoutX="14.0" layoutY="33.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="106.0" prefWidth="419.0" AnchorPane.bottomAnchor="206.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="33.0" />
                               <TextArea fx:id="textAreaDocumentsEquipier" layoutX="14.0" layoutY="189.0" prefHeight="106.0" prefWidth="419.0" />
                               <Label layoutX="19.0" layoutY="14.0" text="Capitaine" />
                               <Label layoutX="19.0" layoutY="164.0" text="Equipier" />

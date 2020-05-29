@@ -223,8 +223,8 @@ public class DaoParticipant {
 		participant.setAdresse( rs.getObject( "adresse", String.class ) );
 		participant.setVille( rs.getObject( "ville", String.class ) );
 		participant.setCodePostale( rs.getObject( "codePostale", String.class ) );
-		participant.setRepas( rs.getObject( "repas", int.class ) );
-		participant.setReglement( rs.getObject( "reglement", boolean.class ) );
+		participant.setRepas( rs.getObject( "repas", Integer.class ) );
+		participant.setReglement( rs.getObject( "reglement", Boolean.class ) );
 		participant.setBirthdate( rs.getObject( "birthdate", LocalDate.class ) );
 		return participant;
 	}
