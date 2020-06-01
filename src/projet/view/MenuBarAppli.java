@@ -93,6 +93,10 @@ public class MenuBarAppli extends MenuBar {
 		menu.getItems().add( item );
 		itemComptes = item;
 		
+		item = new MenuItem( "Maps" );
+		item.setOnAction(  (e) -> managerGui.showView( EnumView.Maps )  );
+		menu.getItems().add( item );
+		itemComptes = item;
 		// Menu Etats
 		
 		menu =  new Menu( "Etats" );;

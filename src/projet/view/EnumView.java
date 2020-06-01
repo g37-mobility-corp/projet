@@ -23,6 +23,7 @@ public enum EnumView implements IEnumView {
 	ParticipantInscription	( "participant/ViewParticipantInscription.fxml" ),
 	BenevoleInscription		( "benevole/ViewBenevoleInscription.fxml" ),
 	BenevoleListe			( "benevole/ViewBenevoleListe.fxml" ),
+	Maps					( "maps/ViewMaps.fxml"),
 	;
 
 	
