@@ -41,17 +41,18 @@ public class DaoBenevole {
 			cn = dataSource.getConnection();
 
 			// Insère le Benevole
-			sql = "INSERT INTO benevole(nom, prenom, telephone, birthdate, idposte, adresse, ville, codepostale, permisConduire, plaqueImma, brevetSecourisme, email) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
+			sql = "INSERT INTO benevole(nom, prenom, telephone, birthdate, idposte, adresse, ville, "
+					+ "codepostale, permisConduire, plaqueImma, brevetSecourisme, email) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
 			stmt.setObject( 1, benevole.getNom() );
 			stmt.setObject( 2, benevole.getPrenom() );
 			stmt.setObject( 3, benevole.getTelephone() );
 			stmt.setObject( 4, benevole.getBirthdate() );
 			//stmt.setObject( 5, benevole.getIdposte() );
-			if ( benevole.getIdposte() == null ) {
+			if ( benevole.getPoste() == null ) {
 				stmt.setObject( 5, null );
 			} else {
-				stmt.setObject( 5, benevole.getIdposte() );
+				stmt.setObject( 5, benevole.getPoste().getIdposte() );
 			}
 			stmt.setObject( 6, benevole.getAdresse() );
 			stmt.setObject( 7, benevole.getVille() );
@@ -96,7 +97,7 @@ public class DaoBenevole {
 			stmt.setObject( 2, benevole.getPrenom() );
 			stmt.setObject( 3, benevole.getTelephone() );
 			stmt.setObject( 4, benevole.getBirthdate() );
-			stmt.setObject( 5, benevole.getIdposte());
+			stmt.setObject( 5, benevole.getPoste().getIdposte());
 			stmt.setObject( 6, benevole.getPermisConduire() );
 			stmt.setObject( 7, benevole.getPlaqueImma() );
 			stmt.setObject( 8, benevole.getBrevetSecourisme() );
@@ -237,7 +238,7 @@ public class DaoBenevole {
 		benevole.setBirthdate( rs.getObject( "birthdate", LocalDate.class ) );
 		Integer idPoste = rs.getObject( "idposte", Integer.class );
 		if ( idPoste != null ) {
-			benevole.setIdposte( daoPoste.retrouver( idPoste ) );
+			benevole.setPoste( daoPoste.retrouver( idPoste ) );
 		}
 		benevole.setAdresse( rs.getObject( "adresse", String.class ) );
 		benevole.setVille( rs.getObject( "ville", String.class ) );

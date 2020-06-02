@@ -11,7 +11,7 @@ import javafx.beans.property.StringProperty;
 public class Benevole {
 	
 	private final Property<Integer>		id			= new SimpleObjectProperty<>();
-	private final Property<Poste>		idposte		= new SimpleObjectProperty<>();
+	private final Property<Poste>		poste		= new SimpleObjectProperty<>();
 	private final StringProperty		nom	 		= new SimpleStringProperty();
 	private final StringProperty		prenom		= new SimpleStringProperty();
 	private final StringProperty		telephone	= new SimpleStringProperty();
@@ -29,11 +29,11 @@ public class Benevole {
 		public Benevole() {
 		}
 		
-		public Benevole( int id, Poste idposte, String nom, String prenom, String telephone, String email, String adresse, 
+		public Benevole( int id, Poste poste, String nom, String prenom, String telephone, String email, String adresse, 
 							String ville, String codepostale, LocalDate birthdate, Boolean permisConduire, 
 							String plaqueImma, Boolean brevetSecourisme) {
 			setId(id);
-			setIdposte(idposte);
+			setPoste(poste);
 			setNom(nom);
 			setPrenom(prenom);
 			setTelephone(telephone);
@@ -118,20 +118,6 @@ public class Benevole {
 
 		public final void setBirthdate(final LocalDate birthdate) {
 			this.birthdateProperty().setValue(birthdate);
-		}
-		
-		public final Property<Poste> idposteProperty() {
-			return this.idposte;
-		}
-		
-
-		public final Poste getIdposte() {
-			return this.idposteProperty().getValue();
-		}
-		
-
-		public final void setIdposte(final Poste idposte) {
-			this.idposteProperty().setValue(idposte);
 		}
 
 		@Override
@@ -256,6 +242,21 @@ public class Benevole {
 		public final void setBrevetSecourisme(final Boolean brevetSecourisme) {
 			this.brevetSecourismeProperty().setValue(brevetSecourisme);
 		}
+
+		public final Property<Poste> posteProperty() {
+			return this.poste;
+		}
+		
+
+		public final Poste getPoste() {
+			return this.posteProperty().getValue();
+		}
+		
+
+		public final void setPoste(final Poste poste) {
+			this.posteProperty().setValue(poste);
+		}
+		
 		
 				
 
