@@ -44,7 +44,7 @@ public class DaoEquipe {
 		
 		try {
 			cn = dataSource.getConnection();
-			sql = "INSERT INTO equipe ( idcompte, idparcours, nom_equipe, categorie, idchef, idcoequipier,valide ) VALUES( ?, ?, ?, ?, ? ,?,?)";
+			sql = "INSERT INTO equipe ( idcompte, idparcours, nom_equipe, categorie, idchef, idcoequipier,valide ) VALUES( ?, ?, ?, ?, ?, ?, ?)";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
 			stmt.setObject( 1, equipe.getIdcompte() );
 			stmt.setObject( 2, equipe.getParcours().getIdparcours() );
