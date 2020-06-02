@@ -36,12 +36,11 @@ public class DaoPoste {
 		
 		try {
 			cn = dataSource.getConnection();
-			sql = "INSERT INTO poste ( idposte, nom, lieu, fonction ) VALUES( ?, ?, ?, ?)";
+			sql = "INSERT INTO poste ( nom, lieu, fonction ) VALUES( ?, ?, ?)";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
-			stmt.setObject( 1, poste.getIdposte() );
-			stmt.setObject( 2, poste.getNom() );
-			stmt.setObject( 3, poste.getLieu() );
-			stmt.setObject( 4, poste.getFonction() );
+			stmt.setObject( 1, poste.getNom() );
+			stmt.setObject( 2, poste.getLieu() );
+			stmt.setObject( 3, poste.getFonction() );
 			
 			stmt.executeUpdate();
 
@@ -190,7 +189,7 @@ public class DaoPoste {
 
 		try {
 			cn = dataSource.getConnection();
-			sql = "DELETE FROM equipe WHERE idposte = ? ";
+			sql = "DELETE FROM poste WHERE idposte = ? ";
 			stmt = cn.prepareStatement( sql );
 			stmt.setInt( 1, idPoste );
 			stmt.executeUpdate();

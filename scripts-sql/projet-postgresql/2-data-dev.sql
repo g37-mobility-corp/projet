@@ -68,7 +68,7 @@ UPDATE equipe SET idchef = 3, idcoequipier = 4 WHERE idequipe =  1;
 INSERT INTO poste (idposte, nom, lieu, fonction ) VALUES
   ( 1, 'Poste n°1', 'Buvette', 'Descriptif 1' ),
   ( 2, 'Poste n°2', 'Parking', 'Descriptif 2' ),
-  ( 3, 'Poste n°3', 'Arrivée', 'Descriptif 3');
+  ( 3, 'Poste n°3', 'Arrivée', 'Descriptif 3' );
 
 ALTER TABLE poste ALTER COLUMN idposte RESTART WITH 4;
 
