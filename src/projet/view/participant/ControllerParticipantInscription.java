@@ -111,8 +111,8 @@ public class ControllerParticipantInscription {
 		private void initialize() {
 			// Data binding
 			courantEquipe = modelEquipe.getCourant();
-			courantCapitaine = modelParticipant.getCourant();
-			courantEquipier = modelParticipant.getCourant();
+			courantCapitaine = courantEquipe.getChef();
+			courantEquipier = courantEquipe.getCoequipier();
 							
 			// Toujours Visible
 			// id

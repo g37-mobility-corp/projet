@@ -14,8 +14,8 @@ public class Equipe  {
 	private final Property<Integer>		idequipe	= new SimpleObjectProperty<>();
 	private final Property<Integer>		idcompte	= new SimpleObjectProperty<>();
 	private final Property<Parcours>	parcours	= new SimpleObjectProperty<>();
-	private final Property<Participant>	Chef		= new SimpleObjectProperty<>();
-	private final Property<Participant>	Coequipier 	= new SimpleObjectProperty<>();
+	private final Property<Participant>	Chef		= new SimpleObjectProperty<>(new Participant());
+	private final Property<Participant>	Coequipier 	= new SimpleObjectProperty<>(new Participant());
 	private final StringProperty		nom			= new SimpleStringProperty();
 	private final StringProperty		categorie 	= new SimpleStringProperty();
 	private final Property<Boolean> 	valide 		= new SimpleObjectProperty<>(false);

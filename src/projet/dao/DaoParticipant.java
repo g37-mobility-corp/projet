@@ -123,6 +123,7 @@ public class DaoParticipant {
 			UtilJdbc.close( stmt, cn );
 		}
 	}
+	
 
 
 	public Participant retrouver( int idparticipant )  {

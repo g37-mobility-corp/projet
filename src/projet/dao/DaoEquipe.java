@@ -39,6 +39,9 @@ public class DaoEquipe {
 		ResultSet 			rs		= null;
 		String				sql;
 		
+		daoParticipant.inserer(equipe.getChef());
+		daoParticipant.inserer(equipe.getCoequipier());
+		
 		try {
 			cn = dataSource.getConnection();
 			sql = "INSERT INTO equipe ( idcompte, idparcours, nom_equipe, categorie, idchef, idcoequipier,valide ) VALUES( ?, ?, ?, ?, ? ,?,?)";
@@ -81,6 +84,10 @@ public class DaoEquipe {
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
 		String				sql;
+		
+
+		daoParticipant.modifier(equipe.getChef());
+		daoParticipant.modifier(equipe.getCoequipier());
 
 		try {
 			cn = dataSource.getConnection();
@@ -122,6 +129,8 @@ public class DaoEquipe {
 		Connection			cn 		= null;
 		PreparedStatement	stmt 	= null;
 		String				sql;
+		
+		Equipe equipe= retrouver(idEquipe);
 
 		try {
 			//supprimerConcerner(idEquipe);
@@ -137,6 +146,9 @@ public class DaoEquipe {
 		} finally {
 			UtilJdbc.close( stmt, cn );
 		}
+		
+		daoParticipant.supprimer(equipe.getChef().getId());
+		daoParticipant.supprimer(equipe.getCoequipier().getId());
 	}
 
 	

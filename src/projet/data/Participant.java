@@ -22,8 +22,8 @@ public class Participant {
 	private final StringProperty		adresse		= new SimpleStringProperty();
 	private final StringProperty		ville		= new SimpleStringProperty();
 	private final StringProperty		codePostale		= new SimpleStringProperty();
-	private final Property<Integer>		repas		=new SimpleObjectProperty<>(); 
-	private final Property<Boolean>		reglement		=new SimpleObjectProperty<>(); 
+	private final Property<Integer>		repas		=new SimpleObjectProperty<>(0); 
+	private final Property<Boolean>		reglement		=new SimpleObjectProperty<>(false); 
 	private final Property<LocalDate>	birthdate	= new SimpleObjectProperty<>();
 
 

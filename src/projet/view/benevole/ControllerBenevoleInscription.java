@@ -104,7 +104,7 @@ public class ControllerBenevoleInscription {
 				
 				// Poste
 				comboBoxPoste.setItems(modelPoste.getListe());
-				comboBoxPoste.valueProperty().bindBidirectional( courant.idposteProperty() );
+				comboBoxPoste.valueProperty().bindBidirectional( courant.posteProperty() );
 				//Permis de conduire
 				checkBoxPermisConduire.selectedProperty().bindBidirectional( courant.permisConduireProperty());
 				//Numéro de plaque
