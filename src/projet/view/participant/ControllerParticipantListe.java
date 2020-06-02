@@ -75,7 +75,7 @@ public class ControllerParticipantListe {
 			managerGui.showDialogError( "Aucun élément n'est sélectionné dans la liste.");
 		} else {
 			modelParticipant.preparerModifier(item);
-			managerGui.showView( EnumView.ParticipantInscription );
+			managerGui.showView( EnumView.ParticipantModif );
 		}
 	}
 

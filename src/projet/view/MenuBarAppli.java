@@ -78,6 +78,11 @@ public class MenuBarAppli extends MenuBar {
 		menu.getItems().add( item );
 		itemComptes = item;
 		
+		item = new MenuItem( "Liste Benevoles" );
+		item.setOnAction(  (e) -> managerGui.showView( EnumView.BenevoleListe )  );
+		menu.getItems().add( item );
+		itemComptes = item;
+		
 		item = new MenuItem( "Liste Participant" );
 		item.setOnAction(  (e) -> managerGui.showView( EnumView.ParticipantListe )  );
 		menu.getItems().add( item );
