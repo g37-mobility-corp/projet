@@ -49,6 +49,11 @@ public class DaoBenevole {
 			stmt.setObject( 4, benevole.getTelephone() );
 			stmt.setObject( 5, benevole.getBirthdate() );
 			stmt.setObject( 6, benevole.getIdposte() );
+			if ( benevole.getIdposte() == null ) {
+				stmt.setObject( 6, null );
+			} else {
+				stmt.setObject( 6, benevole.getIdposte() );
+			}
 			stmt.setObject( 7, benevole.getAdresse() );
 			stmt.setObject( 8, benevole.getVille() );
 			stmt.setObject( 9, benevole.getCodePostale() );

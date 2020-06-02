@@ -78,7 +78,7 @@ public class DaoParticipant {
 			cn = dataSource.getConnection();
 
 			// Modifie le participant
-			sql = "UPDATE participant SET nom = ?, prenom = ?, telephone = ?, email = ?, adresse = ?, ville = ? codePostale = ?, repas = ?, reglement = ?, birthdate = ? WHERE idparticipant =  ?";
+			sql = "UPDATE participant SET nom = ?, prenom = ?, telephone = ?, email = ?, adresse = ?, ville = ?, codepostale = ?, repas = ?, reglement = ?, birthdate = ? WHERE idparticipant =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject( 1, participant.getNom() );
 			stmt.setObject( 2, participant.getPrenom() );

@@ -91,7 +91,7 @@ CREATE TABLE benevole (
 	codePostale		TEXT			NOT NULL,
 	telephone		VARCHAR(15)		NOT NULL,
 	birthdate		DATE			NOT NULL,
-	permis			BOOLEAN			NOT NULL DEFAULT FALSE,
+	permisConduire			BOOLEAN			NOT NULL DEFAULT FALSE,
 	plaqueImma		VARCHAR(15)		,
 	brevetSecourisme BOOLEAN 		NOT NULL DEFAULT FALSE,
 	PRIMARY KEY (idbenevole),

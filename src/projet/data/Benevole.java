@@ -21,7 +21,7 @@ public class Benevole {
 	private final StringProperty		codePostale	= new SimpleStringProperty();
 	private final Property<LocalDate>	birthdate	= new SimpleObjectProperty<>();
 	private final Property<Boolean>		permisConduire		= new SimpleObjectProperty<>();
-	private final StringProperty		plaqueImma	= new SimpleStringProperty();
+	private final StringProperty		plaqueImma			= new SimpleStringProperty();
 	private final Property<Boolean>		brevetSecourisme	= new SimpleObjectProperty<>();
 	
 	// Constructeurs
