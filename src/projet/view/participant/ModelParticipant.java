@@ -9,7 +9,9 @@ import jfox.commun.exception.ExceptionValidation;
 import jfox.javafx.util.UtilFX;
 import projet.commun.IMapper;
 import projet.dao.DaoParticipant;
+import projet.data.Parcours;
 import projet.data.Participant;
+import projet.view.parcours.ModelParcours;
 
 
 public class ModelParticipant {
@@ -27,12 +29,19 @@ public class ModelParticipant {
 	private IMapper			mapper;
     @Inject
 	private DaoParticipant		daoParticipant;
+    @Inject
+    private ModelParcours modelParcours;
+	
 	
 	
 	// Getters
 	
 	public ObservableList<Participant> getListe() {
 		return liste;
+	}
+	
+	public ObservableList<Parcours> getParcours() {
+		return modelParcours.getListe();
 	}
 
 	public Participant getCourant() {
@@ -50,11 +59,13 @@ public class ModelParticipant {
 	// Actions
 	
 	public void preparerAjouter() {
+		modelParcours.actualiserListe();
 		mapper.update( courant, new Participant() );
 	}
 
 	
 	public void preparerModifier( Participant item ) {
+		modelParcours.actualiserListe();
 		mapper.update( courant, daoParticipant.retrouver( item.getId() ) );
 	}
 	

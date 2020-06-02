@@ -28,6 +28,8 @@ public class ModelParcours  {
 	private IMapper			mapper;
     @Inject
 	private DaoParcours			daoParcours;
+    @Inject
+	private ModelParcours			modelParcours;
 	
     
 	// Initialisations
@@ -63,10 +65,12 @@ public class ModelParcours  {
 	// Actions
 	
 	public void preparerAjouter() {
+		
 		mapper.update( courant, new Parcours() );
 	}
 	
 	public void preparerModifier( Parcours item ) {
+		modelParcours.actualiserListe();
 		mapper.update( courant, daoParcours.retrouver( item.getIdparcours() ) );
 		
 	}

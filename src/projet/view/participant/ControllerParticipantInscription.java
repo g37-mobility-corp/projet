@@ -177,7 +177,8 @@ public class ControllerParticipantInscription {
 			// Repas
 			textFieldRepas.textProperty().bindBidirectional( courantCapitaine.repasProperty(), new ConverterStringInteger()  );
 			// Parcours
-			modelEquipe.actualiserListe();
+			//modelParticipant.actualiserListe();
+			//modelEquipe.actualiserListe();
 			comboBoxParcours.setItems( modelEquipe.getParcours() );
 	        comboBoxParcours.valueProperty().bindBidirectional( courantEquipe.parcoursProperty() );
 		}
