@@ -1,5 +1,7 @@
 package projet.data;
 
+import java.util.Objects;
+
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -85,8 +87,22 @@ public class Equipe  {
 		this.idcompteProperty().setValue(idcompte);
 	}
 	
+	@Override
+	public int hashCode() {
+		return Objects.hash(idequipe.getValue());
+	}
 
-	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Equipe other = (Equipe) obj;
+		return Objects.equals(idequipe.getValue(), other.idequipe.getValue());
+	}
 
 	public final Property<Integer> idequipeProperty() {
 		return this.idequipe;

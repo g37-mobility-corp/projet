@@ -22,6 +22,7 @@ public interface IMapper {
 
 	@Mapping( target="chef", expression="java( source.getChef() )" )
 	@Mapping( target="coequipier", expression="java( source.getCoequipier() )" )
+	@Mapping( target="parcours", expression="java( source.getParcours() )" )
 	Equipe update( @MappingTarget Equipe target, Equipe source );
 
 	Participant update( @MappingTarget Participant target, Participant source );

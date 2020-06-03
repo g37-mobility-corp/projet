@@ -1,5 +1,7 @@
 package projet.data;
 
+import java.util.Objects;
+
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -91,6 +93,23 @@ public class Parcours  {
 	
 	public final String toString() {
 		return this.getNom();
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idparcours.getValue());
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Parcours other = (Parcours) obj;
+		return Objects.equals(idparcours.getValue(), other.idparcours.getValue());
 	}
 	
 	

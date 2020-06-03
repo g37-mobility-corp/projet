@@ -27,6 +27,7 @@ import projet.data.Participant;
 import projet.view.EnumView;
 import projet.view.compte.ModelCompte;
 import projet.view.equipe.ModelEquipe;
+import projet.view.parcours.ModelParcours;
 
 public class ControllerParticipantInscription {
 
@@ -111,8 +112,8 @@ public class ControllerParticipantInscription {
 		private void initialize() {
 			// Data binding
 			courantEquipe = modelEquipe.getCourant();
-			courantCapitaine = courantEquipe.getChef();
-			courantEquipier = courantEquipe.getCoequipier();
+			courantCapitaine = modelParticipant.getCourant();
+			courantEquipier = modelParticipant.getCourant2();
 							
 			// Toujours Visible
 			// id
@@ -192,8 +193,8 @@ public class ControllerParticipantInscription {
 		
 		@FXML
 		private void doValider() {
-			modelEquipe.validerMiseAJour();
 			modelParticipant.validerMiseAJour();
+			modelEquipe.validerMiseAJour();
 			managerGui.showView( EnumView.ParticipantListe );
 		}
 		

@@ -20,8 +20,9 @@ public class ModelParticipant {
 	// Données observables 
 	
 	private final ObservableList<Participant> liste = FXCollections.observableArrayList(); 
-	
+
 	private final Participant	courant = new Participant();
+	private final Participant	courant2 = new Participant();
 	
 	
 	// Autres champs
@@ -46,6 +47,10 @@ public class ModelParticipant {
 
 	public Participant getCourant() {
 		return courant;
+	}
+
+	public Participant getCourant2() {
+		return courant2;
 	}
 	
 	

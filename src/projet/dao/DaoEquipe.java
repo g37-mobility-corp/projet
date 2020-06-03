@@ -39,15 +39,15 @@ public class DaoEquipe {
 		ResultSet 			rs		= null;
 		String				sql;
 		
-		daoParticipant.inserer(equipe.getChef());
-		daoParticipant.inserer(equipe.getCoequipier());
+		//daoParticipant.inserer(equipe.getChef());
+		//daoParticipant.inserer(equipe.getCoequipier());
 		
 		try {
 			cn = dataSource.getConnection();
 			sql = "INSERT INTO equipe ( idcompte, idparcours, nom_equipe, categorie, idchef, idcoequipier,valide ) VALUES( ?, ?, ?, ?, ?, ?, ?)";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
 			stmt.setObject( 1, equipe.getIdcompte() );
-			stmt.setObject( 2, equipe.getParcours().getIdparcours() );
+			stmt.setObject( 2, 1);//equipe.getParcours().getIdparcours() );
 			stmt.setObject( 3, equipe.getNom() );
 			stmt.setObject( 4, equipe.getCategorie() );
 			if ( equipe.getChef() == null ) {
@@ -86,8 +86,8 @@ public class DaoEquipe {
 		String				sql;
 		
 
-		daoParticipant.modifier(equipe.getChef());
-		daoParticipant.modifier(equipe.getCoequipier());
+		//daoParticipant.modifier(equipe.getChef());
+		//daoParticipant.modifier(equipe.getCoequipier());
 
 		try {
 			cn = dataSource.getConnection();
