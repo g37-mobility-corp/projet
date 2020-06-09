@@ -50,7 +50,16 @@ public class ModelBenevole {
 	// Actions
 	
 	public void preparerAjouter() {
-		mapper.update( courant, new Benevole() );
+		Benevole benevole= new Benevole();
+		benevole.setNom("Dylan");
+		benevole.setPrenom("Bob");
+		benevole.setTelephone("0656985236");
+		benevole.setAdresse("rue des fougères");
+		benevole.setEmail("bob@3il.fr");
+		benevole.setCodePostale("87000");
+		benevole.setVille("Limoges");
+		benevole.setPlaqueImma("BS-659-RS");
+		mapper.update( courant, benevole );
 	}
 
 	

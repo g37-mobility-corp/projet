@@ -9,6 +9,7 @@ import jfox.commun.exception.ExceptionValidation;
 import jfox.javafx.util.UtilFX;
 import projet.commun.IMapper;
 import projet.dao.DaoParticipant;
+import projet.data.Benevole;
 import projet.data.Parcours;
 import projet.data.Participant;
 import projet.view.parcours.ModelParcours;
@@ -65,7 +66,15 @@ public class ModelParticipant {
 	
 	public void preparerAjouter() {
 		modelParcours.actualiserListe();
-		mapper.update( courant, new Participant() );
+		Participant participant= new Participant();
+		participant.setNom("Antoine");
+		participant.setPrenom("Eric");
+		participant.setTelephone("0656451236");
+		participant.setAdresse("rue des ragondins");
+		participant.setEmail("eric@3il.fr");
+		participant.setCodePostale("87000");
+		participant.setVille("Limoges");
+		mapper.update( courant, participant );
 	}
 
 	
