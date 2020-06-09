@@ -73,21 +73,22 @@ public class MenuBarAppli extends MenuBar {
 		menu.getItems().add( item );
 		itemComptes = item;
 		
-		item = new MenuItem( "Liste Equipes" );
+		item = new MenuItem( "Equipes" );
 		item.setOnAction(  (e) -> managerGui.showView( EnumView.EquipeListe )  );
 		menu.getItems().add( item );
 		itemComptes = item;
 		
-		item = new MenuItem( "Liste Benevoles" );
+		item = new MenuItem( "Benevoles" );
 		item.setOnAction(  (e) -> managerGui.showView( EnumView.BenevoleListe )  );
 		menu.getItems().add( item );
 		itemComptes = item;
 		
-		item = new MenuItem( "Liste Participant" );
+		item = new MenuItem( "Participant" );
 		item.setOnAction(  (e) -> managerGui.showView( EnumView.ParticipantListe )  );
 		menu.getItems().add( item );
 		itemComptes = item;
 		
+		/*
 		item = new MenuItem( "Inscription Participant" );
 		item.setOnAction(  (e) -> managerGui.showView( EnumView.ParticipantInscription )  );
 		menu.getItems().add( item );
@@ -97,13 +98,14 @@ public class MenuBarAppli extends MenuBar {
 		item.setOnAction(  (e) -> managerGui.showView( EnumView.BenevoleInscription )  );
 		menu.getItems().add( item );
 		itemComptes = item;
+		*/
 		
 		item = new MenuItem( "Maps" );
 		item.setOnAction(  (e) -> managerGui.showView( EnumView.Maps )  );
 		menu.getItems().add( item );
 		itemComptes = item;
 		// Menu Etats
-		
+		/*
 		menu =  new Menu( "Etats" );;
 		this.getMenus().add(menu);
 		menuEtats = menu;
@@ -123,7 +125,7 @@ public class MenuBarAppli extends MenuBar {
 //				managerReport.print( EnumReport.AnnuaireTelephone, null ) );
 				managerReport.showViewer( EnumReport.AnnuaireTelephone, null ) );
 		menu.getItems().add( item );
-
+*/
 		
 		// Manu Tests
 		
@@ -167,15 +169,15 @@ public class MenuBarAppli extends MenuBar {
 		
 		menuDonnees.setVisible(false);
 		itemComptes.setVisible(false);
-		menuEtats.setVisible(false);
+		//menuEtats.setVisible(false);
 		menuTests.setVisible(false);
-		menuEtats.setVisible(false);
+		//menuEtats.setVisible(false);
 		
 		if( compteActif != null ) {
 			itemDeconnecter.setDisable(false);
 			if( compteActif.isInRole( Roles.UTILISATEUR) ) {
 				menuDonnees.setVisible(true);
-				menuEtats.setVisible(true);
+				//menuEtats.setVisible(true);
 			}
 			if( compteActif.isInRole( Roles.ADMINISTRATEUR ) ) {
 				menuDonnees.setVisible(true);
