@@ -103,6 +103,8 @@ public class ControllerParticipantInscription {
 		private ModelParticipant	modelParticipant;
 		@Inject
 		private ModelEquipe	modelEquipe;
+		@Inject
+		private ModelParcours	modelParcours;
 			
 		
 		
@@ -180,6 +182,7 @@ public class ControllerParticipantInscription {
 			// Parcours
 			//modelParticipant.actualiserListe();
 			//modelEquipe.actualiserListe();
+			modelParcours.actualiserListe();
 			comboBoxParcours.setItems( modelEquipe.getParcours() );
 	        comboBoxParcours.valueProperty().bindBidirectional( courantEquipe.parcoursProperty() );
 		}

@@ -103,6 +103,7 @@ public class ControllerBenevoleInscription {
 			// Réglement
 				
 				// Poste
+				modelPoste.actualiserListe();
 				comboBoxPoste.setItems(modelPoste.getListe());
 				comboBoxPoste.valueProperty().bindBidirectional( courant.posteProperty() );
 				//Permis de conduire
