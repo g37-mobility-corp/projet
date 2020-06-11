@@ -105,27 +105,22 @@ public class MenuBarAppli extends MenuBar {
 		menu.getItems().add( item );
 		itemComptes = item;
 		// Menu Etats
-		/*
+		
 		menu =  new Menu( "Etats" );;
 		this.getMenus().add(menu);
 		menuEtats = menu;
 		
-		item = new MenuItem( "Liste des personnes (PDF)" );
+		item = new MenuItem( "Liste des Participants (viewer)" );
 		item.setOnAction(  (e) ->  
-				managerReport.openFilePdf( EnumReport.PersonnesListeSimple, null ) );
+				managerReport.showViewer( EnumReport.ListeParticipant, null ) );
 		menu.getItems().add( item );
 		
-		item = new MenuItem( "Liste des personnes (viewer)" );
+		item = new MenuItem( "Liste des Bénévoles (viewer)" );
 		item.setOnAction(  (e) ->  
-				managerReport.showViewer( EnumReport.PersonnesListeSimple, null ) );
+				managerReport.showViewer( EnumReport.ListeBenevole, null ) );
 		menu.getItems().add( item );
 		
-		item = new MenuItem( "Annuaire téléphonique" );
-		item.setOnAction(  (e) ->  
-//				managerReport.print( EnumReport.AnnuaireTelephone, null ) );
-				managerReport.showViewer( EnumReport.AnnuaireTelephone, null ) );
-		menu.getItems().add( item );
-*/
+
 		
 		// Manu Tests
 		
@@ -169,15 +164,15 @@ public class MenuBarAppli extends MenuBar {
 		
 		menuDonnees.setVisible(false);
 		itemComptes.setVisible(false);
-		//menuEtats.setVisible(false);
+		menuEtats.setVisible(false);
 		menuTests.setVisible(false);
-		//menuEtats.setVisible(false);
+		menuEtats.setVisible(false);
 		
 		if( compteActif != null ) {
 			itemDeconnecter.setDisable(false);
 			if( compteActif.isInRole( Roles.UTILISATEUR) ) {
 				menuDonnees.setVisible(true);
-				//menuEtats.setVisible(true);
+				menuEtats.setVisible(true);
 			}
 			if( compteActif.isInRole( Roles.ADMINISTRATEUR ) ) {
 				menuDonnees.setVisible(true);
