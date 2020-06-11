@@ -68,18 +68,18 @@ UPDATE equipe SET idchef = 3, idcoequipier = 4 WHERE idequipe =  1;
 INSERT INTO poste (idposte, nom, lieu, fonction ) VALUES
   ( 1, 'Parking Voiture', 'Parking', 'Descriptif 1' ),
   ( 2, 'Parking Velo', 'Parking', 'Descriptif 2' ),
-  ( 4, 'Remise des dossards', 'Départ', 'Descriptif 3' );
-  ( 5, 'Signaleur', 'Parcours', 'Descriptif 3' );
-  ( 6, 'Ravitaillement', 'Parcours', 'Descriptif 3' );
-  ( 7, 'Sécurité sur eau', 'Parcours', 'Descriptif 3' );
-  ( 8, 'Chronométrage', 'Départ/Arrivée', 'Descriptif 3' );
-  ( 9, 'Moto', 'Fermeture parcours', 'Descriptif 3' );
-  ( 10, 'Buvette', 'Buvette', 'Descriptif 3' );
-  ( 11, 'Repas', 'Repas', 'Descriptif 3' );
-  ( 12, 'Récuperer les dossards et puces', 'Départ', 'Descriptif 3' );
-  ( 13, 'Photographe', 'Mobile', 'Descriptif 3' );
+  ( 3, 'Remise des dossards', 'Départ', 'Descriptif 3' ),
+  ( 4, 'Signaleur', 'Parcours', 'Descriptif 3' ),
+  ( 5, 'Ravitaillement', 'Parcours', 'Descriptif 3' ),
+  ( 6, 'Sécurité sur eau', 'arcours', 'Descriptif 3' ),
+  ( 7, 'Chronométrage', 'Départ/Arrivée', 'Descriptif 3' ),
+  ( 8, 'Moto', 'Fermeture parcours', 'Descriptif 3' ),
+  ( 9, 'Buvette', 'Buvette', 'Descriptif 3' ),
+  ( 10, 'Repas', 'Repas', 'Descriptif 3' ),
+  ( 11, 'Récuperer les dossards et puces', 'Départ', 'Descriptif 3' ),
+  ( 12, 'Photographe', 'Mobile', 'Descriptif 3' );
 
-ALTER TABLE poste ALTER COLUMN idposte RESTART WITH 4;
+ALTER TABLE poste ALTER COLUMN idposte RESTART WITH 13;
 
 -- Benevole
 
