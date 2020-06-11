@@ -25,7 +25,7 @@ public class ControllerMaps {
 		WebEngine webEngine = webView.getEngine();
         webEngine.load( getClass().getResource("maps.html").toString() );
 		
-        String param = "document.addMarker(\"test2\",45.818971, 1.272345)";
+        String param = "document.addMarker(\"CKC CLUB\",45.875837, 1.018579)";
         addMarker.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent actionEvent) {
                 webEngine.executeScript(param);
