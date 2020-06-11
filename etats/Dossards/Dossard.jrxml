@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Dossard" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="98331562-f4c5-40e9-b3be-ad2e3f9828c5">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[cGFydGljaXBhbnQgQVMgLDEwNCwzMyw4OWRlZTdiMC02NzlkLTRkNTctOTgyYy04YWEyNWYxNjU3
+MTA7]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (2)"/>
+	<property name="net.sf.jasperreports.print.create.bookmarks" value="false"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT participant.idparticipant,
+	participant.nom,
+	participant.prenom
+FROM participant]]>
+	</queryString>
+	<field name="idparticipant" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="idparticipant"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="participant"/>
+	</field>
+	<field name="nom" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nom"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="participant"/>
+	</field>
+	<field name="prenom" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="prenom"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="participant"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="555" splitType="Stretch">
+			<image>
+				<reportElement x="-20" y="260" width="470" height="295" uuid="f02c44e7-42aa-4b72-b4ab-6bd842f97825"/>
+				<imageExpression><![CDATA["https://icilimoges.com/images/illus-client/persos/canoekayakclubsaintvicturnien.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="110" y="0" width="268" height="79" uuid="d56b1d6d-8603-4410-8af4-f06c2531316f"/>
+				<textElement textAlignment="Right">
+					<font fontName="Bodoni MT" size="26" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{prenom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="401" height="79" uuid="7f578aa5-37b9-49db-8aee-d7aace59d46a"/>
+				<textElement>
+					<font fontName="Bodoni MT" size="26" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-20" y="140" width="842" height="200" uuid="1651ec53-52ee-43ef-85fe-cdd5ba6eb58d">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="150"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idparticipant}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="620" y="480" width="170" height="75" uuid="b3aab3d7-8c49-4fa9-8cdd-f610d9f09424"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="2of7" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA[$F{idparticipant}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>

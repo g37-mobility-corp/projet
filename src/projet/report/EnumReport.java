@@ -8,6 +8,7 @@ public enum EnumReport implements IEnumReport {
 	
 	ListeParticipant	( "Participant/ListeNom.jrxml" ),
 	ListeBenevole	( "Benevole/ListeBenevole.jrxml" ),
+	ListeDossards	( "Dossards/Dossard.jrxml" ),
 	;
 
 	

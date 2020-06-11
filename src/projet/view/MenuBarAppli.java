@@ -120,7 +120,11 @@ public class MenuBarAppli extends MenuBar {
 				managerReport.showViewer( EnumReport.ListeBenevole, null ) );
 		menu.getItems().add( item );
 		
-
+		item = new MenuItem( "Dossards des Participants (viewer)" );
+		item.setOnAction(  (e) ->  
+				managerReport.showViewer( EnumReport.ListeDossards, null ) );
+		menu.getItems().add( item );
+		
 		
 		// Manu Tests
 		
