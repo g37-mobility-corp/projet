@@ -31,7 +31,7 @@ FROM participant]]>
 	<detail>
 		<band height="555" splitType="Stretch">
 			<image>
-				<reportElement x="-20" y="260" width="470" height="295" uuid="f02c44e7-42aa-4b72-b4ab-6bd842f97825"/>
+				<reportElement x="-20" y="200" width="480" height="355" uuid="f02c44e7-42aa-4b72-b4ab-6bd842f97825"/>
 				<imageExpression><![CDATA["https://icilimoges.com/images/illus-client/persos/canoekayakclubsaintvicturnien.jpg"]]></imageExpression>
 			</image>
 			<textField>
@@ -57,12 +57,6 @@ FROM participant]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{idparticipant}]]></textFieldExpression>
 			</textField>
-			<componentElement>
-				<reportElement x="620" y="480" width="170" height="75" uuid="b3aab3d7-8c49-4fa9-8cdd-f610d9f09424"/>
-				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="2of7" drawText="false" checksumRequired="false">
-					<jr:codeExpression><![CDATA[$F{idparticipant}]]></jr:codeExpression>
-				</jr:barbecue>
-			</componentElement>
 		</band>
 	</detail>
 </jasperReport>
