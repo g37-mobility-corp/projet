@@ -1,6 +1,8 @@
 package projet.view.benevole;
 
 
+import java.time.LocalDate;
+
 import javax.inject.Inject;
 
 import javafx.collections.FXCollections;
@@ -59,6 +61,9 @@ public class ModelBenevole {
 		benevole.setCodePostale("87000");
 		benevole.setVille("Limoges");
 		benevole.setPlaqueImma("BS-659-RS");
+		benevole.setBrevetSecourisme(false);
+		benevole.setPermisConduire(false);
+		benevole.setBirthdate(LocalDate.of(1985, 05, 15));
 		mapper.update( courant, benevole );
 	}
 

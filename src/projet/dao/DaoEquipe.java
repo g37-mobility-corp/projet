@@ -239,6 +239,7 @@ public class DaoEquipe {
 	}
 
 
+	@SuppressWarnings("unused")
 	private void supprimerConcerner( int idEquipe ) {
 
 		Connection			cn 		= null;
